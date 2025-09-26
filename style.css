@@ -4,18 +4,35 @@ body {
   color: #333;
 }
 
-/* ===== Header ===== */
-header {
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
+/* ===== Top Bar ===== */
+.top-bar {
+  height: 34px;
+  background-color: rgba(31, 69, 110, 1);
+  box-shadow: 0 1px 0 0 rgba(204, 204, 204, 1);
+  display: flex;
+  justify-content: flex-end;  
+  align-items: center;
+  padding: 0 2rem;
+  gap: 1.5rem;
+  color: white;
+  font-size: 0.9rem;
 }
-.navbar {
-  max-width: 1200px;
-  margin: auto;
+.top-bar a {
+  color: white;
+  text-decoration: none;
+}
+.top-bar a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Main Nav ===== */
+.main-nav {
+  height: 70px;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
 }
 .logo img {
   height: 40px;
@@ -36,15 +53,6 @@ header {
 .nav-links a:hover {
   color: #004aad;
 }
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-.phone {
-  font-weight: 600;
-  color: #004aad;
-}
 .signin {
   background: #004aad;
   color: white;
@@ -55,6 +63,12 @@ header {
 }
 .signin:hover {
   background: #003580;
+}
+
+/* ===== Accent Bar ===== */
+.accent-bar {
+  height: 3px;
+  border-top: 4px solid rgba(31, 69, 110, 1);
 }
 
 /* ===== Hero ===== */
