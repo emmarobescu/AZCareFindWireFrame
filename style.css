@@ -4,55 +4,90 @@ body {
   color: #333;
 }
 
-/* Header */
+/* ===== Header ===== */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
 .navbar {
+  max-width: 1200px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #004aad;
-  color: white;
 }
-.navbar ul {
+.logo img {
+  height: 40px;
+}
+.nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
-.navbar a {
-  color: white;
+.nav-links a {
   text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s;
+}
+.nav-links a:hover {
+  color: #004aad;
 }
 .nav-right {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1.5rem;
+}
+.phone {
+  font-weight: 600;
+  color: #004aad;
 }
 .signin {
-  background: white;
-  color: #004aad;
+  background: #004aad;
+  color: white;
   border: none;
   padding: 0.5rem 1rem;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 4px;
+}
+.signin:hover {
+  background: #003580;
 }
 
-/* Hero */
+/* ===== Hero ===== */
 .hero {
-  background: url("assets/hero.jpg") no-repeat center center/cover;
-  color: white;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 1334px;
+
+  background: 
+    linear-gradient(233deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0.5) 100%),
+    url("assets/hero-photo.jpg") no-repeat center/cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 6rem 2rem;
+  color: white;
+}
+.hero-content {
+  padding: 2rem;
 }
 .hero input {
   margin-top: 1rem;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   width: 60%;
   max-width: 400px;
-  border-radius: 6px;
   border: none;
+  border-radius: 8px;
 }
 
-/* Mission */
+/* ===== Mission ===== */
 .mission {
   padding: 4rem 2rem;
   text-align: center;
@@ -60,7 +95,7 @@ body {
   margin: auto;
 }
 
-/* Difference */
+/* ===== Difference ===== */
 .difference {
   background: #f9f9f9;
   padding: 4rem 2rem;
@@ -80,7 +115,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Find Care */
+/* ===== Find Care ===== */
 .find-care {
   padding: 4rem 2rem;
   text-align: center;
@@ -97,7 +132,7 @@ body {
   object-fit: cover;
 }
 
-/* Footer */
+/* ===== Footer ===== */
 footer {
   background: #004aad;
   color: white;
