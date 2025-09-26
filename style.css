@@ -106,8 +106,7 @@ body {
   padding: 0; /* remove default */
 }
 .signin:hover {
-  background-color: rgba(99, 197, 218, 1);
- /* slightly darker on hover */
+  background-color: #066b8d; /* slightly darker on hover */
 }
  .signin-icon {
   height: 16px;
