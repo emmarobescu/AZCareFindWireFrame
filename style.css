@@ -74,22 +74,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* space between icon and text */
-  
+  gap: 0.5rem;
+
   width: 91px;
   height: 33px;
-  border-radius: 16.5px; /* half the height */
-  
-  background-color: rgba(8, 110, 157, 1); /* your blue */
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
   border: none;
   cursor: pointer;
-  
-  color: white;
-  font-family: 'Open Sans', sans-serif; /* use Open Sans if you want exact match */
+
+  font-family: 'Open Sans', sans-serif; /* exact font */
   font-size: 12px;
   font-weight: 700; /* Bold */
+  color: white;
   text-align: center;
-  text-transform: uppercase; /* optional if you want caps */
+
+  /* remove this if you had it before */
+  text-transform: none;
 }
 
 .signin:hover {
