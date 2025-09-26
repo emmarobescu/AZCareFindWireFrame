@@ -51,34 +51,23 @@ body {
 .nav-links {
   list-style: none;
   display: flex;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
-
 .nav-links li {
   position: relative;
-  text-align: center;
+  padding: 0 1.5rem;
+  line-height: 29px; /* match your Sketch line height */
 }
 
-.nav-links li:nth-child(1) {
-  width: 103px; /* Assessment */
-}
-.nav-links li:nth-child(2) {
-  width: 131px; /* Map & Choices */
-}
-.nav-links li:nth-child(3) {
-  width: 150px; /* List Your Business */
-}
-
-/* Divider lines */
 .nav-links li:not(:last-child)::after {
   content: "";
   position: absolute;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;              /* now aligns with the text line */
   width: 1px;
-  height: 29px; /* matches Sketch */
+  height: 29px;        /* exact Sketch value */
   background-color: rgba(153, 153, 153, 1);
 }
 .nav-links a {
