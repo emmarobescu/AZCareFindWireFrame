@@ -45,17 +45,17 @@ body {
 }
 .nav-links li {
   position: relative;
-  padding: 0 1.5rem; /* controls spacing between text and divider */
+  padding: 0 1.5rem;
+  line-height: 29px; /* match your Sketch line height */
 }
 
 .nav-links li:not(:last-child)::after {
   content: "";
   position: absolute;
   right: 0;
-  top: 50%; /* start centering */
-  transform: translateY(-50%); /* center relative to the text line */
+  top: 0;              /* now aligns with the text line */
   width: 1px;
-  height: 29px; /* match Sketch spec */
+  height: 29px;        /* exact Sketch value */
   background-color: rgba(153, 153, 153, 1);
 }
 .nav-links a {
