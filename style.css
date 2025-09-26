@@ -71,12 +71,10 @@ body {
   color: #004aad;
 }
 .signin {
-  background: #004aad;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
+  width: 91px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
 }
 .signin:hover {
   background: #003580;
