@@ -129,7 +129,7 @@ body {
   max-width: 1334px;
 
   background: 
-    linear-gradient(233deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0.5) 100%),
+    /* linear-gradient(233deg, rgba(255,255,255,0.18) 0%, rgba(0,0,0,0.5) 100%), */
     url("assets/heroimage.jpg") no-repeat center/cover;
 
   display: flex;
