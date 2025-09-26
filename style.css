@@ -71,13 +71,35 @@ body {
   color: #004aad;
 }
 .signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* space between icon and text */
+  
   width: 91px;
   height: 33px;
-  border-radius: 16.5px;
-  background-color: rgba(8, 110, 157, 1);
+  border-radius: 16.5px; /* half the height */
+  
+  background-color: rgba(8, 110, 157, 1); /* your blue */
+  border: none;
+  cursor: pointer;
+  
+  color: white;
+  font-family: 'Open Sans', sans-serif; /* use Open Sans if you want exact match */
+  font-size: 12px;
+  font-weight: 700; /* Bold */
+  text-align: center;
+  text-transform: uppercase; /* optional if you want caps */
 }
+
 .signin:hover {
-  background: #003580;
+  background-color: #066b8d; /* slightly darker on hover */
+}
+
+.signin-icon {
+  width: 16px;
+  height: 16px;
+  fill: white; /* ensure SVG stays white */
 }
 
 /* ===== Accent Bar ===== */
