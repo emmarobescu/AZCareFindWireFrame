@@ -17,11 +17,22 @@ body {
   font-size: 0.9rem;
 }
 .top-bar a {
-  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
   text-decoration: none;
 }
+
 .top-bar a:hover {
   text-decoration: underline;
+}
+
+.phone {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
 }
 
 /* ===== Main Nav ===== */
