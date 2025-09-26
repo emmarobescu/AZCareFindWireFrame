@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* Header */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #004aad;
+  color: white;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.signin {
+  background: white;
+  color: #004aad;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Hero */
+.hero {
+  background: url("assets/hero.jpg") no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 6rem 2rem;
+}
+.hero input {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  width: 60%;
+  max-width: 400px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* Mission */
+.mission {
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Difference */
+.difference {
+  background: #f9f9f9;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.icon-card {
+  width: 200px;
+}
+.icon-card img {
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+/* Find Care */
+.find-care {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.care-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.care-grid img {
+  width: 30%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Footer */
+footer {
+  background: #004aad;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
