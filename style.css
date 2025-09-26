@@ -43,6 +43,21 @@ body {
   margin: 0;
   padding: 0;
 }
+.nav-links li {
+  position: relative;
+  padding: 0 1rem; /* spacing so text doesn’t hug the line */
+}
+
+.nav-links li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 29px;
+  background-color: rgba(153, 153, 153, 1);
+}
 .nav-links a {
   width: 103px;
   height: 20px;
