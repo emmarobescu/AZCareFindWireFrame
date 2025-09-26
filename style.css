@@ -74,7 +74,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px; /* spacing between icon and text */
 
   width: 91px;
   height: 33px;
@@ -83,26 +83,24 @@ body {
   border: none;
   cursor: pointer;
 
-  font-family: 'Open Sans', sans-serif; /* exact font */
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  font-weight: 700; /* Bold */
-  color: white;
+  font-weight: 700;
+  line-height: 17px; /* matches Sketch label height */
+  color: #fff;
   text-align: center;
 
-  /* remove this if you had it before */
-  text-transform: none;
+  padding: 0; /* remove default */
 }
-
 .signin:hover {
   background-color: #066b8d; /* slightly darker on hover */
 }
-
 .signin-icon {
   width: 16px;
   height: 16px;
-  fill: white; /* ensure SVG stays white */
+  fill: white;
+  flex-shrink: 0;  /* keeps icon from squashing */
 }
-
 /* ===== Accent Bar ===== */
 .accent-bar {
   height: 3px;
