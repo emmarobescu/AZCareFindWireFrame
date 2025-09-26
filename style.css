@@ -8,7 +8,6 @@ body {
 .top-bar {
   height: 34px;
   background-color: rgba(31, 69, 110, 1);
-  box-shadow: 0 1px 0 0 rgba(204, 204, 204, 1);
   display: flex;
   justify-content: flex-end;  
   align-items: center;
