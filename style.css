@@ -122,11 +122,11 @@ body {
 
 /* ===== Hero ===== */
 .hero {
+  max-width: 1334px;
   height: 400px;
+  margin: 2rem auto;
   border-radius: 20px;
   overflow: hidden;
-  margin: 2rem auto;
-  max-width: 1334px;
 
   background-image: 
     linear-gradient(233deg, rgba(255, 255, 255, 0.18) 0%, rgba(0, 0, 0, 0.5) 100%),
@@ -135,23 +135,84 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 
-
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left; /* match your Sketch */
   color: white;
 }
+
 .hero-content {
   padding: 2rem;
+  max-width: 650px; /* keeps content narrower */
+  z-index: 1;       /* ensures text is above gradient */
 }
-.hero input {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  width: 60%;
-  max-width: 400px;
-  border: none;
+
+/* Headline */
+.hero-content h1 {
+  width: 616px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 900; /* ExtraBold */
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* Subheadline */
+.hero-content p {
+  width: 625px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* Search bar container */
+.search-bar {
+  width: 311px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
   border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Input styling */
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 0.75rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: #999;
+}
+
+/* Placeholder text */
+.search-bar input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Search button */
+.search-bar button {
+  background: none;
+  border: none;
+  padding: 0 0.75rem;
+  cursor: pointer;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar button i {
+  font-size: 16px;
 }
 
 /* ===== Mission ===== */
