@@ -95,11 +95,10 @@ body {
 .signin:hover {
   background-color: #066b8d; /* slightly darker on hover */
 }
-.signin-icon {
-  width: 16px;
+ .signin-icon {
   height: 16px;
-  fill: white;
-  flex-shrink: 0;  /* keeps icon from squashing */
+  width: auto;   /* preserves proportions */
+  flex-shrink: 0;
 }
 /* ===== Accent Bar ===== */
 .accent-bar {
