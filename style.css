@@ -282,8 +282,9 @@ h6 {
 
 .icon-card {
   flex: 1;
-  max-width: 300px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .icon-card img {
@@ -291,11 +292,23 @@ h6 {
   margin-bottom: 1rem;
 }
 
-.icon-card p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+/* Captions */
+.caption {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700; /* Bold */
   color: rgba(51, 51, 51, 1);
+  line-height: 26px;
+  margin: 0;
+}
+
+/* Widths from Sketch */
+.caption.short {
+  max-width: 244px;   /* e.g. "No contracts" & "No hidden fees" */
+}
+
+.caption.wide {
+  max-width: 430px;   /* e.g. "The only statewide..." */
 }
 
 /* ===== Find Care ===== */
