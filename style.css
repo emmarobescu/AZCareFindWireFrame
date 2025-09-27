@@ -212,12 +212,11 @@ h6 {
 }
 
 /* ===== Mission ===== */
-/* ===== Mission Section ===== */
 .mission {
-  max-width: 1334px;      /* matches Sketch width */
-  margin: 4rem auto;      /* centers the section on the page */
+  max-width: 1334px;      /* match Sketch width */
+  margin: 4rem auto;
   padding: 0 2rem;
-  text-align: left;       /* key change: left-aligned instead of center */
+  text-align: left;
 }
 
 .mission h2 {
@@ -234,8 +233,11 @@ h6 {
   font-weight: 400;
   line-height: 1.6;
   color: rgba(51, 51, 51, 1);
-  max-width: 1334px;      /* keeps width aligned with Sketch */
-  margin: 0;              /* no auto-centering */
+  margin: 0 0 1.25rem 0;  /* space between paragraphs */
+}
+
+.mission p:last-child {
+  margin-bottom: 0;       /* no extra space after the last paragraph */
 }
 /* ===== Difference ===== */
 .difference {
