@@ -5,6 +5,62 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #333;
 }
+/* ===== Global Typography ===== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500; /* Medium */
+  font-size: 38px;
+  line-height: 53px;
+  margin: 0 0 1rem;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* SemiBold */
+  font-size: 32px;
+  line-height: 45px;
+  margin: 0 0 1rem;
+}
+
+h2.alt {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; /* ExtraBold */
+  font-size: 32px;
+  line-height: 44px;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 24px;
+  line-height: 35px;
+  margin: 0 0 0.75rem;
+}
+
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  margin: 0 0 0.5rem;
+}
+
+h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  margin: 0 0 0.5rem;
+}
+
+h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
 
 /* ===== Top Bar ===== */
 .top-bar {
