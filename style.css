@@ -246,18 +246,19 @@ h6 {
   padding: 0 2rem;
 }
 
+/* Title with divider lines */
 .difference-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;              /* spacing between line + heading */
-  margin-bottom: 3rem;    /* ~48px if base font = 16px */
+  gap: 2rem;               /* spacing between line + heading */
+  margin-bottom: 3rem;     /* ~48px if root font-size = 16px */
 }
 
 .difference-title h2 {
   font-family: 'Poppins', sans-serif;
   font-size: 32px;
-  font-weight: 600;       /* SemiBold */
+  font-weight: 600;        /* SemiBold */
   color: rgba(51, 51, 51, 1);
   text-align: center;
   line-height: 45px;
@@ -276,6 +277,7 @@ h6 {
 .difference-icons {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;   /* aligns icons along their bottoms */
   gap: 2rem;
   text-align: center;
 }
@@ -287,28 +289,31 @@ h6 {
   align-items: center;
 }
 
+/* Icon itself */
 .icon-card img {
-  height: 60px;
-  margin-bottom: 1rem;
+  display: block;
+  height: 60px;           /* or replace with exact Sketch height */
+  margin-bottom: 12px;    /* consistent gap to text */
 }
 
 /* Captions */
 .caption {
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;       /* Bold */
   color: rgba(51, 51, 51, 1);
   line-height: 26px;
   margin: 0;
+  text-align: center;
 }
 
 /* Widths from Sketch */
 .caption.short {
-  max-width: 244px;   /* e.g. "No contracts" & "No hidden fees" */
+  max-width: 244px;   /* “No contracts” & “No hidden fees” */
 }
 
 .caption.wide {
-  max-width: 430px;   /* e.g. "The only statewide..." */
+  max-width: 430px;   /* “The only statewide…” */
 }
 
 /* ===== Find Care ===== */
