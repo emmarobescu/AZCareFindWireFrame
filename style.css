@@ -621,3 +621,7 @@ footer {
   background-color: #066b8d;
 }
 
+.filter-sidebar.hidden {
+  display: none;
+}
+
