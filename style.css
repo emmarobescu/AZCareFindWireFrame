@@ -506,24 +506,22 @@ footer {
 }
 
 /* Buttons inside filter/info box */
+/* Buttons are now invisible containers for the SVGs */
 .icon-btn {
-  width: 31px; /* filter default */
-  height: 27px;
   border: none;
-  background-color: rgba(8, 110, 157, 1);
+  background: none;    /* no blue background */
+  padding: 0;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
-.icon-btn:last-child {
-  width: 27px; /* info */
-  height: 27px;
-}
-
-/* SVG icons scale correctly */
+/* SVG icons use their natural exported size */
 .icon-btn img {
-  width: 16px;
-  height: 16px;
+  display: block;
+  width: auto;  /* keeps original proportions */
+  height: auto; /* keeps original proportions */
+  max-width: 100%; 
+  max-height: 100%;
 }
