@@ -463,7 +463,7 @@ footer {
 }
 
                                                /* Map & Choices Section */
-/* Section container */
+/* Section */
 .map-choices {
   max-width: 1334px;
   margin: 48px auto;
@@ -472,24 +472,28 @@ footer {
 
 /* Title */
 .map-choices h2 {
-  width: 469px;
-  height: 44px;
   font-family: 'Playfair Display', serif;
   font-size: 32px;
-  font-weight: 900; /* ExtraBold */
+  font-weight: 900;
   color: rgba(51, 51, 51, 1);
   margin-bottom: 24px;
 }
 
-/* Wrapper keeps filter box + map aligned */
-.map-wrapper {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
+/* Map container with relative positioning */
+.map-container {
+  position: relative;
+  width: 1334px;
+  height: 697px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background-color: rgba(216, 216, 216, 1);
+  margin-bottom: 48px; /* 48px above footer */
 }
 
-/* White filter/info box */
+/* White filter/info box OVERLAYED in corner of map */
 .filter-info-box {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 48px;
   height: 79px;
   border: 1px solid rgba(151, 151, 151, 1);
@@ -501,42 +505,25 @@ footer {
   padding: 6px 0;
 }
 
-/* Buttons for icons */
+/* Buttons inside filter/info box */
 .icon-btn {
-  background-color: rgba(8, 110, 157, 1); /* brand blue */
-  border: none;
-  cursor: pointer;
-  width: 31px;
+  width: 31px; /* filter default */
   height: 27px;
+  border: none;
+  background-color: rgba(8, 110, 157, 1);
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .icon-btn:last-child {
-  width: 27px;
+  width: 27px; /* info */
   height: 27px;
 }
 
-/* SVG icons */
-.icon-btn svg {
+/* SVG icons scale correctly */
+.icon-btn img {
   width: 16px;
   height: 16px;
-  fill: white;
 }
-
-/* Map box */
-.map-box {
-  width: 1334px;
-  height: 697px;
-  border: 1px solid rgba(151, 151, 151, 1);
-  background-color: rgba(216, 216, 216, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 48px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  color: #555;
-}
-
