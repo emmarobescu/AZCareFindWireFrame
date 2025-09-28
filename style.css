@@ -532,3 +532,92 @@ footer {
   height: 697px;
   border: 1px solid rgba(151, 151, 151, 1);
 }
+
+/* Sidebar container */
+.filter-sidebar {
+  width: 317px;
+  height: 697px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background-color: #fff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Title */
+.filter-sidebar h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+  line-height: 26px;
+  margin: 0 0 1rem;
+}
+
+/* Labels */
+.filter-sidebar label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Input box */
+.filter-sidebar input[type="text"],
+.filter-sidebar select {
+  width: 258px;
+  height: 34px;
+  padding: 0 0.5rem;
+  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
+              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  border: none;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* Placeholder text */
+.filter-sidebar input::placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+}
+
+/* Radius control */
+.radius-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radius-control button {
+  background: none;
+  border: 1px solid rgba(102, 102, 102, 1);
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Search button */
+.search-btn {
+  margin-top: auto;
+  background-color: rgba(8, 110, 157, 1);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #066b8d;
+}
+
