@@ -537,7 +537,7 @@ footer {
 .filter-sidebar {
   position: fixed;         /* stick to the viewport */
   top: 0;
-  left: -320px;            /* start off-screen */
+  left: 0px;            /* start off-screen */
   width: 317px;
   height: 100vh;           /* full height of screen */
   border: 1px solid rgba(151, 151, 151, 1);
