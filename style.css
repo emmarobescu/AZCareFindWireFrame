@@ -508,10 +508,9 @@ footer {
 }
 
 
-/* Control container */
 .map-controls {
   position: absolute;
-  top: 16px;       /* adjust placement */
+  top: 16px;
   left: 16px;
   width: 48px;
   height: 79px;
@@ -521,26 +520,32 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 0;  /* spacing inside the box */
+  padding: 6px 0;
   border-radius: 4px;
 }
 
-/* Filter icon */
+.map-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(8, 110, 157, 1);
+  border-radius: 4px;
+}
+
 .filter-icon {
   width: 31px;
   height: 27px;
-  background-color: rgba(8, 110, 157, 1);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-/* Info icon */
 .info-icon {
   width: 27px;
   height: 27px;
-  background-color: rgba(8, 110, 157, 1);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+}
+
+.map-controls img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1); /* makes icons white */
 }
