@@ -525,3 +525,9 @@ footer {
   width: 27px;
   height: 27px;
 }
+
+#map {
+  width: 1334px;
+  height: 697px;
+  border: 1px solid rgba(151, 151, 151, 1);
+}
