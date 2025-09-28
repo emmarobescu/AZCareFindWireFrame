@@ -4,78 +4,71 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Map & Choices | AZ Care Finder</title>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <!-- Your stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
- <!-- Header -->
-<header>
-  <!-- Top bar -->
-  <div class="top-bar">
-    <a href="about.html">About Us</a>
-    <span class="phone">(623) 866-8784</span>
-  </div>
-
-  <!-- Main navigation -->
-  <nav class="main-nav">
-    <div class="logo">
-      <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
+  <!-- Header -->
+  <header>
+    <!-- Top bar -->
+    <div class="top-bar">
+      <a href="about.html">About Us</a>
+      <span class="phone">(623) 866-8784</span>
     </div>
 
-    <ul class="nav-links">
-      <li class="nav-item assessment"><a href="assessment.html">ASSESSMENT</a></li>
-      <li class="divider"></li>
-      <li class="nav-item map"><a href="map.html">MAP & CHOICES</a></li>
-      <li class="divider"></li>
-      <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
-    </ul>
+    <!-- Main navigation -->
+    <nav class="main-nav">
+      <div class="logo">
+        <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
+      </div>
 
-    <div class="nav-right">
-      <button class="signin">
-        <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
-        <span>Sign In</span>
-      </button>
-    </div>
-  </nav>
+      <ul class="nav-links">
+        <li class="nav-item assessment"><a href="assessment.html">ASSESSMENT</a></li>
+        <li class="divider"></li>
+        <li class="nav-item map"><a href="map.html">MAP & CHOICES</a></li>
+        <li class="divider"></li>
+        <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
+      </ul>
 
-  <!-- Accent bar -->
-  <div class="accent-bar"></div>
-</header>
+      <div class="nav-right">
+        <button class="signin">
+          <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
+          <span>Sign In</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Accent bar -->
+    <div class="accent-bar"></div>
+  </header>
 
   <!-- Page Content -->
   <main>
-    <!-- Map title and filter button -->
-  <section class="map-choices">
-  <!-- Title -->
-  <h2>Search for Facilities on the Map</h2>
+    <section class="map-choices">
+      <!-- Title -->
+      <h2>Search for Facilities on the Map</h2>
 
-  <!-- Map container -->
-  <div class="map-container">
-    <!-- White filter/info box, inside map corner -->
-    <div class="filter-info-box">
-      <button class="icon-btn">
-        <img src="assets/filter.svg" alt="Filter">
-      </button>
-      <button class="icon-btn">
-        <img src="assets/info.svg" alt="Info">
-      </button>
-    </div>
+      <!-- Map container -->
+      <div class="map-container">
+        <!-- White filter/info box -->
+        <div class="filter-info-box">
+          <button class="icon-btn">
+            <img src="assets/filter.svg" alt="Filter">
+          </button>
+          <button class="icon-btn">
+            <img src="assets/info.svg" alt="Info">
+          </button>
+        </div>
 
-    <!-- Map area -->
-    <div class="map-box">
-      <p>[Map will display here]</p>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Map area -->
-    <div class="map-box">
-      <p>[Map will display here]</p>
-    </div>
-  </div>
-</section>
-
+        <!-- Interactive Leaflet map -->
+        <div id="map"></div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -85,5 +78,24 @@
     </div>
   </footer>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Initialize Leaflet map -->
+  <script>
+    // Initialize the map (Phoenix coords as default)
+    const map = L.map('map').setView([33.4484, -112.0740], 10);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Add a test marker
+    L.marker([33.4484, -112.0740]).addTo(map)
+      .bindPopup('Hello from Phoenix!<br>This is your first marker.')
+      .openPopup();
+  </script>
 </body>
 </html>
