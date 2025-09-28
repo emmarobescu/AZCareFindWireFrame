@@ -134,15 +134,16 @@
   <!-- Sidebar toggle logic -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const filterBtn = document.getElementById('open-filter');
-      const sidebar = document.getElementById('filterSidebar');
+  const filterBtn = document.getElementById('open-filter');
+  const sidebar = document.getElementById('filterSidebar');
 
-      if (filterBtn && sidebar) {
-        filterBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('hidden');
-        });
-      }
+  if (filterBtn && sidebar) {
+    filterBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
     });
+  }
+});
+
   </script>
 </body>
 </html>
