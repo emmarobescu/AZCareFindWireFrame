@@ -535,14 +535,25 @@ footer {
 
 /* Sidebar container */
 .filter-sidebar {
+  position: fixed;         /* stick to the viewport */
+  top: 0;
+  left: -320px;            /* start off-screen */
   width: 317px;
-  height: 697px;
+  height: 100vh;           /* full height of screen */
   border: 1px solid rgba(151, 151, 151, 1);
   background-color: #fff;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  transition: left 0.3s ease; /* smooth slide */
+  z-index: 2000;           /* make sure it sits above map */
+}
+
+/* Sidebar visible (slide in) */
+.filter-sidebar.active {
+  left: 0;
 }
 
 /* Title */
@@ -620,8 +631,3 @@ footer {
 .search-btn:hover {
   background-color: #066b8d;
 }
-
-.filter-sidebar.hidden {
-  display: none;
-}
-
