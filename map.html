@@ -81,20 +81,30 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <!-- Initialize Leaflet map -->
-  <script>
-    // Initialize the map (Phoenix coords as default)
-    const map = L.map('map').setView([33.4484, -112.0740], 10);
+<script>
+  // Initialize the map (Phoenix coords as default), disable default zoomControl
+  const map = L.map('map', {
+    center: [33.4484, -112.0740],
+    zoom: 10,
+    zoomControl: false // turn off default placement (top-left)
+  });
 
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap'
-    }).addTo(map);
+  // Add OpenStreetMap tiles
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
 
-    // Add a test marker
-    L.marker([33.4484, -112.0740]).addTo(map)
-      .bindPopup('Hello from Phoenix!<br>This is your first marker.')
-      .openPopup();
-  </script>
+  // Add a test marker
+  L.marker([33.4484, -112.0740]).addTo(map)
+    .bindPopup('Hello from Phoenix!<br>This is your first marker.')
+    .openPopup();
+
+  // Add zoom controls back, but repositioned
+  L.control.zoom({
+    position: 'bottomright' // try 'topright', 'bottomleft', or 'bottomright'
+  }).addTo(map);
+</script>
+
 </body>
 </html>
