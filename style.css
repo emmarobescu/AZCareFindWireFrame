@@ -114,22 +114,22 @@ h6 {
   align-items: center;
   margin: 0;
   padding: 0;
-  gap: 0; /* spacing handled by fixed widths + dividers */
+  gap: 0; /* spacing handled by widths + dividers */
 }
 
-.nav-links li {
+.nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 70px; /* matches nav bar height */
 }
 
 /* Fixed widths from Sketch */
-.nav-links li.assessment { width: 103px; }
-.nav-links li.map { width: 131px; }
-.nav-links li.list { width: 163px; }
+.nav-item.assessment { width: 103px; }
+.nav-item.map        { width: 131px; }
+.nav-item.list       { width: 163px; }
 
-.nav-links a {
+.nav-item a {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   font-weight: 600; /* SemiBold */
@@ -143,16 +143,16 @@ h6 {
   width: 100%;
 }
 
-.nav-links a:hover {
+.nav-item a:hover {
   color: #004aad;
 }
 
 /* Divider lines */
-.nav-links li.divider {
+.divider {
   width: 1px;
-  height: 29px;
+  height: 29px; /* matches Sketch */
   background-color: rgba(153, 153, 153, 1);
-  margin: 0 20px; /* tweak for perfect Sketch spacing */
+  margin: 0 20px; /* adjust for exact Sketch spacing */
 }
 
 /* Sign-in button */
@@ -187,6 +187,7 @@ h6 {
   width: auto;
   flex-shrink: 0;
 }
+
 
 /* ===== Accent Bar ===== */
 .accent-bar {
