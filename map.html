@@ -8,6 +8,7 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
+  <!-- MarkerCluster CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
   
@@ -56,58 +57,58 @@
       <!-- Title -->
       <h2>Search for Facilities on the Map</h2>
 
+      <!-- Map container -->
       <div class="map-container">
-  <!-- Custom white filter/info box -->
-  <div class="filter-info-box">
-    <button class="icon-btn">
-      <img src="assets/filter.svg" alt="Filter">
-    </button>
-    <button class="icon-btn">
-      <img src="assets/info.svg" alt="Info">
-    </button>
-  </div>
+        <!-- Filter/info buttons on the map -->
+        <div class="filter-info-box">
+          <button class="icon-btn" id="open-filter">
+            <img src="assets/filter.svg" alt="Filter">
+          </button>
+          <button class="icon-btn">
+            <img src="assets/info.svg" alt="Info">
+          </button>
+        </div>
 
-                                                      <!-- Filter Sidebar -->
-<aside class="filter-sidebar">
-  <h3>Filter Selection</h3>
-
-  <!-- City or Zipcode -->
-  <label for="location-input">City or Zipcode</label>
-  <input 
-    type="text" 
-    id="location-input" 
-    placeholder="Peoria / 85381"
-  >
-
-  <!-- Radius -->
-  <label for="radius">Radius (miles)</label>
-  <div class="radius-control">
-    <button>-</button>
-    <input type="text" value="1" id="radius">
-    <button>+</button>
-  </div>
-
-  <!-- Care Type -->
-  <label for="care-type">Care Type</label>
-  <select id="care-type">
-    <option>Select Option</option>
-  </select>
-
-  <!-- Facility Type -->
-  <label for="facility-type">Facility Type</label>
-  <select id="facility-type">
-    <option>Select Option</option>
-  </select>
-
-  <!-- Search button -->
-  <button class="search-btn">Search</button>
-</aside>
-
-
-  <!-- Leaflet map -->
-  <div id="map"></div>
-</div>
+        <!-- Leaflet map -->
+        <div id="map"></div>
+      </div>
     </section>
+
+    <!-- Filter Sidebar (hidden by default) -->
+    <aside class="filter-sidebar hidden" id="filterSidebar">
+      <h3>Filter Selection</h3>
+
+      <!-- City or Zipcode -->
+      <label for="location-input">City or Zipcode</label>
+      <input 
+        type="text" 
+        id="location-input" 
+        placeholder="Peoria / 85381"
+      >
+
+      <!-- Radius -->
+      <label for="radius">Radius (miles)</label>
+      <div class="radius-control">
+        <button>-</button>
+        <input type="text" value="1" id="radius">
+        <button>+</button>
+      </div>
+
+      <!-- Care Type -->
+      <label for="care-type">Care Type</label>
+      <select id="care-type">
+        <option>Select Option</option>
+      </select>
+
+      <!-- Facility Type -->
+      <label for="facility-type">Facility Type</label>
+      <select id="facility-type">
+        <option>Select Option</option>
+      </select>
+
+      <!-- Search button -->
+      <button class="search-btn">Search</button>
+    </aside>
   </main>
 
   <!-- Footer -->
@@ -117,13 +118,21 @@
     </div>
   </footer>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+  <!-- Your custom map logic -->
+  <script src="js/map.js"></script>
 
- <!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<!-- MarkerCluster JS -->
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-<!-- Your custom map logic -->
-<script src="js/map.js"></script>
+  <!-- Sidebar toggle logic -->
+  <script>
+    const filterBtn = document.getElementById('open-filter');
+    const sidebar = document.getElementById('filterSidebar');
 
+    filterBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>
