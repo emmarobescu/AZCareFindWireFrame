@@ -342,22 +342,88 @@ h6 {
 }
 
 
-/* ===== Find Care ===== */
-.find-care {
-  padding: 4rem 2rem;
-  text-align: center;
+/* ===== Find the Right Care ===== */
+.care {
+  max-width: 1334px;
+  margin: 4rem auto;
+  padding: 0 2rem;
 }
+
+.care h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 600; /* SemiBold */
+  color: rgba(51, 51, 51, 1);
+  text-align: left;
+  margin-bottom: 2rem;
+  line-height: 45px;
+}
+
 .care-grid {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 2rem;
 }
-.care-grid img {
-  width: 30%;
-  border-radius: 8px;
+
+.care-card {
+  width: 656px; /* matches Sketch */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Image */
+.care-img {
+  width: 656px;
+  height: 209px;
+  border-radius: 20px;
   object-fit: cover;
+  margin-bottom: 1rem;
 }
+
+/* Card title */
+.care-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700; /* Bold */
+  color: rgba(51, 51, 51, 1);
+  margin: 0 0 0.75rem;
+  line-height: 35px;
+}
+
+/* Paragraph */
+.care-card p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  line-height: 1.5;
+  margin: 0 0 1.5rem;
+  max-width: 656px;
+  height: auto; /* don’t hard-code height */
+}
+
+/* Button */
+.care-btn {
+  width: 149px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.care-btn span {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700; /* Bold */
+  color: #fff;
+  text-align: center;
+}
+
 
 /* ===== Footer ===== */
 footer {
