@@ -474,7 +474,8 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 48px auto; /* 48px from header above + 48px from map below */
+  margin-top: 48px;     /* from nav down */
+  margin-bottom: 48px;  /* tighter gap before map */
   max-width: 1334px;
   padding: 0 2rem;
 }
