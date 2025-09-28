@@ -126,13 +126,17 @@
   <script src="js/map.js"></script>
 
   <!-- Sidebar toggle logic -->
-  <script>
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
     const filterBtn = document.getElementById('open-filter');
     const sidebar = document.getElementById('filterSidebar');
 
-    filterBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('hidden');
-    });
-  </script>
+    if (filterBtn && sidebar) {
+      filterBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
 </body>
 </html>
