@@ -533,11 +533,10 @@ footer {
   border: 1px solid rgba(151, 151, 151, 1);
 }
 
-/* Sidebar container */
 .filter-sidebar {
   position: fixed;
   top: 0;
-  left: 0;                /* stick to the left edge of screen */
+  left: -320px;           /* hidden off-screen */
   width: 317px;
   height: 100vh;
   border: 1px solid rgba(151, 151, 151, 1);
@@ -547,12 +546,12 @@ footer {
   flex-direction: column;
   gap: 1.2rem;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-  z-index: 2000;          /* sits above map */
+  transition: left 0.3s ease;
+  z-index: 2000;
 }
 
-/* Sidebar visible (slide in) */
 .filter-sidebar.active {
-  left: 0;
+  left: 0;                /* slides into view */
 }
 
 /* Title */
