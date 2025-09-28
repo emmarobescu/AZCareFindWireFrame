@@ -277,9 +277,9 @@ h6 {
 .difference-icons {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;   /* align all icons by their bottoms */
   gap: 2rem;
   text-align: center;
+  align-items: flex-start;
 }
 
 .icon-card {
@@ -289,63 +289,58 @@ h6 {
   align-items: center;
 }
 
-/* Individual icon sizes from Sketch */
-.icon-card img.paper-pen {
-  width: 108px;
-  height: 105px;
-  margin-bottom: 12px;   /* consistent gap to caption */
+/* Fixed wrapper ensures icon bottoms align */
+.icon-img {
+  height: 105px;                /* tallest icon height from Sketch */
+  display: flex;
+  align-items: flex-end;        /* bottom-align the SVG */
+  justify-content: center;
 }
 
-.icon-card img.laptop {
-  width: 121px;
-  height: 98px;
-  margin-bottom: 12px;
+/* Prevent inline baseline weirdness */
+.icon-img img {
+  display: block;
 }
 
-.icon-card img.money {
-  width: 126px;
-  height: 94px;
-  margin-bottom: 12px;
-}
+/* Exact icon sizes */
+.icon-img img.paper-pen { width: 108px; height: 105px; }
+.icon-img img.laptop {    width: 121px; height: 98px; }
+.icon-img img.money {     width: 126px; height: 94px; }
 
-/* Captions */
+/* Captions: always 12px below icon */
 .caption {
+  margin-top: 12px;
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: rgba(51, 51, 51, 1);
   line-height: 26px;
-  margin: 0;
+  color: rgba(51, 51, 51, 1);
   text-align: center;
 }
 
-.caption.short {
-  max-width: 244px;   /* "No contracts", "No hidden fees" */
-}
-
-.caption.wide {
-  max-width: 430px;   /* "The only statewide…" */
-}
+.caption.short { max-width: 244px; }
+.caption.wide {  max-width: 430px; }
 
 /* Vertical dividers */
 .divider-vertical {
   width: 1px;
   height: 152px;
   background-color: rgba(204, 204, 204, 1);
-  align-self: flex-end;  /* aligns with icon bottoms */
+  align-self: flex-end; /* lines end with icons */
 }
 
 /* Horizontal divider */
 .divider-horizontal {
   width: 1368px;
   height: 1px;
-  margin: 62px auto 0;  /* 62px spacing below icons */
+  margin: 62px auto 0;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.5) 0%,
     rgba(0, 0, 0, 0.5) 100%
   );
 }
+
 
 /* ===== Find Care ===== */
 .find-care {
