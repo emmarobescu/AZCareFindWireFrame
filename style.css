@@ -354,7 +354,6 @@ h6 {
   font-size: 32px;
   font-weight: 600; /* SemiBold */
   color: rgba(51, 51, 51, 1);
-  text-align: left;
   margin-bottom: 2rem;
   line-height: 45px;
 }
@@ -366,7 +365,7 @@ h6 {
 }
 
 .care-card {
-  width: 656px; /* matches Sketch */
+  width: 656px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -381,11 +380,11 @@ h6 {
   margin-bottom: 1rem;
 }
 
-/* Card title */
+/* Title */
 .care-card h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 24px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   color: rgba(51, 51, 51, 1);
   margin: 0 0 0.75rem;
   line-height: 35px;
@@ -400,15 +399,14 @@ h6 {
   line-height: 1.5;
   margin: 0 0 1.5rem;
   max-width: 656px;
-  height: auto; /* don’t hard-code height */
 }
 
-/* Button */
+/* Blue button */
 .care-btn {
   width: 149px;
   height: 33px;
   border-radius: 16.5px;
-  background-color: rgba(8, 110, 157, 1);
+  background-color: rgba(8, 110, 157, 1); /* Blue */
   border: none;
   display: flex;
   align-items: center;
@@ -419,7 +417,7 @@ h6 {
 .care-btn span {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   color: #fff;
   text-align: center;
 }
