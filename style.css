@@ -466,7 +466,7 @@ footer {
 /* Section container */
 .map-choices {
   max-width: 1334px;
-  margin: 48px auto; /* centers page content */
+  margin: 48px auto;
   padding: 0 2rem;
 }
 
@@ -481,14 +481,14 @@ footer {
   margin-bottom: 24px;
 }
 
-/* Layout wrapper */
+/* Wrapper keeps filter box + map aligned */
 .map-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 8px; /* space between filter box and map */
+  gap: 8px;
 }
 
-/* White filter/info container */
+/* White filter/info box */
 .filter-info-box {
   width: 48px;
   height: 79px;
@@ -501,22 +501,28 @@ footer {
   padding: 6px 0;
 }
 
-/* Filter button */
-.filter-btn {
+/* Buttons for icons */
+.icon-btn {
+  background-color: rgba(8, 110, 157, 1); /* brand blue */
+  border: none;
+  cursor: pointer;
   width: 31px;
   height: 27px;
-  background-color: rgba(8, 110, 157, 1);
-  border: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Info button */
-.info-btn {
+.icon-btn:last-child {
   width: 27px;
   height: 27px;
-  background-color: rgba(8, 110, 157, 1);
-  border: none;
-  cursor: pointer;
+}
+
+/* SVG icons */
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
 }
 
 /* Map box */
@@ -528,7 +534,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 48px; /* 48px from footer */
+  margin-bottom: 48px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: #555;
