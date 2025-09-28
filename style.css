@@ -102,50 +102,65 @@ h6 {
   align-items: center;
   padding: 0 2rem;
 }
+
 .logo img {
   height: 40px;
 }
+
+/* Nav links */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  align-items: center;
   margin: 0;
   padding: 0;
-}
-.nav-links li {
-  position: relative;
-  padding: 0 1.5rem;
-  line-height: 29px; /* match your Sketch line height */
+  gap: 0; /* spacing handled by fixed widths + dividers */
 }
 
-.nav-links li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;              /* now aligns with the text line */
-  width: 1px;
-  height: 29px;        /* exact Sketch value */
-  background-color: rgba(153, 153, 153, 1);
+.nav-links li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
 }
+
+/* Fixed widths from Sketch */
+.nav-links li.assessment { width: 103px; }
+.nav-links li.map { width: 131px; }
+.nav-links li.list { width: 163px; }
+
 .nav-links a {
-  width: 103px;
-  height: 20px;
-  color: rgba(51, 51, 51, 1);
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 600; /* SemiBold */
   text-transform: uppercase;
+  color: rgba(51, 51, 51, 1);
   text-decoration: none;
-} 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
 .nav-links a:hover {
   color: #004aad;
-  text-decoration: none;
 }
+
+/* Divider lines */
+.nav-links li.divider {
+  width: 1px;
+  height: 29px;
+  background-color: rgba(153, 153, 153, 1);
+  margin: 0 20px; /* tweak for perfect Sketch spacing */
+}
+
+/* Sign-in button */
 .signin {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* spacing between icon and text */
+  gap: 8px;
 
   width: 91px;
   height: 33px;
@@ -157,20 +172,22 @@ h6 {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
-  line-height: 17px; /* matches Sketch label height */
+  line-height: 17px;
   color: #fff;
   text-align: center;
+  padding: 0;
+}
 
-  padding: 0; /* remove default */
-}
 .signin:hover {
-  background-color: #066b8d; /* slightly darker on hover */
+  background-color: #066b8d;
 }
- .signin-icon {
+
+.signin-icon {
   height: 16px;
-  width: auto;   /* preserves proportions */
+  width: auto;
   flex-shrink: 0;
 }
+
 /* ===== Accent Bar ===== */
 .accent-bar {
   height: 3px;
