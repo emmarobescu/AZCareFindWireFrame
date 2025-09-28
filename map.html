@@ -14,6 +14,12 @@
   
   <!-- Your stylesheet -->
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Add this if not already in style.css */
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -126,17 +132,17 @@
   <script src="js/map.js"></script>
 
   <!-- Sidebar toggle logic -->
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterBtn = document.getElementById('open-filter');
-    const sidebar = document.getElementById('filterSidebar');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtn = document.getElementById('open-filter');
+      const sidebar = document.getElementById('filterSidebar');
 
-    if (filterBtn && sidebar) {
-      filterBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('hidden');
-      });
-    }
-  });
-</script>
+      if (filterBtn && sidebar) {
+        filterBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
