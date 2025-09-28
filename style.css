@@ -463,53 +463,29 @@ footer {
 }
 
                                                 /* ===== Map & Choices ===== */
-.map-choices {
-  max-width: 1334px;
-  margin: 4rem auto;
-  padding: 0 2rem;
-}
-
 /* ===== Map & Choices ===== */
 .map-choices {
   max-width: 1334px;
-  margin: 0 auto;        /* the page spacing will come from the header margins */
-  padding: 0 2rem;       /* container padding that both header + map share */
+  margin: 48px auto; /* top spacing handled elsewhere; bottom auto centers */
+  padding: 0 2rem;
 }
 
-/* Title row aligns to the same left edge as the map */
-.map-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* title on left, filter on right */
-  width: 100%;                     /* inherit container width */
-  margin-top: 48px;                /* 48px below site header */
-  margin-bottom: 24px;             /* tighter gap before map since no popup */
-  /* IMPORTANT: no extra max-width or padding here */
-}
-
-.map-header h2 {
-  width: 469px;                    /* from Sketch */
-  margin: 0;
+/* Heading */
+.map-choices h2 {
   font-family: 'Playfair Display', serif;
   font-size: 32px;
-  font-weight: 900;                /* ExtraBold */
-  line-height: 44px;               /* from Sketch */
+  font-weight: 900;
   color: rgba(51, 51, 51, 1);
+  margin-bottom: 24px;
 }
 
-/* map box shares the same container edge */
-.map-box {
-  display: flex;             /* let children sit side-by-side */
-  align-items: flex-start;   /* align to the top edge */
-  width: 100%;
-  height: 662px;
-  background-color: #ccc;
-  border-radius: 8px;
-  overflow: hidden;
+/* Container ensures controls + map are grouped */
+.map-container {
   position: relative;
+  display: flex;
 }
 
-/* Control container sits flush on the left side of the map */
+/* Filter/Info box */
 .map-controls {
   width: 48px;
   height: 79px;
@@ -519,12 +495,8 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 0;
-  border-radius: 4px;
-  margin: 16px; /* spacing from the top + left edges of the map */
 }
 
-/* Buttons */
 .map-controls button {
   display: flex;
   align-items: center;
@@ -532,7 +504,7 @@ footer {
   border: none;
   cursor: pointer;
   background-color: rgba(8, 110, 157, 1);
-  border-radius: 4px;
+  border-radius: 0; /* sharp edges */
 }
 
 .filter-icon {
@@ -549,4 +521,21 @@ footer {
   width: 16px;
   height: 16px;
   filter: brightness(0) invert(1); /* makes icons white */
+}
+
+/* Map box */
+.map-box {
+  width: 1334px;
+  height: 697px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background-color: rgba(216, 216, 216, 1);
+  margin-left: 8px; /* spacing between controls and map */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #555;
+  border-radius: 0; /* sharp edges */
+  margin-bottom: 48px; /* ensures map sits 48px above footer */
 }
