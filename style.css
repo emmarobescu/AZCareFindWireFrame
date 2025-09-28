@@ -169,17 +169,17 @@ h6 {
   justify-content: center;
   gap: 8px;
 
-  width: 91px;
-  height: 33px;
-  border-radius: 16.5px;
+  width: 110px;   /* wider */
+  height: 38px;   /* taller */
+  border-radius: 19px;  /* half the height for the pill shape */
   background-color: rgba(8, 110, 157, 1);
   border: none;
   cursor: pointer;
 
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: 13px;   /* a little larger text */
   font-weight: 700;
-  line-height: 17px;
+  line-height: 18px;
   color: #fff;
   text-align: center;
   padding: 0;
@@ -190,10 +190,11 @@ h6 {
 }
 
 .signin-icon {
-  height: 16px;
+  height: 18px;  /* slightly bigger to match new size */
   width: auto;
   flex-shrink: 0;
 }
+
 
 
 /* ===== Accent Bar ===== */
