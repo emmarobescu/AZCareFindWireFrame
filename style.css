@@ -469,20 +469,24 @@ footer {
   padding: 0 2rem;
 }
 
-/* Title row */
+/* Map Page Heading */
 .map-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin: 48px auto; /* 48px from header above + 48px from map below */
+  max-width: 1334px;
+  padding: 0 2rem;
 }
 
 .map-header h2 {
-  font-family: 'Poppins', sans-serif;
+  width: 469px;         /* from Sketch */
+  font-family: 'Playfair Display', serif;
   font-size: 32px;
-  font-weight: 600; /* SemiBold */
+  font-weight: 900;     /* ExtraBold */
   color: rgba(51, 51, 51, 1);
-  margin: 0;
+  margin: 0;            /* remove browser default */
+  line-height: 44px;    /* from Sketch */
 }
 
 /* Filter button */
