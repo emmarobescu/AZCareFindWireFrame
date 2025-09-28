@@ -338,6 +338,26 @@ h6 {
   max-width: 430px;
 }
 
+/* Vertical dividers */
+.divider-vertical {
+  width: 1px;
+  height: 152px;
+  background-color: rgba(204, 204, 204, 1);
+  align-self: flex-end;  /* aligns with icon bottoms */
+}
+
+/* Horizontal divider */
+.divider-horizontal {
+  width: 1368px;
+  height: 1px;
+  margin: 62px auto 0;  /* 62px spacing below icons */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
 /* ===== Find Care ===== */
 .find-care {
   padding: 4rem 2rem;
