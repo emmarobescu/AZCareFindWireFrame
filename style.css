@@ -449,6 +449,10 @@ h6 {
   text-align: center;
 }
 
+/* Hover state for both <button> and <a> */
+.care-btn:hover {
+  background-color: #066b8d; /* darker blue */
+}
 
 /* ===== Footer ===== */
 footer {
