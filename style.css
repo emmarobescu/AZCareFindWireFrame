@@ -463,29 +463,33 @@ footer {
 }
 
                                                /* Map & Choices Section */
+/* Section container */
 .map-choices {
   max-width: 1334px;
-  margin: 48px auto;  /* space from header */
+  margin: 48px auto; /* centers page content */
   padding: 0 2rem;
 }
 
+/* Title */
 .map-choices h2 {
+  width: 469px;
+  height: 44px;
   font-family: 'Playfair Display', serif;
   font-size: 32px;
-  font-weight: 900;
+  font-weight: 900; /* ExtraBold */
   color: rgba(51, 51, 51, 1);
   margin-bottom: 24px;
 }
 
-/* Wrapper keeps controls + map aligned */
+/* Layout wrapper */
 .map-wrapper {
   display: flex;
   align-items: flex-start;
-  gap: 8px; /* space between controls and map */
+  gap: 8px; /* space between filter box and map */
 }
 
-/* Controls box */
-.map-controls {
+/* White filter/info container */
+.filter-info-box {
   width: 48px;
   height: 79px;
   border: 1px solid rgba(151, 151, 151, 1);
@@ -497,20 +501,22 @@ footer {
   padding: 6px 0;
 }
 
-.map-controls button {
-  border: none;
-  cursor: pointer;
-  background-color: rgba(8, 110, 157, 1);
-}
-
-.filter-icon {
+/* Filter button */
+.filter-btn {
   width: 31px;
   height: 27px;
+  background-color: rgba(8, 110, 157, 1);
+  border: none;
+  cursor: pointer;
 }
 
-.info-icon {
+/* Info button */
+.info-btn {
   width: 27px;
   height: 27px;
+  background-color: rgba(8, 110, 157, 1);
+  border: none;
+  cursor: pointer;
 }
 
 /* Map box */
@@ -522,5 +528,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 48px; /* space above footer */
+  margin-bottom: 48px; /* 48px from footer */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #555;
 }
+
