@@ -502,6 +502,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 6px; /* space between icons */
+  z-index: 1000; /* ensures it stays above the map */
 }
 
 /* Buttons (only hold icons) */
