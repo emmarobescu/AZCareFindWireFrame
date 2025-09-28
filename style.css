@@ -480,7 +480,7 @@ footer {
 
 /* Map container */
 .map-container {
-  position: relative;
+  position: relative; /* anchor child elements like sidebar */
   width: 1334px;
   height: 697px;
   border: 1px solid rgba(151, 151, 151, 1);
@@ -502,13 +502,13 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 6px; /* space between icons */
-  z-index: 1000; /* ensures it stays above the map */
+  z-index: 1000;
 }
 
 /* Buttons (only hold icons) */
 .icon-btn {
   border: none;
-  background: none; /* no blue background */
+  background: none;
   padding: 0;
   cursor: pointer;
   display: flex;
@@ -516,29 +516,29 @@ footer {
   justify-content: center;
 }
 
-/* Icon sizes match Sketch */
+/* Icon sizes */
 .icon-btn:first-child img { /* filter */
   width: 31px;
   height: 27px;
 }
-
 .icon-btn:last-child img { /* info */
   width: 27px;
   height: 27px;
 }
 
+/* Map itself */
 #map {
-  width: 1334px;
-  height: 697px;
-  border: 1px solid rgba(151, 151, 151, 1);
+  width: 100%;
+  height: 100%;
 }
 
+/* Sidebar anchored to map */
 .filter-sidebar {
-  position: absolute;
+  position: absolute;   /* relative to .map-container */
   top: 0;
-  left: -320px;           /* hidden off-screen */
+  left: -320px;         /* start hidden just outside map */
   width: 317px;
-  height: 100vh;
+  height: 100%;         /* match the map height */
   border: 1px solid rgba(151, 151, 151, 1);
   background-color: #fff;
   padding: 1.5rem;
@@ -547,14 +547,14 @@ footer {
   gap: 1.2rem;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   transition: left 0.3s ease;
-  z-index: 1000;
+  z-index: 1001;        /* above map and filter box */
 }
 
 .filter-sidebar.active {
-  left: 0;                /* slides into view */
+  left: 0;              /* slide into view over the map */
 }
 
-/* Title */
+/* Sidebar content */
 .filter-sidebar h3 {
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
@@ -565,7 +565,6 @@ footer {
   margin: 0 0 1rem;
 }
 
-/* Labels */
 .filter-sidebar label {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
@@ -575,7 +574,6 @@ footer {
   display: block;
 }
 
-/* Input box */
 .filter-sidebar input[type="text"],
 .filter-sidebar select {
   width: 258px;
@@ -590,14 +588,12 @@ footer {
   color: rgba(51, 51, 51, 1);
 }
 
-/* Placeholder text */
 .filter-sidebar input::placeholder {
   font-style: italic;
   font-weight: 400;
   color: rgba(153, 153, 153, 1);
 }
 
-/* Radius control */
 .radius-control {
   display: flex;
   align-items: center;
@@ -612,7 +608,6 @@ footer {
   font-size: 16px;
 }
 
-/* Search button */
 .search-btn {
   margin-top: auto;
   background-color: rgba(8, 110, 157, 1);
@@ -629,3 +624,4 @@ footer {
 .search-btn:hover {
   background-color: #066b8d;
 }
+
