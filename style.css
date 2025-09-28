@@ -277,7 +277,7 @@ h6 {
 .difference-icons {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;  /* align boxes at top */
+  align-items: flex-end;   /* align all icons by their bottoms */
   gap: 2rem;
   text-align: center;
 }
@@ -289,34 +289,23 @@ h6 {
   align-items: center;
 }
 
-/* Icon box styles */
-.icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(31, 69, 110, 1); /* dark blue */
-  margin-bottom: 12px; /* space between icon and caption */
-}
-
-.icon-box img {
-  max-width: 80%;   /* keeps SVG proportional */
-  max-height: 80%;
-}
-
-/* Individual sizes */
-.icon-box.paper-pen {
+/* Individual icon sizes from Sketch */
+.icon-card img.paper-pen {
   width: 108px;
   height: 105px;
+  margin-bottom: 12px;   /* consistent gap to caption */
 }
 
-.icon-box.laptop {
+.icon-card img.laptop {
   width: 121px;
   height: 98px;
+  margin-bottom: 12px;
 }
 
-.icon-box.money {
+.icon-card img.money {
   width: 126px;
   height: 94px;
+  margin-bottom: 12px;
 }
 
 /* Captions */
@@ -331,11 +320,11 @@ h6 {
 }
 
 .caption.short {
-  max-width: 244px;
+  max-width: 244px;   /* "No contracts", "No hidden fees" */
 }
 
 .caption.wide {
-  max-width: 430px;
+  max-width: 430px;   /* "The only statewide…" */
 }
 
 /* Vertical dividers */
