@@ -116,21 +116,14 @@
   <script src="js/map.js"></script>
 
   <!-- Sidebar toggle: toggles a class on the CONTAINER so buttons move with it -->
-  <script>
+ <script>
   document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.map-container');
-    const toggleBtn  = document.getElementById('open-filter');
+    const toggleBtn = document.getElementById('open-filter');
 
-    if (toggleBtn && container) {
+    if (container && toggleBtn) {
       toggleBtn.addEventListener('click', () => {
         container.classList.toggle('sidebar-open');
-
-        // (Optional) After animation, fix Leaflet tile layout
-        setTimeout(() => {
-          if (window.map && typeof window.map.invalidateSize === 'function') {
-            window.map.invalidateSize();
-          }
-        }, 300);
       });
     }
   });
