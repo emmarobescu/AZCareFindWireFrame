@@ -1,6 +1,7 @@
 
 
 
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -465,87 +466,113 @@ footer {
 
                                               /* ===== Map & Choices (unchanged bits are fine) ===== */
 /* ===== Map & Choices (final) ===== */
-:root {
-  --sidebar-w: 317px;
-  --iconbox-w: 48px;
+:root{
+  --sidebar-w: 317px;      /* panel width from Sketch */
+  --iconbox-w: 48px;       /* filter/info box */
   --iconbox-h: 79px;
 }
 
-/* Map container anchors everything */
-.map-container {
+/* Container for this page */
+.map-choices{
+  max-width: 1334px;
+  margin: 48px auto;
+  padding: 0 2rem;
+}
+
+/* Title */
+.map-choices h2{
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(51,51,51,1);
+  margin-bottom: 24px;
+}
+
+/* Map wrapper – everything (map, sidebar, buttons) lives inside */
+.map-container{
   position: relative;
   width: 1334px;
   height: 697px;
   border: 1px solid rgba(151,151,151,1);
-  background: rgba(216,216,216,1);
-  overflow: hidden; /* ensure hidden sidebar does not peek */
+  background-color: rgba(216,216,216,1);
+  overflow: hidden;                /* ← hides the off-canvas sidebar 100% */
 }
 
-/* Leaflet map */
-#map {
+/* Leaflet map area */
+#map{
   position: absolute;
-  inset: 0;
+  inset: 0;                        /* top/right/bottom/left: 0 */
   width: 100%;
   height: 100%;
 }
 
-/* Sidebar: hidden off-map initially */
-.filter-sidebar {
+/* Sidebar (starts COMPLETELY off the map) */
+.filter-sidebar{
   position: absolute;
   top: 0;
   left: 0;
   width: var(--sidebar-w);
   height: 100%;
   background: #fff;
-  border: 1px solid rgba(151,151,151,1);
-  transform: translateX(calc(-1 * var(--sidebar-w)));
-  transition: transform 0.3s ease;
-  z-index: 1000;
-
+  /* thin border to match your spec */
+  box-shadow: 0 0 0 1px rgba(151,151,151,1) inset;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  z-index: 1000;
+
+  /* Key: hide the panel fully to the left (off-canvas) */
+  transform: translateX(calc(-1 * var(--sidebar-w)));
+  transition: transform 280ms ease-in-out;
 }
 
-/* When active, sidebar slides in */
-.map-container.sidebar-open .filter-sidebar {
+/* When container gets 'sidebar-open', slide it in */
+.map-container.sidebar-open .filter-sidebar{
   transform: translateX(0);
 }
 
-/* Icon box OUTSIDE sidebar */
-.filter-info-box {
+/* Filter/Info button box — OUTSIDE the panel, stuck to the map edge */
+.filter-info-box{
   position: absolute;
   top: 0;
-  left: 0; /* at map edge when sidebar is hidden */
+  left: 0;
   width: var(--iconbox-w);
   height: var(--iconbox-h);
-  background: #fff;
   border: 1px solid rgba(151,151,151,1);
+  background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
   z-index: 1001;
-  transition: transform 0.3s ease;
+  transition: transform 280ms ease-in-out;
 }
 
-/* When sidebar is open, move icon box by sidebar width */
-.map-container.sidebar-open .filter-info-box {
+/* When the sidebar opens, move the buttons by the same width */
+.map-container.sidebar-open .filter-info-box{
   transform: translateX(var(--sidebar-w));
 }
 
-.icon-btn {
+/* Icon buttons (no blue fill) */
+.icon-btn{
   border: none;
   background: none;
+  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.icon-btn:first-child img { width: 31px; height: 27px; } /* filter */
-.icon-btn:last-child img { width: 27px; height: 27px; } /* info */
+.icon-btn:first-child img{ /* filter */
+  width: 31px;
+  height: 27px;
+}
+.icon-btn:last-child img{  /* info */
+  width: 27px;
+  height: 27px;
+}
 
 /* ===== Sidebar inner typography & fields (from your specs) ===== */
 .filter-sidebar h3{
