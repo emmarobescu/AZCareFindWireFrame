@@ -60,15 +60,22 @@
       <!-- Slide-in sidebar (off-canvas by default) -->
       <aside class="filter-sidebar" id="filterSidebar">
         <h3>Filter Selection</h3>
-        <label for="location-input">City or Zipcode</label>
-        <input type="text" id="location-input" placeholder="Peoria / 85381" />
+        <!-- City or Zip -->
+  <label class="filter-label" for="location-input">City or Zip</label>
+<input 
+  type="text" 
+  id="location-input" 
+  class="filter-input"
+  placeholder="Peoria / 85381"
+/>
 
-        <label for="radius">Radius (miles)</label>
-        <div class="radius-control">
-          <button type="button">-</button>
-          <input type="text" value="1" id="radius" />
-          <button type="button">+</button>
-        </div>
+<!-- Radius -->
+<label class="filter-label" for="radius">Radius (miles)</label>
+<div class="radius-control">
+  <button type="button" class="radius-btn">‹</button>
+  <input type="text" id="radius" class="radius-input" value="1" />
+  <button type="button" class="radius-btn">›</button>
+</div>
 
         <label for="care-type">Care Type</label>
         <select id="care-type">
