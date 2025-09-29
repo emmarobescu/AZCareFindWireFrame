@@ -515,18 +515,26 @@ footer {
 
 /* ===== Filter/Info button box =====
    Starts on the map edge. When sidebar opens, it rides with it. */
-.filter-info-box{
-  position:absolute;top:0;left:0;
-  width:var(--buttons-box-w);height:79px;
-  border:1px solid rgba(151,151,151,1);
-  background:#fff;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:6px;
-  z-index:1001;transition:transform .3s ease;
+.filter-info-box {
+  position: absolute;
+  top: 0;
+  left: 0;  /* start at map edge */
+  width: var(--buttons-w);
+  height: 79px;
+  border: 1px solid rgba(151,151,151,1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1001;
+  transition: transform 0.3s ease;
 }
 
-/* when sidebar is active, shift buttons by sidebar width */
-.filter-sidebar.active ~ .filter-info-box{
-  transform:translateX(var(--sidebar-w));
+/* Move with sidebar */
+.filter-sidebar.active ~ .filter-info-box {
+  transform: translateX(var(--sidebar-w));
 }
 
 /* icon-only buttons */
