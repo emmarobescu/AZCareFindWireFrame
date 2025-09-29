@@ -57,63 +57,67 @@
     <div class="accent-bar"></div>
   </header>
 
-  <!-- Page Content -->
-  <main>
-    <section class="map-choices">
-      <!-- Title -->
-      <h2>Search for Facilities on the Map</h2>
+<!-- Page Content -->
+<main>
+  <section class="map-choices">
+    <!-- Title -->
+    <h2>Search for Facilities on the Map</h2>
 
-      <!-- Map container -->
-<div class="map-container">
-  <!-- Filter/info buttons on the map -->
-  <div class="filter-info-box">
-    <button class="icon-btn" id="open-filter">
-      <img src="assets/filter.svg" alt="Filter">
-    </button>
-    <button class="icon-btn">
-      <img src="assets/info.svg" alt="Info">
-    </button>
-  </div>
+    <!-- Map container -->
+    <div class="map-container">
+      
+      <!-- Filter Sidebar (hidden by default) -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <h3>Filter Selection</h3>
 
-  <!-- Filter Sidebar (on the map, hidden by default) -->
-  <aside class="filter-sidebar" id="filterSidebar">
-    <h3>Filter Selection</h3>
+        <!-- City or Zipcode -->
+        <label for="location-input">City or Zipcode</label>
+        <input 
+          type="text" 
+          id="location-input" 
+          placeholder="Peoria / 85381"
+        >
 
-    <!-- City or Zipcode -->
-    <label for="location-input">City or Zipcode</label>
-    <input 
-      type="text" 
-      id="location-input" 
-      placeholder="Peoria / 85381"
-    >
+        <!-- Radius -->
+        <label for="radius">Radius (miles)</label>
+        <div class="radius-control">
+          <button>-</button>
+          <input type="text" value="1" id="radius">
+          <button>+</button>
+        </div>
 
-    <!-- Radius -->
-    <label for="radius">Radius (miles)</label>
-    <div class="radius-control">
-      <button>-</button>
-      <input type="text" value="1" id="radius">
-      <button>+</button>
+        <!-- Care Type -->
+        <label for="care-type">Care Type</label>
+        <select id="care-type">
+          <option>Select Option</option>
+        </select>
+
+        <!-- Facility Type -->
+        <label for="facility-type">Facility Type</label>
+        <select id="facility-type">
+          <option>Select Option</option>
+        </select>
+
+        <!-- Search button -->
+        <button class="search-btn">Search</button>
+      </aside>
+
+      <!-- Filter/info buttons -->
+      <div class="filter-info-box">
+        <button class="icon-btn" id="open-filter">
+          <img src="assets/filter.svg" alt="Filter">
+        </button>
+        <button class="icon-btn">
+          <img src="assets/info.svg" alt="Info">
+        </button>
+      </div>
+
+      <!-- Leaflet map -->
+      <div id="map"></div>
     </div>
+  </section>
+</main>
 
-    <!-- Care Type -->
-    <label for="care-type">Care Type</label>
-    <select id="care-type">
-      <option>Select Option</option>
-    </select>
-
-    <!-- Facility Type -->
-    <label for="facility-type">Facility Type</label>
-    <select id="facility-type">
-      <option>Select Option</option>
-    </select>
-
-    <!-- Search button -->
-    <button class="search-btn">Search</button>
-  </aside>
-
-  <!-- Leaflet map -->
-  <div id="map"></div>
-</div>
 
 
   <!-- Footer -->
