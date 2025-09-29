@@ -1,5 +1,6 @@
 
 
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -515,26 +516,18 @@ footer {
 
 /* ===== Filter/Info button box =====
    Starts on the map edge. When sidebar opens, it rides with it. */
-.filter-info-box {
-  position: absolute;
-  top: 0;
-  left: 0;  /* start at map edge */
-  width: var(--buttons-w);
-  height: 79px;
-  border: 1px solid rgba(151,151,151,1);
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  z-index: 1001;
-  transition: transform 0.3s ease;
+.filter-info-box{
+  position:absolute;top:0;left:0;
+  width:var(--buttons-box-w);height:79px;
+  border:1px solid rgba(151,151,151,1);
+  background:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;
+  z-index:1001;transition:transform .3s ease;
 }
 
-/* Move with sidebar */
-.filter-sidebar.active ~ .filter-info-box {
-  transform: translateX(var(--sidebar-w));
+/* when sidebar is active, shift buttons by sidebar width */
+.filter-sidebar.active ~ .filter-info-box{
+  transform:translateX(var(--sidebar-w));
 }
 
 /* icon-only buttons */
@@ -562,6 +555,3 @@ footer {
 .radius-control button{background:none;border:1px solid rgba(102,102,102,1);padding:.2rem .6rem;cursor:pointer;font-size:16px;}
 .search-btn{margin-top:auto;background:#086e9d;color:#fff;font-family:'Open Sans',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:4px;padding:.6rem;cursor:pointer;}
 .search-btn:hover{background:#066b8d;}
-
-
-
