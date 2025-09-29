@@ -536,18 +536,32 @@ footer {
 .filter-sidebar {
   position: absolute;   /* relative to .map-container */
   top: 0;
-  left: -320px;         /* start hidden just outside map */
+  left: 0;              /* pinned to the left edge of the map */
   width: 317px;
-  height: 100%;         /* match the map height */
+  height: 697px;
   border: 1px solid rgba(151, 151, 151, 1);
   background-color: #fff;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-  transition: left 0.3s ease;
-  z-index: 1001;        /* above map and filter box */
+  z-index: 1000;        /* above map */
+}
+
+.filter-info-box {
+  position: absolute;
+  top: 0;
+  left: 317px;          /* sits right next to sidebar when it’s open */
+  width: 48px;
+  height: 79px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1001;
 }
 
 .filter-sidebar.active {
