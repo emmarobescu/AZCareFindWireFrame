@@ -53,58 +53,53 @@
 
   <!-- Page Content -->
   <main>
-    <section class="map-choices">
-      <h2>Search for Facilities on the Map</h2>
+  <section class="map-choices">
+    <h2>Search for Facilities on the Map</h2>
 
-      <!-- Map container (everything lives INSIDE this) -->
-      <div class="map-container">
-        <!-- Sidebar (hidden off-canvas by CSS transform on load) -->
-        <aside class="filter-sidebar" id="filterSidebar">
-          <h3>Filter Selection</h3>
+    <div class="map-container">
+      <!-- Panel: starts fully off-canvas -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <h3>Filter Selection</h3>
 
-          <!-- City or Zipcode -->
-          <label for="location-input">City or Zipcode</label>
-          <input type="text" id="location-input" placeholder="Peoria / 85381" />
+        <label for="location-input">City or Zipcode</label>
+        <input type="text" id="location-input" placeholder="Peoria / 85381" />
 
-          <!-- Radius -->
-          <label for="radius">Radius (miles)</label>
-          <div class="radius-control">
-            <button type="button">-</button>
-            <input type="text" value="1" id="radius" />
-            <button type="button">+</button>
-          </div>
-
-          <!-- Care Type -->
-          <label for="care-type">Care Type</label>
-          <select id="care-type">
-            <option>Select Option</option>
-          </select>
-
-          <!-- Facility Type -->
-          <label for="facility-type">Facility Type</label>
-          <select id="facility-type">
-            <option>Select Option</option>
-          </select>
-
-          <!-- Search button -->
-          <button class="search-btn" type="button">Search</button>
-        </aside>
-
-        <!-- Filter/Info button box (starts on map edge; moves with sidebar) -->
-        <div class="filter-info-box">
-          <button class="icon-btn" id="open-filter" aria-label="Open filters">
-            <img src="assets/filter.svg" alt="Filter" />
-          </button>
-          <button class="icon-btn" aria-label="Information">
-            <img src="assets/info.svg" alt="Info" />
-          </button>
+        <label for="radius">Radius (miles)</label>
+        <div class="radius-control">
+          <button type="button">-</button>
+          <input type="text" value="1" id="radius" />
+          <button type="button">+</button>
         </div>
 
-        <!-- Leaflet map -->
-        <div id="map"></div>
+        <label for="care-type">Care Type</label>
+        <select id="care-type">
+          <option>Select Option</option>
+        </select>
+
+        <label for="facility-type">Facility Type</label>
+        <select id="facility-type">
+          <option>Select Option</option>
+        </select>
+
+        <button class="search-btn" type="button">Search</button>
+      </aside>
+
+      <!-- Buttons box: starts at map's left edge; moves with panel -->
+      <div class="filter-info-box">
+        <button class="icon-btn" id="open-filter" aria-label="Open filters">
+          <img src="assets/filter.svg" alt="Filter" />
+        </button>
+        <button class="icon-btn" aria-label="Information">
+          <img src="assets/info.svg" alt="Info" />
+        </button>
       </div>
-    </section>
-  </main>
+
+      <!-- Leaflet map -->
+      <div id="map"></div>
+    </div>
+  </section>
+</main>
+
 
   <!-- Footer -->
   <footer>
