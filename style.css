@@ -466,8 +466,8 @@ footer {
                                               /* ===== Map & Choices (unchanged bits are fine) ===== */
 /* ===== Map & Choices (final) ===== */
 :root {
-  --sidebar-w: 317px;   /* width of slide-in filter panel */
-  --iconbox-w: 48px;    /* width of icon box */
+  --sidebar-w: 317px;
+  --iconbox-w: 48px;
   --iconbox-h: 79px;
 }
 
@@ -477,11 +477,11 @@ footer {
   width: 1334px;
   height: 697px;
   border: 1px solid rgba(151,151,151,1);
-  background-color: rgba(216,216,216,1);
-  overflow: hidden; /* ensures hidden panel doesn’t peek */
+  background: rgba(216,216,216,1);
+  overflow: hidden; /* ensure hidden sidebar does not peek */
 }
 
-/* Map itself */
+/* Leaflet map */
 #map {
   position: absolute;
   inset: 0;
@@ -489,7 +489,7 @@ footer {
   height: 100%;
 }
 
-/* Sidebar: starts completely off-map */
+/* Sidebar: hidden off-map initially */
 .filter-sidebar {
   position: absolute;
   top: 0;
@@ -498,53 +498,54 @@ footer {
   height: 100%;
   background: #fff;
   border: 1px solid rgba(151,151,151,1);
-  z-index: 1000;
   transform: translateX(calc(-1 * var(--sidebar-w)));
   transition: transform 0.3s ease;
+  z-index: 1000;
+
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-/* When open, slide into map */
+/* When active, sidebar slides in */
 .map-container.sidebar-open .filter-sidebar {
   transform: translateX(0);
 }
 
-/* Icon box: sits OUTSIDE the panel, at map edge initially */
+/* Icon box OUTSIDE sidebar */
 .filter-info-box {
   position: absolute;
   top: 0;
-  left: 0; /* at map edge when panel closed */
+  left: 0; /* at map edge when sidebar is hidden */
   width: var(--iconbox-w);
   height: var(--iconbox-h);
-  border: 1px solid rgba(151,151,151,1);
   background: #fff;
-  z-index: 1001;
+  border: 1px solid rgba(151,151,151,1);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  z-index: 1001;
   transition: transform 0.3s ease;
 }
 
-/* When panel slides open, push the icons to sit OUTSIDE its right edge */
+/* When sidebar is open, move icon box by sidebar width */
 .map-container.sidebar-open .filter-info-box {
   transform: translateX(var(--sidebar-w));
 }
 
-/* Buttons inside icon box */
 .icon-btn {
   border: none;
   background: none;
-  padding: 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .icon-btn:first-child img { width: 31px; height: 27px; } /* filter */
-.icon-btn:last-child img  { width: 27px; height: 27px; } /* info */
-
+.icon-btn:last-child img { width: 27px; height: 27px; } /* info */
 
 /* ===== Sidebar inner typography & fields (from your specs) ===== */
 .filter-sidebar h3{
