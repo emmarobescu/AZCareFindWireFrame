@@ -463,95 +463,179 @@ footer {
   padding: 1rem;
 }
 
-                                              /* Map & Choices Section */
-/* --- Map & Choices --- */
-.map-choices{
-  max-width:1334px;
-  margin:48px auto;
-  padding:0 2rem;
-}
-.map-choices h2{
-  font-family:'Playfair Display',serif;
-  font-size:32px;font-weight:900;color:#333;margin-bottom:24px;
+                                              /* ===== Map & Choices (unchanged bits are fine) ===== */
+.map-choices {
+  max-width: 1334px;
+  margin: 48px auto;
+  padding: 0 2rem;
 }
 
-/* --- Map container --- */
-.map-container{
-  position:relative;            /* anchor EVERYTHING */
-  width:1334px;height:697px;
-  border:1px solid #979797;
-  background:#d8d8d8;
-  margin-bottom:48px;
-  overflow:hidden;              /* << hides anything off-canvas */
+.map-choices h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 24px;
 }
 
-/* Leaflet map fills container */
-#map{width:100%;height:100%;}
-
-/* ===== Sidebar (OFF-CANVAS on load) =====
-   We keep it at left:0 and move it fully out with transform.
-   That guarantees NO visible strip. */
-:root{
-  --sidebar-w:317px;
-  --buttons-box-w:48px;
+/* Map container anchors everything. We set a CSS var for the sidebar width. */
+.map-container {
+  position: relative;
+  width: 1334px;
+  height: 697px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background: rgba(216, 216, 216, 1);
+  margin-bottom: 48px;
+  --sidebar-w: 317px;   /* single source of truth */
 }
 
-.filter-sidebar{
-  position:absolute;top:0;left:0;
-  width:var(--sidebar-w);height:100%;
-  background:#fff;border:1px solid rgba(151,151,151,1);
-  padding:1.5rem;display:flex;flex-direction:column;gap:1.2rem;
-  box-shadow:2px 0 8px rgba(0,0,0,.1);
-  z-index:1000;
-
-  /* hidden completely off-map */
-  transform:translateX(calc(-1 * var(--sidebar-w)));
-  transition:transform .3s ease;
+/* The actual Leaflet map fills the container. No extra border here. */
+#map {
+  position: absolute;
+  inset: 0;            /* top:0; right:0; bottom:0; left:0 */
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 0;          /* sits under overlays */
 }
 
-/* slide onto the map */
-.filter-sidebar.active{
-  transform:translateX(0);
+/* ---- Sidebar: completely hidden off-map on load ---- */
+.filter-sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-w);
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba(151,151,151,1);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+
+  /* This hides it entirely beyond the map’s left edge */
+  transform: translateX(calc(-1 * var(--sidebar-w)));
+  transition: transform 0.3s ease;
 }
 
-/* ===== Filter/Info button box =====
-   Starts on the map edge. When sidebar opens, it rides with it. */
-.filter-info-box{
-  position:absolute;top:0;left:0;
-  width:var(--buttons-box-w);height:79px;
-  border:1px solid rgba(151,151,151,1);
-  background:#fff;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:6px;
-  z-index:1001;transition:transform .3s ease;
+/* When container is marked open, slide the panel fully into view */
+.map-container.sidebar-open .filter-sidebar {
+  transform: translateX(0);
 }
 
-/* when sidebar is active, shift buttons by sidebar width */
-.filter-sidebar.active ~ .filter-info-box{
-  transform:translateX(var(--sidebar-w));
+/* ---- Filter / Info buttons: start at map edge, move with panel ---- */
+.filter-info-box {
+  position: absolute;
+  top: 0;
+  left: 0;                         /* sits on map’s top-left corner on load */
+  width: 48px;
+  height: 79px;
+  border: 1px solid rgba(151,151,151,1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 1001;                   /* above sidebar border */
+  transition: transform 0.3s ease; /* so it glides with the panel */
 }
 
-/* icon-only buttons */
-.icon-btn{border:none;background:none;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.icon-btn:first-child img{width:31px;height:27px;}  /* filter */
-.icon-btn:last-child  img{width:27px;height:27px;}  /* info */
+/* When sidebar is open, push the buttons to sit OUTSIDE the panel’s right edge */
+.map-container.sidebar-open .filter-info-box {
+  transform: translateX(var(--sidebar-w));
+}
 
-/* --- Sidebar content styles (unchanged) --- */
-.filter-sidebar h3{
-  font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;
-  color:#333;text-align:center;line-height:26px;margin:0 0 1rem;
+/* Icon buttons (just hold the SVGs) */
+.icon-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.filter-sidebar label{
-  font-family:'Open Sans',sans-serif;font-size:12px;font-weight:400;color:#333;
-  margin-bottom:.3rem;display:block;
+
+/* Keep your exact icon sizes from Sketch */
+.icon-btn:first-child img { /* Filter */
+  width: 31px;
+  height: 27px;
 }
+.icon-btn:last-child img {  /* Info */
+  width: 27px;
+  height: 27px;
+}
+
+/* ---- Sidebar content typographic styles (keep what you already had) ---- */
+.filter-sidebar h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 1);
+  text-align: center;
+  line-height: 26px;
+  margin: 0 0 1rem;
+}
+
+.filter-sidebar label {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
 .filter-sidebar input[type="text"],
-.filter-sidebar select{
-  width:258px;height:34px;padding:0 .5rem;border:none;background:#fff;
-  box-shadow:0 0 0 1px rgba(102,102,102,1), 0 1px 0 0 inset rgba(0,0,0,.1);
-  font-family:'Open Sans',sans-serif;font-size:14px;color:#333;
+.filter-sidebar select {
+  width: 258px;
+  height: 34px;
+  padding: 0 0.5rem;
+  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
+              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  border: none;
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 1);
 }
-.filter-sidebar input::placeholder{font-style:italic;color:#999;}
-.radius-control{display:flex;align-items:center;gap:.5rem;}
-.radius-control button{background:none;border:1px solid rgba(102,102,102,1);padding:.2rem .6rem;cursor:pointer;font-size:16px;}
-.search-btn{margin-top:auto;background:#086e9d;color:#fff;font-family:'Open Sans',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:4px;padding:.6rem;cursor:pointer;}
-.search-btn:hover{background:#066b8d;}
+
+.filter-sidebar input::placeholder {
+  font-style: italic;
+  font-weight: 400;
+  color: rgba(153, 153, 153, 1);
+}
+
+.radius-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radius-control button {
+  background: none;
+  border: 1px solid rgba(102, 102, 102, 1);
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.search-btn {
+  margin-top: auto;
+  background-color: rgba(8, 110, 157, 1);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #066b8d;
+}
