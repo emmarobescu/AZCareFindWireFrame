@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Map & Choices | AZ Care Finder</title>
-  
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   <!-- MarkerCluster CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  
+
   <!-- Your stylesheet -->
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Add this if not already in style.css */
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -34,7 +28,7 @@
     <!-- Main navigation -->
     <nav class="main-nav">
       <div class="logo">
-        <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
+        <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo" />
       </div>
 
       <ul class="nav-links">
@@ -47,7 +41,7 @@
 
       <div class="nav-right">
         <button class="signin">
-          <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
+          <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
           <span>Sign In</span>
         </button>
       </div>
@@ -57,68 +51,60 @@
     <div class="accent-bar"></div>
   </header>
 
-<!-- Page Content -->
-<main>
-  <section class="map-choices">
-    <!-- Title -->
-    <h2>Search for Facilities on the Map</h2>
+  <!-- Page Content -->
+  <main>
+    <section class="map-choices">
+      <h2>Search for Facilities on the Map</h2>
 
-    <!-- Map container -->
-    <div class="map-container">
-      
-      <!-- Filter Sidebar (hidden by default) -->
-      <aside class="filter-sidebar" id="filterSidebar">
-        <h3>Filter Selection</h3>
+      <!-- Map container (everything lives INSIDE this) -->
+      <div class="map-container">
+        <!-- Sidebar (hidden off-canvas by CSS transform on load) -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <h3>Filter Selection</h3>
 
-        <!-- City or Zipcode -->
-        <label for="location-input">City or Zipcode</label>
-        <input 
-          type="text" 
-          id="location-input" 
-          placeholder="Peoria / 85381"
-        >
+          <!-- City or Zipcode -->
+          <label for="location-input">City or Zipcode</label>
+          <input type="text" id="location-input" placeholder="Peoria / 85381" />
 
-        <!-- Radius -->
-        <label for="radius">Radius (miles)</label>
-        <div class="radius-control">
-          <button>-</button>
-          <input type="text" value="1" id="radius">
-          <button>+</button>
+          <!-- Radius -->
+          <label for="radius">Radius (miles)</label>
+          <div class="radius-control">
+            <button type="button">-</button>
+            <input type="text" value="1" id="radius" />
+            <button type="button">+</button>
+          </div>
+
+          <!-- Care Type -->
+          <label for="care-type">Care Type</label>
+          <select id="care-type">
+            <option>Select Option</option>
+          </select>
+
+          <!-- Facility Type -->
+          <label for="facility-type">Facility Type</label>
+          <select id="facility-type">
+            <option>Select Option</option>
+          </select>
+
+          <!-- Search button -->
+          <button class="search-btn" type="button">Search</button>
+        </aside>
+
+        <!-- Filter/Info button box (starts on map edge; moves with sidebar) -->
+        <div class="filter-info-box">
+          <button class="icon-btn" id="open-filter" aria-label="Open filters">
+            <img src="assets/filter.svg" alt="Filter" />
+          </button>
+          <button class="icon-btn" aria-label="Information">
+            <img src="assets/info.svg" alt="Info" />
+          </button>
         </div>
 
-        <!-- Care Type -->
-        <label for="care-type">Care Type</label>
-        <select id="care-type">
-          <option>Select Option</option>
-        </select>
-
-        <!-- Facility Type -->
-        <label for="facility-type">Facility Type</label>
-        <select id="facility-type">
-          <option>Select Option</option>
-        </select>
-
-        <!-- Search button -->
-        <button class="search-btn">Search</button>
-      </aside>
-
-      <!-- Filter/info buttons -->
-      <div class="filter-info-box">
-        <button class="icon-btn" id="open-filter">
-          <img src="assets/filter.svg" alt="Filter">
-        </button>
-        <button class="icon-btn">
-          <img src="assets/info.svg" alt="Info">
-        </button>
+        <!-- Leaflet map -->
+        <div id="map"></div>
       </div>
-
-      <!-- Leaflet map -->
-      <div id="map"></div>
-    </div>
-  </section>
-</main>
-
-
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -131,22 +117,28 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <!-- MarkerCluster JS -->
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- Your custom map logic -->
+
+  <!-- Your Leaflet logic (centers map, loads markers, clusters, etc.) -->
   <script src="js/map.js"></script>
 
-  <!-- Sidebar toggle logic -->
+  <!-- Sidebar toggle: toggles a class on the CONTAINER so buttons move with it -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-  const filterBtn = document.getElementById('open-filter');
-  const sidebar = document.getElementById('filterSidebar');
+      const mapContainer = document.querySelector('.map-container');
+      const sidebar = document.getElementById('filterSidebar');
+      const openBtn = document.getElementById('open-filter');
 
-  if (filterBtn && sidebar) {
-    filterBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('active');
+      function toggleSidebar() {
+        // Add/remove a container class so CSS moves BOTH the sidebar and the buttons
+        mapContainer.classList.toggle('sidebar-open');
+        // Also keep the sidebar's own active state for clarity (not strictly required)
+        sidebar.classList.toggle('active');
+      }
+
+      if (openBtn && mapContainer && sidebar) {
+        openBtn.addEventListener('click', toggleSidebar);
+      }
     });
-  }
-});
-
   </script>
 </body>
 </html>
