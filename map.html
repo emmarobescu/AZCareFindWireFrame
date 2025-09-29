@@ -52,15 +52,14 @@
   </header>
 
   <!-- Page Content -->
-  <main>
+ <main>
   <section class="map-choices">
     <h2>Search for Facilities on the Map</h2>
 
     <div class="map-container">
-      <!-- Panel: starts fully off-canvas -->
+      <!-- Slide-in sidebar (off-canvas by default) -->
       <aside class="filter-sidebar" id="filterSidebar">
         <h3>Filter Selection</h3>
-
         <label for="location-input">City or Zipcode</label>
         <input type="text" id="location-input" placeholder="Peoria / 85381" />
 
@@ -84,12 +83,12 @@
         <button class="search-btn" type="button">Search</button>
       </aside>
 
-      <!-- Buttons box: starts at map's left edge; moves with panel -->
+      <!-- Filter/Info icon box (outside panel, moves with it) -->
       <div class="filter-info-box">
-        <button class="icon-btn" id="open-filter" aria-label="Open filters">
+        <button class="icon-btn" id="open-filter">
           <img src="assets/filter.svg" alt="Filter" />
         </button>
-        <button class="icon-btn" aria-label="Information">
+        <button class="icon-btn">
           <img src="assets/info.svg" alt="Info" />
         </button>
       </div>
