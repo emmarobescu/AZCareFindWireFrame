@@ -495,33 +495,34 @@ footer {
 }
 
 /* Sidebar (hidden off-canvas at first) */
+/* Sidebar hidden off-canvas by default */
 .filter-sidebar {
   position: absolute;
   top: 0;
-  left: -317px;             /* fully outside of the map container */
+  left: -317px;             /* move it fully off the map */
   width: 317px;
-  height: 100%;             /* match map height */
+  height: 100%;
+  background: #fff;
   border: 1px solid rgba(151, 151, 151, 1);
-  background-color: #fff;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  transform: translateX(0);
-  z-index: 1000;            /* above map */
+  transition: left 0.3s ease;
+  z-index: 1000;
 }
 
+/* When active, slide the sidebar onto the map */
 .filter-sidebar.active {
-  transform: translateX(317px); /* slide sidebar onto the map */
+  left: 0;
 }
 
-/* Filter/info box (the little buttons) */
+/* Filter/info box */
 .filter-info-box {
   position: absolute;
   top: 0;
-  left: 0;                 /* start at the map edge */
+  left: 0;                  /* start on the map edge */
   width: 48px;
   height: 79px;
   border: 1px solid rgba(151, 151, 151, 1);
@@ -530,14 +531,14 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px; /* space between icons */
+  gap: 6px;
   z-index: 1001;
-  transition: transform 0.3s ease;
+  transition: left 0.3s ease;
 }
 
-/* Move filter/info box together with sidebar */
+/* When sidebar is active, move the filter/info box to match it */
 .filter-sidebar.active ~ .filter-info-box {
-  transform: translateX(317px);
+  left: 317px;               /* aligns flush with sidebar edge */
 }
 
 /* Buttons (only hold icons) */
