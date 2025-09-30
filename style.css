@@ -464,7 +464,7 @@ footer {
   padding: 1rem;
 }
 
-                                              /* ===== Map & Choices (unchanged bits are fine) ===== */
+                                              /* ===== Map & Choices ===== */
 .map-choices {
   max-width: 1334px;
   margin: 48px auto;
@@ -479,28 +479,28 @@ footer {
   margin-bottom: 24px;
 }
 
-/* Map container anchors everything. We set a CSS var for the sidebar width. */
+/* ---- Map Container ---- */
 .map-container {
   position: relative;
   width: 1334px;
   height: 697px;
-  border: 1px solid rgba(151, 151, 151, 1);
-  background: rgba(216, 216, 216, 1);
+  border: 1px solid rgba(151,151,151,1);
+  background: rgba(216,216,216,1);
   margin-bottom: 48px;
-  --sidebar-w: 317px;   /* single source of truth */
+  --sidebar-w: 317px;
 }
 
-/* The actual Leaflet map fills the container. No extra border here. */
+/* Map fills container */
 #map {
   position: absolute;
-  inset: 0;            /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
   border: none;
-  z-index: 0;          /* sits under overlays */
+  z-index: 0;
 }
 
-/* ---- Sidebar: completely hidden off-map on load ---- */
+/* ---- Sidebar (off-canvas by default) ---- */
 .filter-sidebar {
   position: absolute;
   top: 0;
@@ -516,21 +516,19 @@ footer {
   box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   z-index: 1000;
 
-  /* This hides it entirely beyond the map’s left edge */
   transform: translateX(calc(-1 * var(--sidebar-w)));
   transition: transform 0.3s ease;
 }
 
-/* When container is marked open, slide the panel fully into view */
 .map-container.sidebar-open .filter-sidebar {
   transform: translateX(0);
 }
 
-/* ---- Filter / Info buttons: start at map edge, move with panel ---- */
+/* ---- Filter/Info Buttons ---- */
 .filter-info-box {
   position: absolute;
   top: 0;
-  left: 0;                         /* sits on map’s top-left corner on load */
+  left: 0;
   width: 48px;
   height: 79px;
   border: 1px solid rgba(151,151,151,1);
@@ -540,16 +538,15 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  z-index: 1001;                   /* above sidebar border */
-  transition: transform 0.3s ease; /* so it glides with the panel */
+  z-index: 1001;
+  transition: transform 0.3s ease;
 }
 
-/* When sidebar is open, push the buttons to sit OUTSIDE the panel’s right edge */
 .map-container.sidebar-open .filter-info-box {
   transform: translateX(var(--sidebar-w));
 }
 
-/* Icon buttons (just hold the SVGs) */
+/* Icon Buttons */
 .icon-btn {
   border: none;
   background: none;
@@ -560,12 +557,11 @@ footer {
   justify-content: center;
 }
 
-/* Keep your exact icon sizes from Sketch */
-.icon-btn:first-child img { /* Filter */
+.icon-btn:first-child img {
   width: 31px;
   height: 27px;
 }
-.icon-btn:last-child img {  /* Info */
+.icon-btn:last-child img {
   width: 27px;
   height: 27px;
 }
@@ -575,7 +571,7 @@ footer {
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: rgba(51, 51, 51, 1);
+  color: rgba(51,51,51,1);
   text-align: center;
   line-height: 26px;
   margin: 0 0 1rem;
@@ -586,31 +582,31 @@ footer {
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: rgba(51, 51, 51, 1);
+  color: rgba(51,51,51,1);
   margin-bottom: 0.3rem;
   display: block;
 }
 
-/* ---- Inputs and dropdowns ---- */
+/* ---- Inputs & Dropdowns ---- */
 .filter-sidebar input[type="text"],
 .filter-sidebar select {
   width: 258px;
   height: 34px;
   padding: 0 0.5rem;
-  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
-              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 1px rgba(102,102,102,1),
+              0 1px 0 0 inset rgba(0,0,0,0.1);
   border: none;
-  background-color: #fff;
+  background: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: rgba(51, 51, 51, 1);
+  color: rgba(51,51,51,1);
 }
 
 .filter-sidebar input::placeholder {
   font-style: italic;
   font-weight: 400;
-  color: rgba(153, 153, 153, 1);
+  color: rgba(153,153,153,1);
 }
 
 /* ---- Radius Control ---- */
@@ -620,13 +616,12 @@ footer {
   gap: 0;
 }
 
-/* Left/right arrow boxes */
 .radius-control button {
   width: 24px;
   height: 34px;
-  border: 1px solid rgba(102, 102, 102, 1);
-  background-color: rgba(238, 238, 238, 0.33);
-  color: rgba(8, 110, 157, 1);
+  border: 1px solid rgba(102,102,102,1);
+  background-color: rgba(238,238,238,0.33);
+  color: rgba(8,110,157,1);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -636,26 +631,25 @@ footer {
   padding: 0;
 }
 
-/* Middle number box */
 .radius-input {
   width: 41px;
   height: 34px;
   border: none;
   box-shadow:
-    0 -1px 0 0 rgba(102, 102, 102, 1),
-    0 1px 0 0 rgba(102, 102, 102, 1);
-  background-color: #fff;
+    0 -1px 0 0 rgba(102,102,102,1),
+    0 1px 0 0 rgba(102,102,102,1);
+  background: #fff;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: rgba(51, 51, 51, 1);
+  color: rgba(51,51,51,1);
 }
 
 /* ---- Search Button ---- */
 .search-btn {
   margin-top: auto;
-  background-color: rgba(8, 110, 157, 1);
+  background: rgba(8,110,157,1);
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
@@ -666,8 +660,7 @@ footer {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .search-btn:hover {
-  background-color: #066b8d;
+  background: #066b8d;
 }
 
