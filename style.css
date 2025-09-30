@@ -505,18 +505,12 @@ footer {
   width: 317px;
   height: 697px;
   border: 1px solid rgba(151, 151, 151, 1);
-  background-color: rgba(255, 255, 255, 1);
+  background: #fff;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1000;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-
-  /* keep the slide-in behavior */
-  transform: translateX(calc(-1 * 317px));
+  transform: translateX(-317px);
   transition: transform 0.3s ease;
 }
 
@@ -524,15 +518,15 @@ footer {
   transform: translateX(0);
 }
 
-/* Icon Box */
+/* Icon box: ALWAYS to the right of the sidebar */
 .filter-info-box {
   width: 48px;
   height: 79px;
   border: 1px solid rgba(151, 151, 151, 1);
-  background-color: rgba(255, 255, 255, 1);
+  background: #fff;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 317px;   /* start immediately to the right of the sidebar */
   z-index: 1001;
 
   display: flex;
@@ -544,8 +538,9 @@ footer {
   transition: transform 0.3s ease;
 }
 
-.map-container.sidebar-open .filter-info-box {
-  transform: translateX(317px);
+/* When sidebar is closed, icon box slides back to map edge */
+.map-container:not(.sidebar-open) .filter-info-box {
+  transform: translateX(-317px);
 }
 
 /* Icon Buttons */
