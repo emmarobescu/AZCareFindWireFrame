@@ -526,7 +526,7 @@ footer {
   background: #fff;
   position: absolute;
   top: 0;
-  left: 316px;   /* start immediately to the right of the sidebar */
+  left: 318px;   /* start immediately to the right of the sidebar */
   z-index: 1001;
 
   display: flex;
