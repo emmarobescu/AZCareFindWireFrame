@@ -488,6 +488,7 @@ footer {
   background: rgba(216,216,216,1);
   margin-bottom: 48px;
   --sidebar-w: 317px;
+  overflow: hidden; /* hides the sidebar
 }
 
 /* Map fills container */
