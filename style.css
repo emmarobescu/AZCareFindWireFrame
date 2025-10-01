@@ -571,25 +571,55 @@ footer {
   height: 27px;
 }
 
-/* ---- Sidebar Title ---- */
-.filter-sidebar h3 {
+/* ---- Filter Title ---- */
+.filter-title {
+  width: 138px; /* from Sketch, optional since text centers anyway */
+  height: 26px;
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  font-weight: 700;
-  color: rgba(51,51,51,1);
+  font-weight: 700; /* Bold */
+  color: rgba(51, 51, 51, 1);
   text-align: center;
   line-height: 26px;
-  margin: 0 0 1rem;
+  margin: 0 auto 1rem auto; /* centers horizontally */
 }
 
-/* ---- Labels ---- */
-.filter-sidebar label {
+/* ---- City/Zip Label ---- */
+.filter-label {
+  width: 84px;  /* optional */
+  height: 17px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  color: rgba(51,51,51,1);
+  color: rgba(51, 51, 51, 1);
   margin-bottom: 0.3rem;
   display: block;
+}
+
+/* ---- City/Zip Input ---- */
+.filter-input {
+  width: 258px;
+  height: 34px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
+              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 0 0.5rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* Placeholder text */
+.filter-input::placeholder {
+  width: 242px; /* from Sketch, not strictly needed */
+  height: 19px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(153, 153, 153, 1);
 }
 
 /* ---- Inputs & Dropdowns ---- */
