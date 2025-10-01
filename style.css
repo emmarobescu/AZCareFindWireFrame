@@ -546,7 +546,7 @@ footer {
 
 /* When sidebar is closed, icon box slides back to map edge */
 .map-container:not(.sidebar-open) .filter-info-box {
-  transform: translateX(-318px);
+  transform: translateX(-317px);
 }
 
 /* new code end
