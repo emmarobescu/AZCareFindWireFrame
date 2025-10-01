@@ -482,13 +482,12 @@ footer {
 /* ---- Map Container ---- */
 .map-container {
   position: relative;
-  width: 1334px;
+  width: 100vw;
   height: 697px;
   border: 1px solid rgba(151,151,151,1);
   background: rgba(216,216,216,1);
   margin-bottom: 48px;
   --sidebar-w: 317px;
-  overflow: hidden; /* hides the sidebar
 }
 
 /* Map fills container */
