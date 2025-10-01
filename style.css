@@ -641,10 +641,9 @@ footer {
 .radius-control {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
-/* ---- Left/Right Arrow Boxes ---- */
+/* Left/Right buttons */
 .radius-btn {
   width: 24px;
   height: 34px;
@@ -654,20 +653,15 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 0;
+  background: #fff;
 }
 
-/* Left box style */
+/* Left button has the light gray background */
 .radius-btn.left {
   background-color: rgba(238, 238, 238, 0.33);
 }
 
-/* Right box style */
-.radius-btn.right {
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1);
-}
-
-/* Arrow symbol inside buttons */
+/* Arrow inside button */
 .radius-btn .arrow {
   font-size: 14px;
   font-weight: bold;
@@ -675,21 +669,22 @@ footer {
   line-height: 1;
 }
 
-/* ---- Middle Number Box ---- */
+/* Middle number input */
 .radius-input {
   width: 41px;
   height: 34px;
-  border: none;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow:
-    0 -1px 0 0 rgba(102, 102, 102, 1),
-    0 1px 0 0 rgba(102, 102, 102, 1);
+  border-top: 1px solid rgba(102, 102, 102, 1);
+  border-bottom: 1px solid rgba(102, 102, 102, 1);
+  border-left: none;
+  border-right: none;
+  background-color: #fff;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
 }
+
 
 /* ---- Search Button ---- */
 .search-btn {
