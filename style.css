@@ -508,9 +508,19 @@ footer {
   z-index: 1000;
   transform: translateX(-317px);
   transition: transform 0.3s ease;
+
+  /* start hidden */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;  /* don’t block clicks */
+  transform: translateX(-20px); /* slight shift for animation */
+  transition: all 0.3s ease;
 }
 
 .map-container.sidebar-open .filter-sidebar {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
   transform: translateX(0);
 }
 
