@@ -672,7 +672,7 @@ footer {
 /* Middle number input */
 .radius-input {
   width: 41px;
-  height: 32px;
+  height: 30px;
   border-top: 1px solid rgba(102, 102, 102, 1);
   border-bottom: 1px solid rgba(102, 102, 102, 1);
   border-left: none;
