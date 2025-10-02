@@ -82,10 +82,14 @@
             </div>
 
 
-          <label for="care-type">Care Type</label>
-          <select id="care-type">
-            <option>Select Option</option>
-          </select>
+         <!-- Care Type -->
+          <label class="care-label" for="care-type">Care Type</label>
+            <select id="care-type" class="care-select">
+                <option value="" disabled selected>Select Option</option>
+                <option value="assisted">Assisted Living</option>
+                <option value="memory">Memory Care</option>
+                <option value="independent">Independent Living</option>
+            </select>
 
           <label for="facility-type">Facility Type</label>
           <select id="facility-type">
