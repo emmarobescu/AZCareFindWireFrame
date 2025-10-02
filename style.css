@@ -749,19 +749,27 @@ footer {
 
 /* ---- Search Button ---- */
 .search-btn {
-  margin-top: auto;
-  background: rgba(8,110,157,1);
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
+  width: 88px;
+  height: 33px;
+  border-radius: 16.5px; /* half of height for pill shape */
+  background-color: rgba(8, 110, 157, 1);
   border: none;
-  border-radius: 4px;
-  padding: 0.6rem;
   cursor: pointer;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700; /* Bold */
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   transition: background-color 0.2s ease;
 }
+
 .search-btn:hover {
-  background: #066b8d;
+  background-color: #066b8d; /* darker on hover */
 }
 
