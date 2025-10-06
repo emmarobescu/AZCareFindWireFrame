@@ -510,10 +510,6 @@ footer {
   transform: translateX(-317px);
   transition: transform 0.3s ease;
 
-  padding-left: 29.5px;
-  padding-right: 29.5px;
-  box-sizing: border-box; /* ensures padding doesn’t shrink content area */
-
   /* start hidden */
   opacity: 0;
   visibility: hidden;
