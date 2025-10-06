@@ -510,6 +510,10 @@ footer {
   transform: translateX(-317px);
   transition: transform 0.3s ease;
 
+  padding-left: 29.5px;
+  padding-right: 29.5px;
+  box-sizing: border-box; /* ensures padding doesn’t shrink content area */
+
   /* start hidden */
   opacity: 0;
   visibility: hidden;
@@ -582,8 +586,8 @@ footer {
   color: rgba(51, 51, 51, 1);
   text-align: center;
   line-height: 26px;
-  margin: 0 auto 1rem auto; /* centers horizontally */
   margin-bottom: 36px;
+  margin: 0 auto 36px auto; /* centers it perfectly inside sidebar */
 }
 
 /* ---- City/Zip Label ---- */
