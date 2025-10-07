@@ -672,28 +672,4 @@ footer {
   background: #066b8d;
 }
 
-/* ---- Search Button ---- */
-.search-btn {
-  width: 88px;
-  height: 33px;
-  border-radius: 16.5px; /* half of height for pill shape */
-  background-color: rgba(8, 110, 157, 1);
-  border: none;
-  cursor: pointer;
 
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 700; /* Bold */
-  color: rgba(255, 255, 255, 1);
-  text-align: center;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: background-color 0.2s ease;
-}
-
-.search-btn:hover {
-  background-color: #066b8d; /* darker on hover */
-}
