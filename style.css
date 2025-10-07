@@ -498,7 +498,7 @@ footer {
   z-index: 0;
 }
 
-/* Filter Sidebar Container */
+/* ---- SIDEBAR CORE ---- */
 .filter-sidebar {
   width: 317px;
   height: 696px;
@@ -509,12 +509,17 @@ footer {
   left: 0;
   z-index: 1000;
 
-  /* Hidden on load */
+  /* start hidden (your working invisibility) */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateX(-20px);
   transition: all 0.3s ease;
+
+  /* uniform padding to center the content column */
+  padding-left: 29.5px;
+  padding-right: 29.5px;
+  box-sizing: border-box;
 }
 
 .map-container.sidebar-open .filter-sidebar {
@@ -524,180 +529,86 @@ footer {
   transform: translateX(0);
 }
 
-/* Icon box: ALWAYS to the right of the sidebar */
-.filter-info-box {
-  width: 48px;
-  height: 79px;
-  border: 1px solid rgba(151, 151, 151, 1);
-  background: #fff;
-  position: absolute;
-  top: 0;
-  left: 317px;
-  z-index: 1001;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  transition: transform 0.3s ease;
-}
-
-.map-container:not(.sidebar-open) .filter-info-box {
-  transform: translateX(-317px);
-}
-
-/* Icon Buttons */
-.icon-btn {
-  border: none;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-btn:first-child img {
-  width: 31px;
-  height: 27px;
-}
-.icon-btn:last-child img {
-  width: 27px;
-  height: 27px;
-}
-
-/* ---- Filter Title ---- */
+/* ---- HEADING centered exactly ---- */
 .filter-title {
-  width: 138px;
-  height: 26px;
+  width: 138px; height: 26px;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(51, 51, 51, 1);
-  line-height: 26px;
+  font-size: 18px; font-weight: 700; line-height: 26px;
+  color: rgba(51,51,51,1);
   text-align: center;
-
-  /* Center perfectly inside sidebar */
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 36px;
-  margin-bottom: 36px;
+  /* true centering */
+  position: relative; left: 50%; transform: translateX(-50%);
+  margin: 36px 0; /* 36px below title per Sketch */
 }
 
-/* ---- Common Alignment for all Inputs ---- */
-.filter-sidebar form,
-.filter-label,
+/* ---- LABELS (left-aligned, 4px above field) ---- */
+.filter-label, .radius-label, .care-label, .facility-label {
+  width: 258px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px; font-weight: 400; color: rgba(51,51,51,1);
+  margin: 0 0 4px 0; /* 4px gap above input */
+  display: block; text-align: left;
+}
+
+/* ---- UNIFORM FIELD WIDTHS (all 258) ---- */
 .filter-input,
-.radius-control,
 .care-select,
 .facility-select,
+.radius-control,
 .search-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 258px; box-sizing: border-box;
+  margin: 0 0 36px 0; /* 36px to next section */
 }
 
-/* ---- Label Styling ---- */
-.filter-label,
-.radius-label,
-.care-label,
-.facility-label {
-  width: 258px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 4px;
-  text-align: left;
-}
-
-/* ---- City/Zip Input ---- */
+/* ---- CITY/ZIP INPUT ---- */
 .filter-input {
-  width: 258px;
-  height: 34px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
-              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
-  border: none;
-  padding: 0 8px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 36px;
-  box-sizing: border-box;
+  height: 34px; padding: 0 8px;
+  background: #fff; border: 1px solid rgba(102,102,102,1);
+  box-shadow: 0 1px 0 0 inset rgba(0,0,0,0.1);
+  font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(51,51,51,1);
 }
-
-/* Placeholder text */
 .filter-input::placeholder {
-  color: rgba(153, 153, 153, 1);
-  font-style: italic;
+  color: rgba(153,153,153,1); font-style: italic;
 }
 
-/* ---- Radius Section ---- */
-.radius-label {
-  margin-bottom: 4px;
-}
-
+/* ---- RADIUS (align left, not split) ---- */
 .radius-control {
-  width: 258px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 36px;
+  display: flex; align-items: center; justify-content: flex-start;
+  gap: 0; /* make the three boxes touch */
 }
-
 .radius-btn {
-  width: 24px;
-  height: 34px;
-  border: 1px solid rgba(102, 102, 102, 1);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: #fff;
+  width: 24px; height: 30px; /* keep consistent with your fix */
+  border: 1px solid rgba(102,102,102,1);
+  background: #fff; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; padding: 0;
 }
+.radius-btn.left { background-color: rgba(238,238,238,0.33); }
+.radius-btn .arrow { font-size: 14px; font-weight: 700; color: rgba(8,110,157,1); line-height: 1; }
 
-.radius-btn.left {
-  background-color: rgba(238, 238, 238, 0.33);
-}
-
-.radius-btn .arrow {
-  font-size: 14px;
-  font-weight: bold;
-  color: rgba(8, 110, 157, 1);
-}
-
+/* middle number box: only top+bottom border so it feels joined */
 .radius-input {
-  width: 41px;
-  height: 30px;
-  border-top: 1px solid rgba(102, 102, 102, 1);
-  border-bottom: 1px solid rgba(102, 102, 102, 1);
-  background: #fff;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  color: rgba(51, 51, 51, 1);
+  width: 41px; height: 30px;
+  border-top: 1px solid rgba(102,102,102,1);
+  border-bottom: 1px solid rgba(102,102,102,1);
+  border-left: none; border-right: none;
+  background: #fff; text-align: center;
+  font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(51,51,51,1);
 }
 
-/* ---- Care & Facility Dropdowns ---- */
-.care-select,
-.facility-select {
-  width: 258px;
-  height: 34px;
-  border: 1px solid rgba(102, 102, 102, 1);
-  background: #fff;
-  padding: 0 8px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 36px;
-  box-sizing: border-box;
+/* ---- DROPDOWNS (care/facility) with custom caret 8x13 ---- */
+.care-select, .facility-select {
+  height: 34px; padding: 0 28px 0 8px; /* right padding for caret */
+  background: #fff; border: 1px solid rgba(102,102,102,1);
+  font-family: 'Open Sans', sans-serif; font-size: 14px; color: rgba(51,51,51,1);
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13"><path fill="%23999999" d="M4 8.5l-4-4h8z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  background-size: 8px 13px; /* per Sketch */
 }
+.care-select option[disabled],
+.facility-select option[disabled] { color: rgba(153,153,153,1); font-style: italic; }
+
 
 /* ---- Search Button ---- */
 .search-btn {
