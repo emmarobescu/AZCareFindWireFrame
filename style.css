@@ -508,14 +508,12 @@ footer {
   top: 0;
   left: 0;
   z-index: 1000;
-  transform: translateX(-317px);
-  transition: transform 0.3s ease;
 
-  /* start hidden */
+  /* Hidden on load */
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;  /* don’t block clicks */
-  transform: translateX(-20px); /* slight shift for animation */
+  pointer-events: none;
+  transform: translateX(-20px);
   transition: all 0.3s ease;
 }
 
@@ -534,7 +532,7 @@ footer {
   background: #fff;
   position: absolute;
   top: 0;
-  left: 317px;   /* start immediately to the right of the sidebar */
+  left: 317px;
   z-index: 1001;
 
   display: flex;
@@ -546,12 +544,9 @@ footer {
   transition: transform 0.3s ease;
 }
 
-/* When sidebar is closed, icon box slides back to map edge */
 .map-container:not(.sidebar-open) .filter-info-box {
   transform: translateX(-317px);
 }
-
-/* new code end
 
 /* Icon Buttons */
 .icon-btn {
@@ -575,82 +570,86 @@ footer {
 
 /* ---- Filter Title ---- */
 .filter-title {
-  width: 138px; /* from Sketch, optional since text centers anyway */
+  width: 138px;
   height: 26px;
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   color: rgba(51, 51, 51, 1);
-  text-align: center;
   line-height: 26px;
+  text-align: center;
+
+  /* Center perfectly inside sidebar */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 36px;
   margin-bottom: 36px;
-  margin: 0 auto 36px auto; /* centers it perfectly inside sidebar */
 }
 
-/* ---- City/Zip Label ---- */
-.filter-label {
-  width: 84px;  /* optional */
-  height: 17px;
+/* ---- Common Alignment for all Inputs ---- */
+.filter-sidebar form,
+.filter-label,
+.filter-input,
+.radius-control,
+.care-select,
+.facility-select,
+.search-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---- Label Styling ---- */
+.filter-label,
+.radius-label,
+.care-label,
+.facility-label {
+  width: 258px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
-  margin-bottom: 0.3rem;
-  display: block;
   margin-bottom: 4px;
+  text-align: left;
 }
 
 /* ---- City/Zip Input ---- */
 .filter-input {
   width: 258px;
   height: 34px;
-  background-color: rgba(255, 255, 255, 1);
+  background: #fff;
   box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
               0 1px 0 0 inset rgba(0, 0, 0, 0.1);
   border: none;
-  padding: 0 0.5rem;
+  padding: 0 8px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: rgba(51, 51, 51, 1);
   margin-bottom: 36px;
+  box-sizing: border-box;
 }
 
 /* Placeholder text */
 .filter-input::placeholder {
-  width: 242px; /* from Sketch, not strictly needed */
-  height: 19px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  font-style: italic;
   color: rgba(153, 153, 153, 1);
+  font-style: italic;
 }
 
-/* ---- Inputs & Dropdowns ---- */
-
-
-/* ---- Radius Label ---- */
+/* ---- Radius Section ---- */
 .radius-label {
-  width: 78px; /* optional, text will size automatically */
-  height: 17px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 0.3rem;
-  display: block;
   margin-bottom: 4px;
 }
 
-/* ---- Radius Control Container ---- */
 .radius-control {
+  width: 258px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 36px;
 }
 
-/* Left/Right buttons */
 .radius-btn {
   width: 24px;
   height: 34px;
@@ -663,99 +662,66 @@ footer {
   background: #fff;
 }
 
-/* Left button has the light gray background */
 .radius-btn.left {
   background-color: rgba(238, 238, 238, 0.33);
 }
 
-/* Arrow inside button */
 .radius-btn .arrow {
   font-size: 14px;
   font-weight: bold;
   color: rgba(8, 110, 157, 1);
-  line-height: 1;
 }
 
-/* Middle number input */
 .radius-input {
   width: 41px;
   height: 30px;
   border-top: 1px solid rgba(102, 102, 102, 1);
   border-bottom: 1px solid rgba(102, 102, 102, 1);
-  border-left: none;
-  border-right: none;
   background: #fff;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  font-weight: 400;
   color: rgba(51, 51, 51, 1);
 }
 
-/* ---- Care Type Label ---- */
-.care-label {
-  width: 258px; /* optional since block element spans anyway */
-  height: 17px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 0.3rem;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* ---- Care Type Dropdown ---- */
-.care-select {
-  width: 258px;
-  height: 34px;
-  border: 1px solid rgba(102, 102, 102, 1);
-  background-color: rgba(255, 255, 255, 1);
-  padding: 0 0.5rem;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 36px;
-}
-
-/* Placeholder-style for the first option */
-.care-select option[disabled] {
-  color: rgba(153, 153, 153, 1); /* gray placeholder */
-  font-style: italic;
-}
-
-/* ---- Facility Type Label ---- */
-.facility-label {
-  width: 258px;  /* not strictly needed, but matches Sketch */
-  height: 17px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(51, 51, 51, 1);
-  margin-bottom: 0.3rem;
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* ---- Facility Type Dropdown ---- */
+/* ---- Care & Facility Dropdowns ---- */
+.care-select,
 .facility-select {
   width: 258px;
   height: 34px;
   border: 1px solid rgba(102, 102, 102, 1);
-  background-color: #fff;
-  padding: 0 0.5rem;
+  background: #fff;
+  padding: 0 8px;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  font-weight: 400;
   color: rgba(51, 51, 51, 1);
   margin-bottom: 36px;
+  box-sizing: border-box;
 }
 
-/* Placeholder style (first option) */
-.facility-select option[disabled] {
-  color: rgba(153, 153, 153, 1);
-  font-style: italic;
+/* ---- Search Button ---- */
+.search-btn {
+  width: 88px;
+  height: 33px;
+  border-radius: 16.5px;
+  background: rgba(8, 110, 157, 1);
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 36px auto 0 auto;
+  transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+  background: #066b8d;
 }
 
 /* ---- Search Button ---- */
