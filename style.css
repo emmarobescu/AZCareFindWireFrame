@@ -580,8 +580,9 @@ footer {
   justify-content: center;
   align-items: center;
 
-  /* keep only top padding from sidebar, then add a bit more gap before first field */
-  margin: 0 auto 48px auto; /* increased from 36px → 48px for breathing room */
+  /* replaces margin spacing — use padding to lock 36px gap below */
+  margin: 0 auto;
+  padding-bottom: 36px; /* exact 36px between title and City/Zip label */
 }
 
 /* ---- LABELS ---- */
