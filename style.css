@@ -648,7 +648,7 @@ footer {
 /* Left Arrow Box */
 .radius-btn.left {
   width: 24px;
-  height: 34px;
+  height: 36px;
   border: 1px solid rgba(102, 102, 102, 1);
   background-color: rgba(238, 238, 238, 0.33);
   display: flex;
@@ -679,7 +679,7 @@ footer {
 /* Right Arrow Box */
 .radius-btn.right {
   width: 24px;
-  height: 34px;
+  height: 36px;
   border: 1px solid rgba(102, 102, 102, 1);
   background-color: rgba(238, 238, 238, 0.33);
   display: flex;
