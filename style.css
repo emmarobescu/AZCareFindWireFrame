@@ -600,8 +600,7 @@ footer {
 .filter-input,
 .care-select,
 .facility-select,
-.radius-control,
-.search-btn {
+{
   width: 258px;
   margin: 0 0 36px 0;
 }
