@@ -623,7 +623,7 @@ footer {
 .radius-btn.left { background-color: rgba(238,238,238,0.33); }
 .radius-btn .arrow { font-size: 14px; font-weight: 700; color: rgba(8,110,157,1); line-height: 1; }
 .radius-input {
-  width: 41px; height: 30px;
+  width: 41px; height: 28px;
   border-top: 1px solid rgba(102,102,102,1);
   border-bottom: 1px solid rgba(102,102,102,1);
   background: #fff; text-align: center;
