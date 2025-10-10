@@ -568,13 +568,21 @@ footer {
 
 /* Heading centered */
 .filter-title {
-  width: 138px; height: 26px;
+  width: 138px;
+  height: 26px;
   font-family: 'Poppins', sans-serif;
-  font-size: 18px; font-weight: 700; line-height: 26px;
-  color: rgba(51,51,51,1);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: rgba(51, 51, 51, 1);
   text-align: center;
-  position: relative; left: 50%; transform: translateX(-50%);
-  margin: 36px 0;
+
+  /* Center using flex instead of transform */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 36px auto 0 auto; /* centers horizontally */
 }
 
 /* Labels */
