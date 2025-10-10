@@ -690,6 +690,7 @@ footer {
   text-align: center;
   border: none;
   cursor: pointer;
+  margin-top: 36px;
 
   display: flex;
   justify-content: center;
