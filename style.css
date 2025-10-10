@@ -581,8 +581,11 @@ footer {
   align-items: center;
 
   /* replaces margin spacing — use padding to lock 36px gap below */
-  margin: 0 auto;
-  padding-bottom: 36px; /* exact 36px between title and City/Zip label */
+  margin: 0 auto; /* exact 36px between title and City/Zip label */
+}
+
+.filter-sidebar .filter-label:first-of-type {
+  margin-top: 36px; /* absolute spacing from title */
 }
 
 /* ---- LABELS ---- */
