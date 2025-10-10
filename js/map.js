@@ -51,5 +51,3 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
   })
   .catch(err => console.error("Error loading facilities.json:", err));
 
-window.map = map;
-window.markers = markers;
