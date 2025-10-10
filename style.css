@@ -583,6 +583,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 36px;
 }
 /* ---- Labels ---- */
 .filter-label,
@@ -597,6 +598,8 @@ footer {
   margin: 0 0 4px 0;
   display: block;
   text-align: left;
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 /* ---- Inputs and Selects ---- */
@@ -613,6 +616,7 @@ footer {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   color: rgba(51, 51, 51, 1);
+  margin-bottom: 36px;
 }
 
 .filter-input::placeholder {
