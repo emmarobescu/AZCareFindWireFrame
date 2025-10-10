@@ -680,8 +680,8 @@ footer {
 .radius-btn.right {
   width: 24px;
   height: 34px;
-  background-color: #fff;
-  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1);
+  border: 1px solid rgba(102, 102, 102, 1);
+  background-color: rgba(238, 238, 238, 0.33);
   display: flex;
   align-items: center;
   justify-content: center;
