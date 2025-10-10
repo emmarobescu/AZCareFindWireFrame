@@ -50,3 +50,6 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
     map.addLayer(markers);
   })
   .catch(err => console.error("Error loading facilities.json:", err));
+
+window.map = map;
+window.markers = markers;
