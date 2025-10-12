@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.map-container');
-  const toggleBtn = document.getElementById('open-filter');
+  const filterBtn = document.getElementById('open-filter'); // first icon
 
-  if (container && toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      container.classList.toggle('sidebar-open');
-      toggleBtn.classList.toggle('active', isOpen);
+  if (container && filterBtn) {
+    filterBtn.addEventListener('click', () => {
+      const isOpen = container.classList.toggle('sidebar-open');
+      filterBtn.classList.toggle('active', isOpen); // only affects filter icon
     });
   }
 });
