@@ -528,6 +528,43 @@ footer {
   transform: translateX(0);
 }
 
+
+/* ===== INFO SIDEBAR ===== */
+.info-sidebar {
+  width: 317px;
+  height: 696px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1002;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+  padding: 36px 29.5px;
+  box-sizing: border-box;
+}
+
+.map-container.info-open .info-sidebar {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.info-content {
+  font-family: 'Open Sans', sans-serif;
+  color: rgba(51, 51, 51, 1);
+}
+
+.info-content h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: rgba(8, 110, 157, 1);
+}
+
 /* ===== ICON BOX ===== */
 .filter-info-box {
   width: 48px;
@@ -564,21 +601,7 @@ footer {
 .icon-btn:last-child img { width: 27px; height: 27px; }
 
 /* ===== New code for icon recolor ===== */
-/* Filter icon active (light blue background) */
-.icon-btn#open-filter.active {
-  filter: none;
-  color: rgba(99, 197, 218, 1);
-  fill: currentColor;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
 
-/* Info icon will get its own styling later */
-.icon-btn.info-active {
-  background-color: rgba(99, 197, 218, 0.7);
-  border-radius: 6px;
-}
-/* ===== FILTER FORM ===== */
 
 /* ---- FILTER TITLE ---- */
 .filter-title {
