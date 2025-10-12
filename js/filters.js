@@ -49,20 +49,26 @@ rightArrow?.addEventListener("click", () => adjustRadius(1));
 
   // ---- Geocoding helper ----
   async function geocode(q) {
-    const clean = q.trim(),
-      isZip = /^\d{5}$/.test(clean),
-      url = isZip
-        ? `https://api.zippopotam.us/us/${clean}`
-        : `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(clean)}`,
-      res = await fetch(url),
-      data = await res.json();
+  const clean = q.trim();
+  const isZip = /^\d{5}$/.test(clean);
 
+  try {
     if (isZip) {
+      const res = await fetch(`https://api.zippopotam.us/us/${clean}`);
+      const data = await res.json();
       return { lat: +data.places[0].latitude, lng: +data.places[0].longitude };
+    } else {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(clean)}`;
+      const res = await fetch(url);
+      const data = await res.json();
+      if (!data.length) throw new Error("City not found");
+      return { lat: +data[0].lat, lng: +data[0].lon };
     }
-    if (!data.length) throw new Error("Location not found");
-    return { lat: +data[0].lat, lng: +data[0].lon };
+  } catch (err) {
+    console.error("Geocoding failed:", err);
+    throw new Error("Location not found");
   }
+}
 
   // ---- Search button click ----
   searchBtn?.addEventListener("click", async () => {
