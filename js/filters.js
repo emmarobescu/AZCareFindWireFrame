@@ -17,14 +17,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // ---- Radius adjustment buttons ----
-  function adjustRadius(delta) {
-    const val = parseInt(radiusInput.value || "0", 10);
-    const newVal = Math.max(1, Math.min(50, val + delta));
-    radiusInput.value = newVal;
-  }
-  leftArrow?.addEventListener("click", () => adjustRadius(-1));
-  rightArrow?.addEventListener("click", () => adjustRadius(1));
+ // ---- Radius adjustment buttons ----
+function adjustRadius(delta) {
+  let val = parseInt(radiusInput.value || "1", 10);
+
+  // first jump: 1 → 5
+  if (val === 1 && delta > 0) val = 0;
+
+  // move in 5-mile steps but never below 1 or above 50
+  const newVal = Math.max(1, Math.min(50, val + delta * 5));
+  radiusInput.value = newVal;
+}
+
+leftArrow?.addEventListener("click", () => adjustRadius(-1));
+rightArrow?.addEventListener("click", () => adjustRadius(1));
+
 
   // ---- Convert miles to kilometers ----
   const toKm = miles => miles * 1.60934;
