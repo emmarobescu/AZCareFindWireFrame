@@ -1,9 +1,8 @@
-
-// scripts/filters.js
+// scripts/filter.js
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("filters.js fully active");
+  console.log("filter.js fully active");
 
-  // Elements
+  // ---- Element references ----
   const searchBtn = document.querySelector(".search-btn");
   const locInput = document.querySelector(".filter-input");
   const radiusInput = document.querySelector(".radius-input");
@@ -12,60 +11,92 @@ document.addEventListener("DOMContentLoaded", () => {
   const leftArrow = document.querySelector(".radius-btn.left");
   const rightArrow = document.querySelector(".radius-btn.right");
 
-  // Make sure map exists
+  // ---- Check map availability ----
   if (!window.map || !window.markers) {
-    console.warn("Map or markers not found — make sure map.js loads before filters.js");
+    console.warn("Map or markers not found — make sure map.js loads before filter.js");
     return;
   }
 
- // ---- Radius adjustment buttons ----
-function adjustRadius(delta) {
-  let val = parseInt(radiusInput.value || "1", 10);
+  // ================================================================
+  // ========== 1️⃣  Radius adjustment buttons ======================
+  // ================================================================
+  function adjustRadius(delta) {
+    let val = parseInt(radiusInput.value || "1", 10);
+    // first jump: 1 → 5
+    if (val === 1 && delta > 0) val = 0;
+    // move in 5-mile steps but never below 1 or above 50
+    const newVal = Math.max(1, Math.min(50, val + delta * 5));
+    radiusInput.value = newVal;
+  }
+  leftArrow?.addEventListener("click", () => adjustRadius(-1));
+  rightArrow?.addEventListener("click", () => adjustRadius(1));
 
-  // first jump: 1 → 5
-  if (val === 1 && delta > 0) val = 0;
-
-  // move in 5-mile steps but never below 1 or above 50
-  const newVal = Math.max(1, Math.min(50, val + delta * 5));
-  radiusInput.value = newVal;
-}
-
-leftArrow?.addEventListener("click", () => adjustRadius(-1));
-rightArrow?.addEventListener("click", () => adjustRadius(1));
-
-
-  // ---- Convert miles to kilometers ----
+  // ---- Helpers ----
   const toKm = miles => miles * 1.60934;
-
-  // ---- Haversine distance ----
   function distanceKm(a, b, c, d) {
     const R = 6371;
     const dLat = (c - a) * Math.PI / 180;
     const dLon = (d - b) * Math.PI / 180;
-    const u = Math.sin(dLat / 2) ** 2 +
-              Math.cos(a * Math.PI / 180) * Math.cos(c * Math.PI / 180) *
-              Math.sin(dLon / 2) ** 2;
+    const u =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(a * Math.PI / 180) *
+        Math.cos(c * Math.PI / 180) *
+        Math.sin(dLon / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(u));
   }
 
-  // ---- Geocoding helper ----
-  async function geocode(q) {
-    const clean = q.trim(),
-      isZip = /^\d{5}$/.test(clean),
-      url = isZip
-        ? `https://api.zippopotam.us/us/${clean}`
-        : `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(clean)}`,
-      res = await fetch(url),
-      data = await res.json();
+  // ================================================================
+  // ========== 2️⃣  Geocode with local city/zip match ===============
+  // ================================================================
+  async function geocode(q, data) {
+    const clean = q.trim().toUpperCase();
+    const isZip = /^\d{5}$/.test(clean);
 
-    if (isZip) {
-      return { lat: +data.places[0].latitude, lng: +data.places[0].longitude };
+    // Try to match CITY or ZIP in your dataset first
+    const matches = data.filter(f => {
+      const city = (f.CITY || "").toUpperCase();
+      const zip = (f.N_ZIP || f.ZIP || "").toString();
+      return city === clean || zip === clean;
+    });
+
+    if (matches.length > 0) {
+      const avgLat =
+        matches.reduce((sum, f) => sum + parseFloat(f.N_LAT), 0) /
+        matches.length;
+      const avgLon =
+        matches.reduce((sum, f) => sum + parseFloat(f.N_LON), 0) /
+        matches.length;
+      console.log(`Found local match for "${clean}" in dataset (${matches.length} facilities)`);
+      return { lat: avgLat, lng: avgLon };
     }
-    if (!data.length) throw new Error("Location not found");
-    return { lat: +data[0].lat, lng: +data[0].lon };
+
+    // Fallback: external APIs
+    try {
+      if (isZip) {
+        const res = await fetch(`https://api.zippopotam.us/us/${clean}`);
+        const data = await res.json();
+        return {
+          lat: +data.places[0].latitude,
+          lng: +data.places[0].longitude,
+        };
+      } else {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(
+          q
+        )}`;
+        const res = await fetch(url);
+        const geo = await res.json();
+        if (!geo.length) throw new Error("City not found");
+        return { lat: +geo[0].lat, lng: +geo[0].lon };
+      }
+    } catch (err) {
+      console.error("Geocoding failed:", err);
+      throw new Error("Location not found");
+    }
   }
 
-  // ---- Search button click ----
+  // ================================================================
+  // ========== 3️⃣  Search button logic =============================
+  // ================================================================
   searchBtn?.addEventListener("click", async () => {
     console.log("Search clicked");
 
@@ -75,9 +106,14 @@ rightArrow?.addEventListener("click", () => adjustRadius(1));
     const sizeVal = facilitySelect.value;
 
     let center, rKm;
+
+    // Load dataset once for both local match & filtering
+    const data = await fetch("data/facilities.json").then(r => r.json());
+
+    // ---- Determine center & radius ----
     if (locRaw) {
       try {
-        center = await geocode(locRaw);
+        center = await geocode(locRaw, data);
         rKm = toKm(radius);
       } catch {
         alert("Location not found");
@@ -85,48 +121,45 @@ rightArrow?.addEventListener("click", () => adjustRadius(1));
       }
     }
 
-    fetch("data/facilities.json")
-      .then(res => res.json())
-      .then(data => {
-        const filtered = data.filter(f => {
-          const name = (f.FACILITY_NAME || "").toUpperCase();
-          const type = (f.TYPE || "").toUpperCase();
-          const sub = (f.SUBTYPE || "").toUpperCase();
+    // ---- Filter dataset ----
+    const filtered = data.filter(f => {
+      const name = (f.FACILITY_NAME || "").toUpperCase();
+      const type = (f.TYPE || "").toUpperCase();
+      const sub = (f.SUBTYPE || "").toUpperCase();
 
-          // Filter by care type
-          let ok = true;
-          if (careVal === "behavioral-health")
-            ok = type.includes("BEHAVIORAL") || sub.includes("BEHAVIORAL");
-          else if (careVal === "assisted")
-            ok = type.includes("ASSISTED LIVING");
-          else if (careVal === "memory")
-            ok = name.includes("MEMORY") || sub.includes("MEMORY");
-          if (!ok) return false;
+      // Care type filter
+      let ok = true;
+      if (careVal === "behavioral-health")
+        ok = type.includes("BEHAVIORAL") || sub.includes("BEHAVIORAL");
+      else if (careVal === "assisted")
+        ok = type.includes("ASSISTED LIVING");
+      else if (careVal === "memory")
+        ok = name.includes("MEMORY") || sub.includes("MEMORY");
+      if (!ok) return false;
 
-          // Filter by facility size
-          const cap = parseInt(f.CAPACITY_INT || f.Capacity || 0, 10);
-          if (sizeVal === "residential" && cap > 12) return false;
-          if (sizeVal === "facility" && cap <= 12) return false;
+      // Facility size filter
+      const cap = parseInt(f.CAPACITY_INT || f.Capacity || 0, 10);
+      if (sizeVal === "residential" && cap > 12) return false;
+      if (sizeVal === "facility" && cap <= 12) return false;
 
-          // Filter by location / radius
-          if (locRaw && rKm) {
-            const la = parseFloat(f.N_LAT), lo = parseFloat(f.N_LON);
-            if (isNaN(la) || isNaN(lo)) return false;
-            if (distanceKm(center.lat, center.lng, la, lo) > rKm) return false;
-          }
+      // Location / radius filter
+      if (locRaw && rKm) {
+        const la = parseFloat(f.N_LAT),
+          lo = parseFloat(f.N_LON);
+        if (isNaN(la) || isNaN(lo)) return false;
+        if (distanceKm(center.lat, center.lng, la, lo) > rKm) return false;
+      }
 
-          return true;
-        });
+      return true;
+    });
 
-        updateMarkers(filtered);
-      })
-      .catch(err => {
-        console.error("Filter error:", err);
-        alert("Something went wrong while filtering.");
-      });
+    // ---- Update map ----
+    updateMarkers(filtered);
   });
 
-  // ---- Update markers on map ----
+  // ================================================================
+  // ========== 4️⃣  Marker refresh =================================
+  // ================================================================
   function updateMarkers(list) {
     window.markers.clearLayers();
 
