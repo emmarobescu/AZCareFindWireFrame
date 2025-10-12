@@ -563,6 +563,14 @@ footer {
 .icon-btn:first-child img { width: 31px; height: 27px; }
 .icon-btn:last-child img { width: 27px; height: 27px; }
 
+/* ===== New code for icon recolor ===== */
+.icon-btn.active img {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(79%) saturate(569%)
+    hue-rotate(169deg) brightness(102%) contrast(94%);
+  /* this tint gives you a lighter blue; you can adjust hue-rotate or brightness */
+  transition: filter 0.3s ease;
+}
+
 /* ===== FILTER FORM ===== */
 
 /* ---- FILTER TITLE ---- */
