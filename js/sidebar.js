@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (container && toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       container.classList.toggle('sidebar-open');
+      toggleBtn.classList.toggle('active', isOpen);
     });
   }
 });
