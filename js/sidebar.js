@@ -8,4 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
       filterBtn.classList.toggle('active', isOpen); // only affects filter icon
     });
   }
+  // Info toggle
+  if (container && infoBtn) {
+    infoBtn.addEventListener('click', () => {
+      const isOpen = container.classList.toggle('info-open');
+      container.classList.remove('sidebar-open');
+      infoBtn.classList.toggle('active', isOpen);
+    });
+  }
 });
