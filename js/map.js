@@ -21,13 +21,13 @@ const markers = L.markerClusterGroup();
 
 // ---- Helper: Convert ALL CAPS to Title Case ----
 function toTitleCase(str) {
-  if (!str) return "N/A";
+  if (typeof str !== "string" || !str.trim()) return ""; // return empty if blank or not string
   const exceptions = ["of", "and", "in", "on", "at", "for", "to", "with", "a", "an", "the"];
   return str
     .toLowerCase()
     .split(" ")
-    .map(word => {
-      if (exceptions.includes(word)) return word;
+    .map((word, index) => {
+      if (exceptions.includes(word) && index !== 0) return word; // don't capitalize short words unless first
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ");
@@ -35,13 +35,11 @@ function toTitleCase(str) {
 
 // ---- Helper: Extract level of care from LICENSE_SUBTYPE ----
 function extractLevelOfCare(subtype) {
-  if (!subtype) return "N/A";
+  if (!subtype || typeof subtype !== "string") return "";
 
-  // Split at dash
   const parts = subtype.split("-");
   let level = parts[1] ? parts[1].trim() : "";
 
-  // Normalize Adult/Child into “Adult Care” / “Child Care”
   if (/adult/i.test(level)) return "Adult Care";
   if (/child/i.test(level)) return "Child Care";
 
@@ -83,15 +81,17 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
 
           // Fill in details
          // Fill in details
-document.getElementById('info-name').textContent = toTitleCase(facility.FACILITY_NAME);
+document.getElementById('info-name').textContent =
+  toTitleCase(facility.FACILITY_NAME) || "N/A";
 document.getElementById('info-address').textContent =
-  `${toTitleCase(facility.ADDRESS || "")}, ${toTitleCase(facility.CITY || "")} ${facility.ZIP || ""}`;
+  `${toTitleCase(facility.ADDRESS || "")}${facility.CITY ? ", " + toTitleCase(facility.CITY) : ""} ${facility.ZIP || ""}`.trim() || "N/A";
 document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
 document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
+document.getElementById('info-type').textContent =
+  toTitleCase(facility.TYPE) || "N/A";
+document.getElementById('info-subtype').textContent =
+  extractLevelOfCare(facility.LICENSE_SUBTYPE) || "N/A";
 
-// Format type and level of care
-document.getElementById('info-type').textContent = toTitleCase(facility.TYPE);
-document.getElementById('info-subtype').textContent = extractLevelOfCare(facility.LICENSE_SUBTYPE);
 
 
         });
