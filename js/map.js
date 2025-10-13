@@ -42,28 +42,30 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
           ${city}
         `);
 
+        // ---- Attach click event inside loop ----
+        marker.on('click', () => {
+          const container = document.querySelector('.map-container');
+          container.classList.add('info-open');
+          container.classList.remove('sidebar-open');
+
+          // Hide default message and show facility details
+          document.getElementById('info-default').style.display = 'none';
+          document.getElementById('facility-details').style.display = 'block';
+
+          // Fill in details
+          document.getElementById('info-name').textContent = facility.FACILITY_NAME || "N/A";
+          document.getElementById('info-address').textContent =
+            `${facility.ADDRESS || ""}, ${facility.CITY || ""} ${facility.ZIP || ""}`;
+          document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
+          document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
+          document.getElementById('info-type').textContent = facility.TYPE || "N/A";
+          document.getElementById('info-subtype').textContent = facility.SUBTYPE || "N/A";
+        });
+
+        // Add marker to cluster group
         markers.addLayer(marker);
       }
     });
-    marker.on('click', () => {
-  const container = document.querySelector('.map-container');
-  container.classList.add('info-open');
-  container.classList.remove('sidebar-open');
-
-  // Hide default message and show facility details
-  document.getElementById('info-default').style.display = 'none';
-  document.getElementById('facility-details').style.display = 'block';
-
-  // Fill in details
-  document.getElementById('info-name').textContent = facility.FACILITY_NAME || "N/A";
-  document.getElementById('info-address').textContent =
-    `${facility.ADDRESS || ""}, ${facility.CITY || ""} ${facility.ZIP || ""}`;
-  document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
-  document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
-  document.getElementById('info-type').textContent = facility.TYPE || "N/A";
-  document.getElementById('info-subtype').textContent = facility.SUBTYPE || "N/A";
-});
-
 
     // Add clustered markers to map
     map.addLayer(markers);
@@ -72,4 +74,3 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
 
 window.map = map;
 window.markers = markers;
-
