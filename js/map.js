@@ -19,25 +19,33 @@ L.control.zoom({
 // Create a cluster group
 const markers = L.markerClusterGroup();
 
-// ---- Helper: Convert ALL CAPS to normal case ----
-function toSentenceCase(str) {
+// ---- Helper: Convert ALL CAPS to Title Case ----
+function toTitleCase(str) {
   if (!str) return "N/A";
-  str = str.toLowerCase();
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  const exceptions = ["of", "and", "in", "on", "at", "for", "to", "with", "a", "an", "the"];
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map(word => {
+      if (exceptions.includes(word)) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
 }
 
 // ---- Helper: Extract level of care from LICENSE_SUBTYPE ----
 function extractLevelOfCare(subtype) {
   if (!subtype) return "N/A";
-  // Example: "ASSISTED LIVING HOME-DIRECTED" → "Directed"
+
+  // Split at dash
   const parts = subtype.split("-");
   let level = parts[1] ? parts[1].trim() : "";
 
-  // Normalize "ADULT" / "CHILD" → "Adult care" / "Child care"
-  if (/adult/i.test(level)) return "Adult care";
-  if (/child/i.test(level)) return "Child care";
+  // Normalize Adult/Child into “Adult Care” / “Child Care”
+  if (/adult/i.test(level)) return "Adult Care";
+  if (/child/i.test(level)) return "Child Care";
 
-  return toSentenceCase(level);
+  return toTitleCase(level);
 }
 
 // Load facilities data from your JSON file
