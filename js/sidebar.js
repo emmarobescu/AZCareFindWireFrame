@@ -17,12 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Info button toggle ----
   if (container && infoBtn) {
-    infoBtn.addEventListener('click', () => {
-      const isOpen = container.classList.toggle('info-open');
-      // close filter if info opens
-      if (isOpen) container.classList.remove('sidebar-open');
-      infoBtn.classList.toggle('active', isOpen);
-      filterBtn?.classList.remove('active');
-    });
-  }
+  infoBtn.addEventListener('click', () => {
+    const isOpen = container.classList.toggle('info-open');
+    if (isOpen) {
+      container.classList.remove('sidebar-open');
+      // Reset info panel to default state
+      document.getElementById('info-default').style.display = 'block';
+      document.getElementById('facility-details').style.display = 'none';
+    }
+    infoBtn.classList.toggle('active', isOpen);
+    filterBtn?.classList.remove('active');
+  });
+}
 });
