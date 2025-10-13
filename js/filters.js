@@ -174,13 +174,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!lat || !lon) return;
 
       const marker = L.marker([lat, lon]);
-      marker.bindPopup(`
-        <strong>${f.FACILITY_NAME || "Unknown Facility"}</strong><br>
-        ${f.ADDRESS || ""}<br>
-        ${f.CITY || ""}
-      `);
-      window.markers.addLayer(marker);
-    });
+marker.bindPopup(`
+  <strong>${f.FACILITY_NAME || "Unknown Facility"}</strong><br>
+  ${f.ADDRESS || ""}<br>
+  ${f.CITY || ""}
+`);
+attachMarkerClick(marker, f); // add this line
+markers.addLayer(marker);
+
 
     window.map.addLayer(window.markers);
     if (window.markers.getLayers().length)
