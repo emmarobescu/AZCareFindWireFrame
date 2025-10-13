@@ -528,7 +528,6 @@ footer {
   transform: translateX(0);
 }
 
-
 /* ===== INFO SIDEBAR ===== */
 .info-sidebar {
   width: 317px;
@@ -545,12 +544,14 @@ footer {
   transition: all 0.3s ease;
   padding: 36px 29.5px;
   box-sizing: border-box;
+  pointer-events: none; /* added so it's not clickable when hidden */
 }
 
 .map-container.info-open .info-sidebar {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
+  pointer-events: auto; /* clickable when visible */
 }
 
 .info-content {
@@ -583,7 +584,8 @@ footer {
   transition: transform 0.3s ease;
 }
 
-.map-container:not(.sidebar-open) .filter-info-box {
+/* Slide icon box only when *both* sidebars are closed */
+.map-container:not(.sidebar-open):not(.info-open) .filter-info-box {
   transform: translateX(-317px);
 }
 
@@ -597,11 +599,16 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.icon-btn:first-child img { width: 31px; height: 27px; }
-.icon-btn:last-child img { width: 27px; height: 27px; }
 
-/* ===== New code for icon recolor ===== */
+.icon-btn:first-child img {
+  width: 31px;
+  height: 27px;
+}
 
+.icon-btn:last-child img {
+  width: 27px;
+  height: 27px;
+}
 
 /* ---- FILTER TITLE ---- */
 .filter-title {
