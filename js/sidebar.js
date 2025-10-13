@@ -1,19 +1,28 @@
+// js/sidebar.js
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.map-container');
-  const filterBtn = document.getElementById('open-filter'); // first icon
+  const filterBtn = document.getElementById('open-filter');
+  const infoBtn = document.getElementById('open-info');
 
+  // ---- Filter button toggle ----
   if (container && filterBtn) {
     filterBtn.addEventListener('click', () => {
       const isOpen = container.classList.toggle('sidebar-open');
-      filterBtn.classList.toggle('active', isOpen); // only affects filter icon
+      // close info if filter opens
+      if (isOpen) container.classList.remove('info-open');
+      filterBtn.classList.toggle('active', isOpen);
+      infoBtn?.classList.remove('active');
     });
   }
-  // Info toggle
+
+  // ---- Info button toggle ----
   if (container && infoBtn) {
     infoBtn.addEventListener('click', () => {
       const isOpen = container.classList.toggle('info-open');
-      container.classList.remove('sidebar-open');
+      // close filter if info opens
+      if (isOpen) container.classList.remove('sidebar-open');
       infoBtn.classList.toggle('active', isOpen);
+      filterBtn?.classList.remove('active');
     });
   }
 });
