@@ -83,15 +83,16 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
 
           // Fill in details
          // Fill in details
-          document.getElementById('info-name').textContent = toSentenceCase(facility.FACILITY_NAME) || "N/A";
-          document.getElementById('info-address').textContent =
-           `${toSentenceCase(facility.ADDRESS || "")}, ${toSentenceCase(facility.CITY || "")} ${facility.ZIP || ""}`;
-          document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
-          document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
+document.getElementById('info-name').textContent = toTitleCase(facility.FACILITY_NAME);
+document.getElementById('info-address').textContent =
+  `${toTitleCase(facility.ADDRESS || "")}, ${toTitleCase(facility.CITY || "")} ${facility.ZIP || ""}`;
+document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
+document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
 
 // Format type and level of care
-document.getElementById('info-type').textContent = toSentenceCase(facility.TYPE);
+document.getElementById('info-type').textContent = toTitleCase(facility.TYPE);
 document.getElementById('info-subtype').textContent = extractLevelOfCare(facility.LICENSE_SUBTYPE);
+
 
         });
 
