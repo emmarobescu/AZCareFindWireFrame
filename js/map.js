@@ -19,21 +19,25 @@ L.control.zoom({
 // Create a cluster group
 const markers = L.markerClusterGroup();
 
-// ---- Helper: Convert ALL CAPS to Title Case ----
+// ============================================================
+// === Helper: Convert ALL CAPS to Title Case ================
+// ============================================================
 function toTitleCase(str) {
-  if (typeof str !== "string" || !str.trim()) return ""; // return empty if blank or not string
+  if (typeof str !== "string" || !str.trim()) return "";
   const exceptions = ["of", "and", "in", "on", "at", "for", "to", "with", "a", "an", "the"];
   return str
     .toLowerCase()
     .split(" ")
     .map((word, index) => {
-      if (exceptions.includes(word) && index !== 0) return word; // don't capitalize short words unless first
+      if (exceptions.includes(word) && index !== 0) return word;
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ");
 }
 
-// ---- Helper: Extract level of care from LICENSE_SUBTYPE ----
+// ============================================================
+// === Helper: Extract level of care from LICENSE_SUBTYPE =====
+// ============================================================
 function extractLevelOfCare(subtype) {
   if (!subtype || typeof subtype !== "string") return "";
 
@@ -46,11 +50,44 @@ function extractLevelOfCare(subtype) {
   return toTitleCase(level);
 }
 
-// Load facilities data from your JSON file
-fetch('data/facilities.json') // adjust path if JSON isn’t in /data
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(facility => {
+// ============================================================
+// === Helper: Attach click event to a marker ================
+// ============================================================
+function attachMarkerClick(marker, facility) {
+  marker.on("click", () => {
+    const container = document.querySelector(".map-container");
+    container.classList.add("info-open");
+    container.classList.remove("sidebar-open");
+
+    // Keep header + helper text visible
+    document.getElementById("info-default").style.display = "block";
+    document.getElementById("facility-details").style.display = "block";
+
+    // Fill in facility details
+    document.getElementById("info-name").textContent =
+      toTitleCase(facility.FACILITY_NAME) || "N/A";
+    document.getElementById("info-address").textContent =
+      `${toTitleCase(facility.ADDRESS || "")}${
+        facility.CITY ? ", " + toTitleCase(facility.CITY) : ""
+      } ${facility.ZIP || ""}`.trim() || "N/A";
+    document.getElementById("info-phone").textContent =
+      facility.Telephone || "N/A";
+    document.getElementById("info-capacity").textContent =
+      facility.Capacity || "N/A";
+    document.getElementById("info-type").textContent =
+      toTitleCase(facility.TYPE) || "N/A";
+    document.getElementById("info-subtype").textContent =
+      extractLevelOfCare(facility.LICENSE_SUBTYPE) || "N/A";
+  });
+}
+
+// ============================================================
+// === Load facilities data and plot markers =================
+// ============================================================
+fetch("data/facilities.json")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((facility) => {
       const lat = facility.N_LAT;
       const lon = facility.N_LON;
 
@@ -62,39 +99,15 @@ fetch('data/facilities.json') // adjust path if JSON isn’t in /data
         // Create marker
         const marker = L.marker([lat, lon]);
 
-        // Popup with details
+        // Popup with basic info
         marker.bindPopup(`
           <strong>${name}</strong><br>
           ${address}<br>
           ${city}
         `);
 
-        // ---- Attach click event inside loop ----
-        marker.on('click', () => {
-          const container = document.querySelector('.map-container');
-          container.classList.add('info-open');
-          container.classList.remove('sidebar-open');
-
-          // Hide default message and show facility details
-          document.getElementById('info-default').style.display = 'none';
-          document.getElementById('facility-details').style.display = 'block';
-
-          // Fill in details
-         // Fill in details
-document.getElementById('info-name').textContent =
-  toTitleCase(facility.FACILITY_NAME) || "N/A";
-document.getElementById('info-address').textContent =
-  `${toTitleCase(facility.ADDRESS || "")}${facility.CITY ? ", " + toTitleCase(facility.CITY) : ""} ${facility.ZIP || ""}`.trim() || "N/A";
-document.getElementById('info-phone').textContent = facility.Telephone || "N/A";
-document.getElementById('info-capacity').textContent = facility.Capacity || "N/A";
-document.getElementById('info-type').textContent =
-  toTitleCase(facility.TYPE) || "N/A";
-document.getElementById('info-subtype').textContent =
-  extractLevelOfCare(facility.LICENSE_SUBTYPE) || "N/A";
-
-
-
-        });
+        // Attach click event using the shared helper
+        attachMarkerClick(marker, facility);
 
         // Add marker to cluster group
         markers.addLayer(marker);
@@ -104,7 +117,9 @@ document.getElementById('info-subtype').textContent =
     // Add clustered markers to map
     map.addLayer(markers);
   })
-  .catch(err => console.error("Error loading facilities.json:", err));
+  .catch((err) => console.error("Error loading facilities.json:", err));
 
+// Expose globals so filters.js can reuse them
 window.map = map;
 window.markers = markers;
+window.attachMarkerClick = attachMarkerClick;
