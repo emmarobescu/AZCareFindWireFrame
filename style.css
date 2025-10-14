@@ -593,25 +593,40 @@ h6 {
   margin: 10px 0 20px;
 }
 
-/* checkbox + label group */
+/* Checkbox + Label group */
 .checkbox-group {
   display: flex;
-  align-items: center;       /* centers both vertically */
-  gap: 6px;                  /* consistent space between box and text */
+  align-items: center; /* vertically centers box & text */
+  gap: 6px;
 }
 
+/* Checkbox box */
 .checkbox-group input[type="checkbox"] {
   width: 13px;
   height: 13px;
-  border: 1px solid rgba(153, 153, 153, 1);
+  border: 1px solid rgba(19, 56, 190, 1);
   border-radius: 1px;
   background-color: rgba(238, 238, 238, 1);
   appearance: none;
   cursor: pointer;
+  position: relative;
+  display: inline-block;
 }
 
+/* Checked state — blue background + white check */
 .checkbox-group input[type="checkbox"]:checked {
-  background-color: rgba(8, 110, 157, 1);
+  background-color: rgba(19, 56, 190, 1);
+  border: 1px solid rgba(19, 56, 190, 1);
+}
+.checkbox-group input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 9px;
+  height: 7px;
+  background-color: rgba(255, 255, 255, 1);
+  clip-path: polygon(14% 44%, 0% 60%, 50% 100%, 100% 0%, 80% 0%, 43% 67%);
 }
 
 /* Label text (Keep Me Signed In) */
@@ -624,7 +639,7 @@ h6 {
   font-weight: 400;
   line-height: 1;
   display: flex;
-  align-items: center;       /* aligns text perfectly with checkbox */
+  align-items: center; /* centers text perfectly */
 }
 
 /* forgot-password link */
