@@ -57,6 +57,18 @@
     </div>
   </section>
 
+  <script>
+  // When user presses Enter, redirect to map.html with their query
+  const searchInput = document.getElementById('homepage-search');
+  searchInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      const query = encodeURIComponent(searchInput.value.trim());
+      if (query) {
+        window.location.href = `map.html?location=${query}`;
+      }
+    }
+  });
+</script>
                                                   <!-- Mission -->
   <section class="mission">
   <h2>Our Mission</h2>
