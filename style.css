@@ -1,14 +1,3 @@
-/* ===== Page Layout Fix (sticky footer) ===== */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1; /* pushes footer to bottom when content is short */
-}
 
 body {
   margin: 0;
@@ -1158,6 +1147,19 @@ footer {
 .list-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
+
+/* ===== Page Layout Fix (sticky footer) ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* pushes footer to bottom when content is short */
+}
+
 
 
 
