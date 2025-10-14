@@ -1067,3 +1067,84 @@ footer {
   gap: 36px; /* ensures consistent vertical spacing */
 }
 
+
+
+
+
+
+
+                                                    /* ===== List Your Business Page ===== */
+.list-page {
+  display: flex;
+  justify-content: center;
+  padding: 80px 40px;
+  background-color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+.list-content {
+  max-width: 1063px;
+  color: rgba(51, 51, 51, 1);
+}
+
+/* Heading */
+.list-content h1 {
+  width: 398px;
+  height: 45px;
+  color: rgba(51, 51, 51, 1);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+/* Description */
+.list-description {
+  width: 1063px;
+  height: 44px;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+/* Bullet points */
+.list-benefits {
+  width: 873px;
+  margin-left: 20px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  font-weight: 400;
+  list-style-type: disc;
+}
+
+/* Button */
+.list-btn {
+  width: 98px;
+  height: 31px;
+  border: 1px solid rgba(8, 110, 157, 1);
+  border-radius: 15.5px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.list-btn span {
+  width: 52px;
+  height: 17px;
+  color: rgba(8, 110, 157, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1;
+}
+
+.list-btn:hover {
+  background: rgba(8, 110, 157, 0.1);
+}
+
+
