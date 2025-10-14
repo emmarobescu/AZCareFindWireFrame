@@ -644,6 +644,7 @@ h6 {
 
 /* forgot-password link */
 .forgot {
+  white-space: nowrap;  
   width: 105px;
   height: 17px;
   color: rgba(8, 110, 157, 1);
@@ -722,6 +723,7 @@ h6 {
   font-weight: 700;
   font-size: 12px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .create-btn:hover {
