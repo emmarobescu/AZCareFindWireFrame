@@ -1154,7 +1154,7 @@ footer {
   text-align: center;
   line-height: 1;
   position: relative;
-  top: 1.5px;   /* pushes text down slightly for perfect centering */
+  top: 0.5px;   /* pushes text down slightly for perfect centering */
 }
 
 .list-btn:hover {
