@@ -9,19 +9,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header (reuse your main header markup if you like) -->
+   <!-- Header -->
   <header>
-    <nav class="main-nav">
-      <div class="logo">
-        <a href="index.html"><img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo"></a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="assessment.html">Assessment</a></li>
-        <li><a href="map.html">Map & Choices</a></li>
-        <li><a href="list.html" class="active">List Your Business</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <a href="#">About Us</a>
+    <span class="phone">(623) 866-8784</span>
+  </div>
+
+                                          <!-- Main navigation -->
+  <nav class="main-nav">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
+  </div>
+
+  <!-- Nav Links with dividers -->
+  <ul class="nav-links">
+  <li class="nav-item assessment"><a href="assessment.html">ASSESSMENT</a></li>
+  <li class="divider"></li>
+  <li class="nav-item map"><a href="map.html">MAP & CHOICES</a></li>
+  <li class="divider"></li>
+  <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
+</ul>
+
+  <!-- Sign In Button -->
+  <div class="nav-right">
+  <button class="signin" id="openSignin">
+    <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
+    <span>Sign In</span>
+  </button>
+</div>
+</nav>
+
+                                                 <!-- Accent bar -->
+  <div class="accent-bar"></div>
+</header>
 
   <!-- ===== Main Content ===== -->
   <main class="list-page">
