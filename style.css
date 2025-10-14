@@ -1081,28 +1081,28 @@ footer {
 
                                                     /* ===== List Your Business Page ===== */
 /* ===== List Your Business Page ===== */
-/* ===== List Your Business Page ===== */
 .list-page {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 48px 40px 0 40px;   /*  48px from header, remove bottom padding */
+  padding: 48px 40px 0 40px;          /* 48 px below header */
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
-  min-height: calc(100vh - 80px); /* ensures it fills the screen but doesn’t add scroll */
-  overflow: hidden;              /* hides any accidental overflow causing scroll */
+  min-height: calc(100vh - 80px);     /* fills screen minus header height */
+  overflow: hidden;                   /* removes scroll gap */
 }
-
 
 .list-content {
   max-width: 1063px;
   width: 100%;
   color: rgba(51, 51, 51, 1);
-  margin: 0 auto;              /* centers content inside flex parent */
+  margin: 0 auto;
   box-sizing: border-box;
-  padding: 0 20px;             /* prevents text from hugging edges */
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Heading */
@@ -1113,7 +1113,7 @@ footer {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 24px;                /* 24 px below title */
 }
 
 /* Description paragraph */
@@ -1121,23 +1121,23 @@ footer {
   width: 1063px;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.8;
-  margin-bottom: 48px;
+  line-height: 1.6;
+  margin-bottom: 24px;                /* 24 px gap before bullets */
 }
 
 /* Bullet list */
 .list-benefits {
   width: 900px;
   margin-left: 25px;
-  margin-bottom: 64px;
   font-size: 15px;
   font-weight: 400;
-  line-height: 2.2;          /* 👈 visually double-spaced */
+  line-height: 1.8;                   /* slightly tighter for balance */
   list-style-type: disc;
+  margin-bottom: 24px;                /* 24 px gap before button */
 }
 
 .list-benefits li {
-  margin-bottom: 20px;       /* adds extra breathing room */
+  margin-bottom: 24px;                /* 24 px spacing between bullets */
 }
 
 .list-benefits strong {
@@ -1158,7 +1158,8 @@ footer {
   justify-content: center;
   transition: all 0.2s ease;
   white-space: nowrap;
-  margin-left: auto;          /* aligns to the right */
+  margin-left: auto;                  /* align right */
+  margin-top: 0;                      /* keep spacing controlled above */
 }
 
 .list-btn span {
@@ -1169,12 +1170,19 @@ footer {
   text-align: center;
   line-height: 1;
   position: relative;
-  top: 0.5px;                   /* small nudge for perfect centering */
+  top: 1px;                           /* vertical centering tweak */
 }
 
 .list-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
+
+/* Footer sticks to bottom visually */
+footer {
+  margin-top: auto;                   /* pushes footer to bottom of viewport */
+  width: 100%;
+}
+
 
 /* ===== Popup Overlay ===== */
 #popupOverlay {
