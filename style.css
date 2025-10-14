@@ -648,6 +648,7 @@ h6 {
   line-height: 1;
   display: flex;
   align-items: center; /* centers text perfectly */
+  top: 0.5px;
 }
 
 /* forgot-password link */
