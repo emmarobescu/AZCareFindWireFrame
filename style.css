@@ -533,13 +533,19 @@ h6 {
   position: absolute;
   top: 16px;
   right: 16px;
+  width: 15px;
+  height: 21px;
+  color: rgba(0, 0, 0, 1);
+  font-family: "Font Awesome 6 Pro", "FontAwesome", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
   background: none;
   border: none;
-  font-size: 24px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 1);
+  line-height: 21px;
   cursor: pointer;
 }
+
 
 /* ===== Inside Sidebar ===== */
 .signin-content {
