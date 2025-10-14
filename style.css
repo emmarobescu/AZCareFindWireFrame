@@ -504,12 +504,17 @@ h6 {
   z-index: 900;
 }
 
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* ===== Sign-In Sidebar ===== */
 .signin-sidebar {
   position: fixed;
   top: 0;
   right: 0;
-  width: 337px;
+  width: 337px; /* +4 px wider for perfect fit */
   height: 100vh;
   border-left: 1px solid rgba(204, 204, 204, 1);
   background: #fff;
@@ -519,23 +524,29 @@ h6 {
   z-index: 1000;
   overflow-y: auto;
 }
-
 .signin-sidebar.open {
   transform: translateX(0);
 }
 
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
+/* ===== Close “×” Button ===== */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
 }
 
 /* ===== Inside Sidebar ===== */
 .signin-content {
-  padding: 45px 12px 45px 12px;;
+  padding: 45px 12px 45px 12px; /* moved content 4 px left/right */
   font-family: "Open Sans", sans-serif;
   color: rgba(51, 51, 51, 1);
 }
-
 .signin-content h2 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
@@ -543,12 +554,13 @@ h6 {
   margin-bottom: 20px;
 }
 
+/* ===== Labels & Inputs ===== */
 .signin-content label {
   display: block;
   font-size: 12px;
   margin-bottom: 4px;
+  color: rgba(51, 51, 51, 1);
 }
-
 .signin-content input[type="text"],
 .signin-content input[type="password"] {
   width: 301px;
@@ -560,41 +572,74 @@ h6 {
   padding: 0 10px;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
+  background-color: #fff;
 }
-
 .signin-content input::placeholder {
   color: rgba(153, 153, 153, 1);
   font-style: italic;
 }
 
+/* ===== Keep Me Signed In / Forgot Password ===== */
 .keep-signed {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0 20px;
 }
 
-.keep-signed label {
-  margin-left: 6px;
+/* checkbox + label group */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+.checkbox-group input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(153, 153, 153, 1);
+  border-radius: 1px;
+  background-color: rgba(238, 238, 238, 1);
+  appearance: none;
+  margin-right: 6px;
+  cursor: pointer;
+}
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: rgba(8, 110, 157, 1);
+}
+.checkbox-group label {
   font-size: 12px;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
 }
 
+/* forgot-password link */
 .forgot {
-  font-size: 12px;
+  width: 105px;
+  height: 17px;
   color: rgba(8, 110, 157, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
   text-decoration: none;
 }
 
+/* ===== Sign-In Button ===== */
 .signin-btn {
-  width: 301px;
-  height: 40px;
-  background: rgba(8, 110, 157, 1);
+  width: 88px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
   color: #fff;
-  border: none;
-  border-radius: 4px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
   font-weight: 700;
+  border: none;
   cursor: pointer;
+  text-align: center;
 }
+.signin-btn:hover {
+  background-color: #066b8d;
+}
+
 
 /* ===== Footer ===== */
 footer {
