@@ -683,7 +683,6 @@ h6 {
 /* Description paragraph */
 .create-account .create-text {
   width: 301px;
-  height: 44px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -713,22 +712,22 @@ h6 {
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
 .create-btn span {
-  width: 111px;
-  height: 17px;
   color: rgba(8, 110, 157, 1);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 12px;
   text-align: center;
-  white-space: nowrap;
+  line-height: 1;
 }
 
 .create-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
+
 
 /* ===== Sign-In Button ===== */
 .signin-btn {
