@@ -96,6 +96,34 @@
   </div>
 </div>
 
+  <script>
+const overlay = document.getElementById("popupOverlay");
+const popup = document.getElementById("popupNotice");
+const listBtn = document.querySelector(".list-btn"); // your "List Now" button
+const cancelBtn = document.getElementById("cancelPopup");
+const continueBtn = document.getElementById("continuePopup");
+
+// open popup
+listBtn.addEventListener("click", () => {
+  overlay.classList.add("active");
+  popup.classList.add("active");
+});
+
+// close popup
+function closePopup() {
+  overlay.classList.remove("active");
+  popup.classList.remove("active");
+}
+cancelBtn.addEventListener("click", closePopup);
+overlay.addEventListener("click", closePopup);
+
+// continue → (we'll open the next popup in next step)
+continueBtn.addEventListener("click", () => {
+  popup.classList.remove("active");
+  alert("Next popup will load here in Step 2!");
+});
+</script>
+
   <footer>
     <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
   </footer>
