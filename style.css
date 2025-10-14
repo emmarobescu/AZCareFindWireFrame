@@ -597,40 +597,43 @@ h6 {
 .keep-signed {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;   /* vertically centers checkbox + text + link */
   margin: 10px 0 20px;
 }
 
-/* Checkbox + Label group */
+/* ===== Checkbox Group ===== */
 .checkbox-group {
   display: flex;
-  align-items: center; /* vertically centers box & text */
+  align-items: center;
   gap: 6px;
 }
 
-/* Checkbox box */
+/* Unchecked */
 .checkbox-group input[type="checkbox"] {
   width: 13px;
   height: 13px;
-  border: 1px solid rgba(19, 56, 190, 1);
+  border: 1px solid rgba(153, 153, 153, 1);
   border-radius: 1px;
   background-color: rgba(238, 238, 238, 1);
   appearance: none;
+  outline: none;
   cursor: pointer;
   position: relative;
-  display: inline-block;
+  transition: all 0.15s ease;
 }
 
-/* Checked state — blue background + white check */
+/* Checked */
 .checkbox-group input[type="checkbox"]:checked {
-  background-color: rgba(19, 56, 190, 1);
   border: 1px solid rgba(19, 56, 190, 1);
+  background-color: rgba(19, 56, 190, 1);
 }
+
+/* White check mark */
 .checkbox-group input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
-  left: 2px;
-  top: 3px;
+  top: 3px;        /* centers vertically */
+  left: 2px;       /* centers horizontally */
   width: 9px;
   height: 7px;
   background-color: rgba(255, 255, 255, 1);
@@ -639,29 +642,26 @@ h6 {
 
 /* Label text (Keep Me Signed In) */
 .checkbox-group label {
-  width: 104px;
-  height: 17px;
   color: rgba(51, 51, 51, 1);
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1;
   display: flex;
-  align-items: center; /* centers text perfectly */
-  top: 0.5px;
+  align-items: center; /* vertically centers text with checkbox */
 }
 
-/* forgot-password link */
+/* Forgot password link */
 .forgot {
-  white-space: nowrap;  
-  width: 105px;
-  height: 17px;
+  white-space: nowrap;
   color: rgba(8, 110, 157, 1);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 12px;
   text-decoration: none;
+  text-align: right;
 }
+
 
 /* ===== Divider line under Sign In ===== */
 .signin-divider {
