@@ -490,6 +490,112 @@ h6 {
   background-color: #066b8d; /* darker blue */
 }
 
+/* ===== Overlay ===== */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+
+/* ===== Sign-In Sidebar ===== */
+.signin-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 333px;
+  height: 100vh;
+  border-left: 1px solid rgba(204, 204, 204, 1);
+  background: #fff;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.signin-sidebar.open {
+  transform: translateX(0);
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== Inside Sidebar ===== */
+.signin-content {
+  padding: 45px 16px;
+  font-family: "Open Sans", sans-serif;
+  color: rgba(51, 51, 51, 1);
+}
+
+.signin-content h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signin-content label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.signin-content input[type="text"],
+.signin-content input[type="password"] {
+  width: 301px;
+  height: 34px;
+  margin-bottom: 16px;
+  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
+              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 0 10px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.signin-content input::placeholder {
+  color: rgba(153, 153, 153, 1);
+  font-style: italic;
+}
+
+.keep-signed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 20px;
+}
+
+.keep-signed label {
+  margin-left: 6px;
+  font-size: 12px;
+}
+
+.forgot {
+  font-size: 12px;
+  color: rgba(8, 110, 157, 1);
+  text-decoration: none;
+}
+
+.signin-btn {
+  width: 301px;
+  height: 40px;
+  background: rgba(8, 110, 157, 1);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 /* ===== Footer ===== */
 footer {
   background: #004aad;
