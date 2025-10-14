@@ -171,7 +171,7 @@
   </div>
 </section>
 
-  <!-- Overlay -->
+<!-- Overlay -->
 <div id="overlay"></div>
 
 <!-- Sign-In Sidebar -->
@@ -198,50 +198,44 @@
     <button class="signin-btn">Sign In</button>
   </div>
 </aside>
-  
-  <script>
-  const openBtn  = document.getElementById('openSignin');
-  const sidebar  = document.getElementById('signinSidebar');
-  const overlay  = document.getElementById('overlay');
 
-  function toggleSidebar(open) {
-    if (open) {
-      sidebar.classList.add('open');
-      overlay.classList.add('active');
-    } else {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
-    }
+<!-- ========================  JS ======================== -->
+<script>
+  // --- Hero search redirect ---
+  const searchInput = document.getElementById('homepage-search');
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          console.log("Redirecting with query:", query);
+          window.location.href = `map.html?location=${encodeURIComponent(query)}`;
+        }
+      }
+    });
   }
 
-    <script>
-  const openBtn  = document.getElementById('openSignin');
-  const sidebar  = document.getElementById('signinSidebar');
-  const overlay  = document.getElementById('overlay');
-  const closeBtn = document.getElementById('closeSignin');
+  // --- Sign-in sidebar controls ---
+  document.addEventListener('DOMContentLoaded', () => {
+    const openBtn  = document.getElementById('openSignin');
+    const sidebar  = document.getElementById('signinSidebar');
+    const overlay  = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeSignin');
 
-  function toggleSidebar(open) {
-    if (open) {
-      sidebar.classList.add('open');
-      overlay.classList.add('active');
-    } else {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
+    function toggleSidebar(open) {
+      sidebar.classList.toggle('open', open);
+      overlay.classList.toggle('active', open);
     }
-  }
 
-  openBtn.addEventListener('click', () => toggleSidebar(true));
-  overlay.addEventListener('click', () => toggleSidebar(false));
-  closeBtn.addEventListener('click', () => toggleSidebar(false));
+    openBtn?.addEventListener('click', () => toggleSidebar(true));
+    overlay?.addEventListener('click', () => toggleSidebar(false));
+    closeBtn?.addEventListener('click', () => toggleSidebar(false));
+  });
 </script>
 
-  openBtn.addEventListener('click', () => toggleSidebar(true));
-  overlay.addEventListener('click', () => toggleSidebar(false));
-</script>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
-  </footer>
+<!-- Footer -->
+<footer>
+  <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
+</footer>
 </body>
 </html>
