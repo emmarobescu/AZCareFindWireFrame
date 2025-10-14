@@ -39,11 +39,11 @@
 
   <!-- Sign In Button -->
   <div class="nav-right">
-    <button class="signin">
-      <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
-      <span>Sign In</span>
-    </button>
-  </div>
+  <button class="signin" id="openSignin">
+    <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
+    <span>Sign In</span>
+  </button>
+</div>
 </nav>
 
                                                  <!-- Accent bar -->
@@ -194,8 +194,25 @@
     <button class="signin-btn">Sign In</button>
   </div>
 </aside>
+  
+  <script>
+  const openBtn  = document.getElementById('openSignin');
+  const sidebar  = document.getElementById('signinSidebar');
+  const overlay  = document.getElementById('overlay');
 
+  function toggleSidebar(open) {
+    if (open) {
+      sidebar.classList.add('open');
+      overlay.classList.add('active');
+    } else {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    }
+  }
 
+  openBtn.addEventListener('click', () => toggleSidebar(true));
+  overlay.addEventListener('click', () => toggleSidebar(false));
+</script>
 
   <!-- Footer -->
   <footer>
