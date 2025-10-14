@@ -13,6 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // --- Detect incoming location query from homepage ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const startLocation = urlParams.get("location");
+
+  if (startLocation) {
+    const locInput = document.querySelector(".filter-input");
+    if (locInput) {
+      locInput.value = decodeURIComponent(startLocation);
+      // Wait a moment for map.js to initialize, then trigger search automatically
+      setTimeout(() => {
+        const searchBtn = document.querySelector(".search-btn");
+        if (searchBtn) searchBtn.click();
+      }, 800);
+    }
+  }
+
   // Radius: start at 1, then 5-step increments
   function adjustRadius(delta) {
     let val = parseInt(radiusInput.value || "1", 10);
