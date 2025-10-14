@@ -1128,7 +1128,7 @@ footer {
   line-height: 1.9; /* increases vertical spacing between bullets */
 }
 
-/* Button */
+/* ===== List Now Button ===== */
 .list-btn {
   width: 98px;
   height: 31px;
@@ -1141,23 +1141,25 @@ footer {
   justify-content: center;
   transition: all 0.2s ease;
   white-space: nowrap;
+
+  /* move button to right edge of content */
+  margin-left: auto;
 }
 
 .list-btn span {
-  width: 52px;
-  height: 17px;
   color: rgba(8, 110, 157, 1);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 12px;
   text-align: center;
   line-height: 1;
+  position: relative;
+  top: 1px;   /* pushes text down slightly for perfect centering */
 }
 
 .list-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
-
 
 
 
