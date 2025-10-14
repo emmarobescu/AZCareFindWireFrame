@@ -13,21 +13,31 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // --- Detect incoming location query from homepage ---
+ // --- Detect incoming location query from homepage ---
+window.addEventListener("load", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const startLocation = urlParams.get("location");
 
   if (startLocation) {
-    const locInput = document.querySelector(".filter-input");
-    if (locInput) {
-      locInput.value = decodeURIComponent(startLocation);
-      // Wait a moment for map.js to initialize, then trigger search automatically
-      setTimeout(() => {
-        const searchBtn = document.querySelector(".search-btn");
-        if (searchBtn) searchBtn.click();
-      }, 800);
-    }
+    console.log("Homepage query detected:", startLocation);
+
+    // Fill the sidebar input
+    if (locInput) locInput.value = decodeURIComponent(startLocation);
+
+    // Wait until map.js has definitely finished loading,
+    // then trigger the same logic your Search button uses
+    const trySearch = () => {
+      if (window.map && window.markers && document.querySelector(".search-btn")) {
+        console.log("Triggering auto search for:", startLocation);
+        document.querySelector(".search-btn").click();
+      } else {
+        // Try again in 300 ms until ready
+        setTimeout(trySearch, 300);
+      }
+    };
+    trySearch();
   }
+});
 
   // Radius: start at 1, then 5-step increments
   function adjustRadius(delta) {
