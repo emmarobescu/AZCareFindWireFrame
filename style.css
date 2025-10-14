@@ -1082,11 +1082,11 @@ footer {
 
 
                                                     /* ===== List Your Business Page ===== */
-/* ===== List Your Business Page ===== */
+//* ===== List Your Business Page ===== */
 .list-page {
   display: flex;
   justify-content: center;
-  padding: 80px 40px;
+  padding: 100px 40px;
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
 }
@@ -1107,33 +1107,41 @@ footer {
   margin-bottom: 24px;
 }
 
-/* Description */
+/* Description paragraph */
 .list-description {
   width: 1063px;
-  height: 44px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  margin-bottom: 32px;
-  line-height: 1.6; /* better readability */
+  line-height: 1.8;
+  margin-bottom: 48px;
 }
 
-/* Bullet points */
+/* Bullet list */
 .list-benefits {
-  width: 873px;
-  margin-left: 20px;
-  margin-bottom: 48px; /* more breathing room below list */
-  font-size: 14px;
+  width: 900px;
+  margin-left: 25px;
+  margin-bottom: 64px;
+  font-size: 15px;
   font-weight: 400;
+  line-height: 2.2;          /* 👈 visually double-spaced */
   list-style-type: disc;
-  line-height: 1.9; /* increases vertical spacing between bullets */
+}
+
+.list-benefits li {
+  margin-bottom: 20px;       /* adds extra breathing room */
+}
+
+.list-benefits strong {
+  font-weight: 700;
+  color: rgba(8, 110, 157, 1);
 }
 
 /* ===== List Now Button ===== */
 .list-btn {
-  width: 98px;
-  height: 31px;
+  width: 120px;
+  height: 36px;
   border: 1px solid rgba(8, 110, 157, 1);
-  border-radius: 15.5px;
+  border-radius: 18px;
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -1141,25 +1149,24 @@ footer {
   justify-content: center;
   transition: all 0.2s ease;
   white-space: nowrap;
-
-  /* move button to right edge of content */
-  margin-left: auto;
+  margin-left: auto;          /* aligns to the right */
 }
 
 .list-btn span {
   color: rgba(8, 110, 157, 1);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
   line-height: 1;
   position: relative;
-  top: 0.5px;   /* pushes text down slightly for perfect centering */
+  top: 0.5px;                   /* small nudge for perfect centering */
 }
 
 .list-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
+
 
 
 
