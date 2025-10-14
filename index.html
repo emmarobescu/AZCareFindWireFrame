@@ -176,6 +176,8 @@
 
 <!-- Sign-In Sidebar -->
 <aside class="signin-sidebar" id="signinSidebar">
+  <button id="closeSignin" class="close-btn">&times;</button>
+
   <div class="signin-content">
     <h2>Sign In</h2>
 
@@ -186,8 +188,10 @@
     <input type="password" id="password" placeholder="Your Password" />
 
     <div class="keep-signed">
-      <input type="checkbox" id="keepSigned" />
-      <label for="keepSigned">Keep Me Signed In</label>
+      <div class="checkbox-group">
+        <input type="checkbox" id="keepSigned" />
+        <label for="keepSigned">Keep Me Signed In</label>
+      </div>
       <a href="#" class="forgot">Forgot Password?</a>
     </div>
 
