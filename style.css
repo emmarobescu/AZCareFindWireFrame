@@ -1081,16 +1081,20 @@ footer {
 
                                                     /* ===== List Your Business Page ===== */
 /* ===== List Your Business Page ===== */
+/* ===== List Your Business Page ===== */
 .list-page {
   display: flex;
-  justify-content: center;     /* centers horizontally */
-  align-items: flex-start;     /* keep content starting from top */
-  padding: 100px 40px;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 40px 0 40px;   /*  48px from header, remove bottom padding */
   background-color: #fff;
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
+  min-height: calc(100vh - 80px); /* ensures it fills the screen but doesn’t add scroll */
+  overflow: hidden;              /* hides any accidental overflow causing scroll */
 }
+
 
 .list-content {
   max-width: 1063px;
