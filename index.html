@@ -201,11 +201,12 @@
 
 <!-- ========================  JS ======================== -->
 <script>
-  // --- Hero search redirect ---
-  const searchInput = document.getElementById('homepage-search');
+window.addEventListener("DOMContentLoaded", () => {
+  /* ---- Hero search redirect ---- */
+  const searchInput = document.getElementById("homepage-search");
   if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
         const query = searchInput.value.trim();
         if (query) {
           console.log("Redirecting with query:", query);
@@ -215,22 +216,21 @@
     });
   }
 
-  // --- Sign-in sidebar controls ---
-  document.addEventListener('DOMContentLoaded', () => {
-    const openBtn  = document.getElementById('openSignin');
-    const sidebar  = document.getElementById('signinSidebar');
-    const overlay  = document.getElementById('overlay');
-    const closeBtn = document.getElementById('closeSignin');
+  /* ---- Sign-in sidebar controls ---- */
+  const openBtn  = document.getElementById("openSignin");
+  const sidebar  = document.getElementById("signinSidebar");
+  const overlay  = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeSignin");
 
-    function toggleSidebar(open) {
-      sidebar.classList.toggle('open', open);
-      overlay.classList.toggle('active', open);
-    }
+  function toggleSidebar(open) {
+    sidebar.classList.toggle("open", open);
+    overlay.classList.toggle("active", open);
+  }
 
-    openBtn?.addEventListener('click', () => toggleSidebar(true));
-    overlay?.addEventListener('click', () => toggleSidebar(false));
-    closeBtn?.addEventListener('click', () => toggleSidebar(false));
-  });
+  if (openBtn)  openBtn.addEventListener("click", () => toggleSidebar(true));
+  if (overlay)  overlay.addEventListener("click", () => toggleSidebar(false));
+  if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
+});
 </script>
 
 <!-- Footer -->
@@ -239,3 +239,4 @@
 </footer>
 </body>
 </html>
+
