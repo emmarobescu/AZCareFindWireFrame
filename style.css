@@ -635,6 +635,14 @@ h6 {
   line-height:1; display:flex; align-items:center;
 }
 
+/* small visual nudge to balance with Forgot Password */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  bottom: 1px;  /* lowers checkbox + label together by 1px */
+}
 
 /* Forgot password link */
 .forgot {
