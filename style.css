@@ -1295,6 +1295,143 @@ footer {
   background-color: #066b8d;
 }
 
+/* ===== Popup Form Container ===== */
+#popupForm {
+  width: 430px;
+  border: 1px solid rgba(204, 204, 204, 1);
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+/* Active popup */
+#popupForm.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ===== Header ===== */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.popup-header h2 {
+  width: 165px;
+  height: 26px;
+  color: rgba(51, 51, 51, 1);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+/* X Button */
+.popup-close {
+  width: 15px;
+  height: 21px;
+  color: rgba(102, 102, 102, 1);
+  font-family: "Font Awesome 6 Pro", "FontAwesome", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== Form Elements ===== */
+#businessForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#businessForm label {
+  color: rgba(51, 51, 51, 1);
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+#businessForm input[type="text"],
+#businessForm input[type="email"],
+#businessForm textarea {
+  width: 406px;
+  box-shadow: 0 0 0 1px rgba(102, 102, 102, 1),
+              0 1px 0 0 inset rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  color: rgba(51, 51, 51, 1);
+}
+
+#businessForm input::placeholder,
+#businessForm textarea::placeholder {
+  color: rgba(153, 153, 153, 1);
+  font-family: "Open Sans", sans-serif;
+  font-style: italic;
+}
+
+/* Questions textarea */
+#businessForm textarea {
+  height: 99px;
+  resize: none;
+}
+
+/* ===== Buttons ===== */
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.popup-cancel {
+  width: 86px;
+  height: 31px;
+  border: 1px solid rgba(8, 110, 157, 1);
+  border-radius: 15.5px;
+  background: transparent;
+  color: rgba(8, 110, 157, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+.popup-cancel:hover {
+  background: rgba(8, 110, 157, 0.1);
+}
+
+/* Submit Button */
+.popup-submit {
+  width: 102px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+.popup-submit:hover {
+  background-color: #066b8d;
+}
 
 
 
