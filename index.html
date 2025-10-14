@@ -53,21 +53,29 @@
     <div class="hero-content">
       <h1>Welcome to Arizona Senior Care Finder</h1>
       <p>Discover assisted living, memory care, and behavioral health facilities across Arizona.</p>
-      <input type="text" placeholder="Enter an Address, City, or Zipcode">
+      <input
+      type="text"
+      id="homepage-search"
+      placeholder="Enter an Address, City, or Zipcode"
+    >
     </div>
   </section>
 
   <script>
-  // When user presses Enter, redirect to map.html with their query
+  // When the user presses Enter, redirect to map.html with their query
   const searchInput = document.getElementById('homepage-search');
-  searchInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      const query = encodeURIComponent(searchInput.value.trim());
-      if (query) {
-        window.location.href = `map.html?location=${query}`;
+
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          console.log("Redirecting with query:", query); // for debugging
+          window.location.href = `map.html?location=${encodeURIComponent(query)}`;
+        }
       }
-    }
-  });
+    });
+  }
 </script>
                                                   <!-- Mission -->
   <section class="mission">
