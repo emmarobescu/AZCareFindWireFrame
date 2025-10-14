@@ -244,10 +244,19 @@ h6 {
   display: inline-block;
 }
 
+/* === Homepage Search Bar === */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;        /* keeps icon vertically centered */
+  width: 320px;               /* restore original width */
+  height: 40px;               /* restore original height */
+}
+
 .search-bar input {
-  width: 320px;
-  height: 40px;
-  padding: 0 36px 0 14px; /* space for icon inside bar */
+  flex: 1;
+  height: 100%;
+  padding: 0 36px 0 14px;     /* space for icon inside bar */
   border: 1px solid rgba(153, 153, 153, 1);
   border-radius: 8px;
   font-family: 'Open Sans', sans-serif;
@@ -264,13 +273,12 @@ h6 {
 /* 🔍 Icon placement */
 .search-bar i {
   position: absolute;
-  right: 8px;               /* 8px from the right edge */
-  top: 50%;                 /* vertically center */
-  transform: translateY(-50%);
+  right: 8px;                /* 8px from right edge */
   font-size: 16px;
   color: rgba(153, 153, 153, 1);
-  pointer-events: none;     /* lets user click input normally */
+  pointer-events: none;      /* allows clicking inside input */
 }
+
 
 
 /* ===== Mission ===== */
