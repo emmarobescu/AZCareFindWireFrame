@@ -1090,8 +1090,8 @@ footer {
   font-family: "Open Sans", sans-serif;
   box-sizing: border-box;
   width: 100%;
-  min-height: calc(100vh - 80px);     /* fills screen minus header height */
-  overflow: hidden;                   /* removes scroll gap */
+  height: calc(100vh - 80px);         /* fills viewport minus header height */
+  overflow: hidden;                   /* removes scroll */
 }
 
 .list-content {
@@ -1103,6 +1103,7 @@ footer {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* Heading */
@@ -1113,10 +1114,10 @@ footer {
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 32px;
-  margin-bottom: 24px;                /* 24 px below title */
+  margin-bottom: 24px;                /* 24 px gap to description */
 }
 
-/* Description paragraph */
+/* Description */
 .list-description {
   width: 1063px;
   font-size: 16px;
@@ -1129,15 +1130,15 @@ footer {
 .list-benefits {
   width: 900px;
   margin-left: 25px;
+  margin-bottom: 24px;                /* 24 px gap before button */
   font-size: 15px;
   font-weight: 400;
-  line-height: 1.8;                   /* slightly tighter for balance */
+  line-height: 1.8;
   list-style-type: disc;
-  margin-bottom: 24px;                /* 24 px gap before button */
 }
 
 .list-benefits li {
-  margin-bottom: 24px;                /* 24 px spacing between bullets */
+  margin-bottom: 12px;                /* 12 px between bullets */
 }
 
 .list-benefits strong {
@@ -1159,7 +1160,7 @@ footer {
   transition: all 0.2s ease;
   white-space: nowrap;
   margin-left: auto;                  /* align right */
-  margin-top: 0;                      /* keep spacing controlled above */
+  margin-bottom: 0;                   /* keep footer tight */
 }
 
 .list-btn span {
@@ -1170,18 +1171,19 @@ footer {
   text-align: center;
   line-height: 1;
   position: relative;
-  top: 1px;                           /* vertical centering tweak */
+  top: 1px;                           /* optical centering */
 }
 
 .list-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
 
-/* Footer sticks to bottom visually */
+/* Footer anchored visually at bottom */
 footer {
-  margin-top: auto;                   /* pushes footer to bottom of viewport */
+  margin-top: auto;
   width: 100%;
 }
+
 
 
 /* ===== Popup Overlay ===== */
