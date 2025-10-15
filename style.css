@@ -1726,7 +1726,6 @@ footer {
   width: 1322px;
   height: 2px;
   border: 12px solid rgba(204, 204, 204, 1);
-  border-radius: 12px;
   margin: 40px auto;
   position: relative;
   box-sizing: border-box;
@@ -1739,7 +1738,6 @@ footer {
   width: 368px; /* update dynamically via JS */
   height: 2px;
   border: 12px solid rgba(31, 69, 110, 1);
-  border-radius: 12px;
   box-sizing: border-box;
   transition: width 0.3s ease;
 }
@@ -1812,26 +1810,66 @@ footer {
 }
 
 
-/* =======================
-   RADIO / CHECKBOX LABELS
-   ======================= */
-.question-step input[type="radio"],
-.question-step input[type="checkbox"] {
+/* --------------------
+   RADIO BUTTONS
+   -------------------- */
+.question-step input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
+  position: relative;
   width: 13px;
   height: 13px;
   border: 1px solid rgba(153, 153, 153, 1);
-  background-color: rgba(238, 238, 238, 1);
   border-radius: 50%;
+  background-color: rgba(238, 238, 238, 1);
   cursor: pointer;
   margin-right: 8px;
   flex: 0 0 auto;
+  vertical-align: middle;
 }
 
-.question-step input[type="radio"]:checked {
+/* selected (blue inner dot) */
+.question-step input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
   background-color: rgba(19, 56, 190, 1);
-  border-color: rgba(19, 56, 190, 1);
+  border: 1px solid rgba(19, 56, 190, 1);
+  transform: translate(-50%, -50%);
+}
+
+/* --------------------
+   CHECKBOXES
+   -------------------- */
+.question-step input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(153, 153, 153, 1);
+  border-radius: 1px;
+  background-color: rgba(238, 238, 238, 1);
+  cursor: pointer;
+  margin-right: 8px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+}
+
+/* checked (small blue square inside) */
+.question-step input[type="checkbox"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  background-color: rgba(19, 56, 190, 1);
+  transform: translate(-50%, -50%);
 }
 
 .question-step label {
@@ -1839,7 +1877,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 342px;
+  width: 320px; /* narrower for better alignment */
   margin: 0 auto 24px auto;
   color: rgba(51, 51, 51, 1);
   font-family: "OpenSans-Regular", sans-serif;
@@ -1853,7 +1891,7 @@ footer {
   left: 50%;
   transform: translateX(-50%);
   bottom: -12px;
-  width: 342px;
+  width: 320px;
   height: 1px;
   border-bottom: 1px solid rgba(151, 151, 151, 1);
 }
