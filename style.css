@@ -719,6 +719,8 @@ h6 {
   justify-content: center;
   transition: background 0.2s ease;
   white-space: nowrap;
+  text-decoration: none;      /* removes underline */
+  display: inline-flex;
 }
 
 .create-btn span {
