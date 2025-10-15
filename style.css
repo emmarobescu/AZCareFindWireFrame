@@ -1502,4 +1502,19 @@ footer {
   margin-bottom: 12px;
 }
 
+/* universal close (×) button positioning fix */
+.popup-close {
+  position: absolute;
+  top: 12px;         /* pushes it up into the top corner */
+  right: 12px;       /* equal spacing from right edge */
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 900;
+  color: rgba(102, 102, 102, 1);
+  cursor: pointer;
+  line-height: 1;
+}
+
+
 
