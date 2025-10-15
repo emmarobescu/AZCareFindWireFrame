@@ -21,12 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ---- Start Assessment ----
+ if (startBtn) {
   startBtn.addEventListener("click", () => {
+    console.log("Start Assessment clicked"); // debug check in console
     currentStep = 1;
     showStep(currentStep);
   });
-
+   
   // ---- Next Button ----
   nextBtn.addEventListener("click", () => {
     if (currentStep < steps.length - 1) {
