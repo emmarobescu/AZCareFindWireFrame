@@ -1729,6 +1729,7 @@ footer {
   border-radius: 12px;
   margin: 40px auto;
   position: relative;
+  box-sizing: border-box;
 }
 
 #progress-bar {
@@ -1828,15 +1829,9 @@ footer {
   flex: 0 0 auto;
 }
 
-.question-step input[type="radio"]:checked::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+.question-step input[type="radio"]:checked {
   background-color: rgba(19, 56, 190, 1);
+  border-color: rgba(19, 56, 190, 1);
 }
 
 .question-step label {
