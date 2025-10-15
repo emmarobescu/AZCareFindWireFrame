@@ -1763,33 +1763,21 @@ footer {
   height: 398px;
   border: 1px solid rgba(151, 151, 151, 1);
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #fff;
   position: relative;
   display: block;
-  padding: 32px 25px 70px; 
   box-sizing: border-box;
+  padding: 32px 25px 70px;   /* 32 px top, extra bottom room for buttons */
   text-align: center;
 }
 
 /* =======================
-   QUESTION STEPS
-   ======================= */
-.question-step {
-  display: none;
-  text-align: center;
-  animation: fadeIn 0.4s ease;
-}
-.question-step.active {
-  display: block;
-}
-
-/* =======================
-   QUESTION TITLE
+   QUESTION TITLE (every step)
    ======================= */
 .question-step h2 {
   width: 379px;
   height: 70px;
-  margin: 0 auto 24px auto; /* 24px gap to first radio */
+  margin: 0 auto 24px auto;
   color: rgba(31, 69, 110, 1);
   font-family: "Poppins-Bold", sans-serif;
   font-size: 24px;
@@ -1799,11 +1787,10 @@ footer {
 }
 
 /* =======================
-   RADIO BUTTONS + LABELS
+   RADIO / CHECKBOX LABELS
    ======================= */
-
-/* Custom radio button (unselected) */
-.question-step input[type="radio"] {
+.question-step input[type="radio"],
+.question-step input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 13px;
@@ -1816,38 +1803,36 @@ footer {
   flex: 0 0 auto;
 }
 
-/* Label text + layout */
 .question-step label {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   width: 342px;
-  margin: 0 auto 24px auto; /* 12px line + 12px gap */
+  margin: 0 auto 24px auto;
   color: rgba(51, 51, 51, 1);
   font-family: "OpenSans-Regular", sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
 
-/* Divider line below each label */
 .question-step label::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -12px; /* 12px below text */
+  bottom: -12px;
   width: 342px;
   height: 1px;
   border-bottom: 1px solid rgba(151, 151, 151, 1);
 }
 
 /* =======================
-   BACK / NEXT BUTTONS
+   BACK / NEXT BUTTONS (inside box)
    ======================= */
 .buttons {
   position: absolute;
-  bottom: 25px;
+  bottom: 25px;               /* inside white box */
   left: 0;
   right: 0;
   display: flex;
@@ -1876,6 +1861,7 @@ footer {
 .next-btn:hover {
   background-color: rgba(6, 85, 122, 1);
 }
+
 
 /* =======================
    NAV VISIBILITY
