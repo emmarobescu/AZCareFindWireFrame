@@ -372,6 +372,32 @@ document.querySelectorAll("form").forEach((form) => {
   });
 });
 </script>
+<script>
+// Validate Sign-In sidebar before showing "Account Not Found"
+document.getElementById("sidebarSignIn").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const username = document.getElementById("username");
+  const password = document.getElementById("password");
+
+  // simple required check
+  if (!username.value.trim() || !password.value.trim()) {
+    alert("Please enter both your username and password before signing in.");
+    if (!username.value.trim()) username.style.outline = "2px solid red";
+    if (!password.value.trim()) password.style.outline = "2px solid red";
+    return;
+  }
+
+  // clear outlines if valid
+  username.style.outline = "";
+  password.style.outline = "";
+
+  // continue with your existing "No Account" popup behavior
+  document.getElementById("signinSidebar").classList.remove("open");
+  document.getElementById("overlay").classList.add("active");
+  document.getElementById("popupNoAccount").classList.add("active");
+});
+</script>
 
 
 <!-- Footer -->
