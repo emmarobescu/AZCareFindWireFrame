@@ -1798,10 +1798,6 @@ footer {
   text-align: center;
 }
 
-#navButtons {
-  display: none;
-}
-
 .buttons {
   position: absolute;
   bottom: 25px;
@@ -1826,6 +1822,10 @@ footer {
 .back-btn {
   background-color: #ddd;
   color: #333;
+}
+
+#navButtons {
+  display: none;
 }
 
 @keyframes fadeIn {
