@@ -1775,15 +1775,18 @@ footer {
   text-align: center;
   padding: 25px;
   box-sizing: border-box;
+
+  /* --- Corrected mask for inside-arc corners --- */
   -webkit-mask:
-    radial-gradient(circle 16px at 0 0, transparent 99%, #000 100%) top left,
-    radial-gradient(circle 16px at 100% 0, transparent 99%, #000 100%) top right,
-    radial-gradient(circle 16px at 100% 100%, transparent 99%, #000 100%) bottom right,
-    radial-gradient(circle 16px at 0 100%, transparent 99%, #000 100%) bottom left,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: source-out;
+    radial-gradient(circle 16px at 0 0,       transparent 99%, black 100%) top left,
+    radial-gradient(circle 16px at 100% 0,    transparent 99%, black 100%) top right,
+    radial-gradient(circle 16px at 100% 100%, transparent 99%, black 100%) bottom right,
+    radial-gradient(circle 16px at 0 100%,    transparent 99%, black 100%) bottom left,
+    linear-gradient(black, black);
+  -webkit-mask-size: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 100% 100%;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 50% 50%;
+  -webkit-mask-composite: destination-out; /* subtract corners, keep full box */
+          mask-composite: exclude;          /* Firefox equivalent */
 }
 
 
