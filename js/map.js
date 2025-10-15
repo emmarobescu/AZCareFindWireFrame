@@ -20,6 +20,40 @@ const markers = L.markerClusterGroup();
 /* =============================== *
  * Helpers (formatting + info side)
  * =============================== */
+function getPriceEstimate(f) {
+  const name = (f.FACILITY_NAME || "").toUpperCase();
+  const type = (f.TYPE || "").toUpperCase();
+  const sub  = (f.SUBTYPE || f.LICENSE_SUBTYPE || "").toUpperCase();
+  const cap  = parseInt(f.CAPACITY_INT || f.Capacity || 0, 10);
+
+  // --- MEMORY CARE ---
+  if (name.includes("MEMORY")) {
+    if (cap < 20) {
+      return "$5,500 – $9,000";
+    } else {
+      return "Private: $7,000 – $10,000 | Semi-Private: $5,500 – $7,000";
+    }
+  }
+
+  // --- ASSISTED LIVING HOME ---
+  if (type.includes("ASSISTED LIVING HOME")) {
+    return "Private: $4,500 – $6,000 | Semi-Private: $2,800 – $4,000";
+  }
+
+  // --- ASSISTED LIVING CENTER ---
+  if (type.includes("ASSISTED LIVING CENTER")) {
+    return "Studio: $3,000 + Level of Care ($0–$2,000) • 1 Bed: $3,500 + Level of Care • 2 Bed: $4,000 + Level of Care";
+  }
+
+  // --- BEHAVIORAL HEALTH RESIDENTIAL ---
+  if (type.includes("BH RESIDENTIAL") || sub.includes("BEHAVIORAL")) {
+    return "Private: $7,000 – $10,000 | Semi-Private: $4,000 – $8,000";
+  }
+
+  // Fallback
+  return "N/A";
+}
+
 
 // Title Case (with small-word exceptions)
 function toTitleCase(str) {
@@ -62,6 +96,7 @@ function attachMarkerClick(marker, facility) {
     const capEl = document.getElementById("info-capacity");
     const typeEl = document.getElementById("info-type");
     const subEl  = document.getElementById("info-subtype");
+    const priceEl = document.getElementById("info-price"); // <— Added
 
     if (nameEl)  nameEl.textContent  = toTitleCase(facility.FACILITY_NAME) || "N/A";
     if (addrEl)  addrEl.textContent  =
@@ -72,6 +107,9 @@ function attachMarkerClick(marker, facility) {
     if (capEl)   capEl.textContent   = facility.Capacity || "N/A";
     if (typeEl)  typeEl.textContent  = toTitleCase(facility.TYPE) || "N/A";
     if (subEl)   subEl.textContent   = extractLevelOfCare(facility.LICENSE_SUBTYPE) || "N/A";
+
+    // --- PRICE ESTIMATE INJECTION ---
+    if (priceEl) priceEl.textContent = getPriceEstimate(facility);
   });
 }
 
