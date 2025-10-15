@@ -184,8 +184,8 @@
     <h2>Sign In</h2>
 
     <form id="sidebarSignIn" novalidate>
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Your Username" required />
+      <label for="username">Email Address</label>
+      <input type="email" id="username" placeholder="name@example.com" required />
 
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Your Password" required />
@@ -202,26 +202,25 @@
     </form>
   </div>
 
+  <!-- Divider line -->
+  <hr class="signin-divider">
 
-<!-- Divider line -->
-<hr class="signin-divider">
+  <!-- Create an Account section -->
+  <div class="create-account">
+    <h2>Create An Account</h2>
+    <p class="create-text">
+      Showcase your licensed care home to families looking for quality care.
+    </p>
 
-<!-- Create an Account section -->
-<div class="create-account">
-  <h2>Create An Account</h2>
-  <p class="create-text">
-    Showcase your licensed care home to families looking for quality care.
-  </p>
+    <ul class="create-benefits">
+      <li>Reach more families in your area.</li>
+      <li>Update your listing anytime.</li>
+      <li>Build trust with verified information.</li>
+      <li>It’s quick, easy, and free to join.</li>
+    </ul>
 
-  <ul class="create-benefits">
-    <li>Reach more families in your area.</li>
-    <li>Update your listing anytime.</li>
-    <li>Build trust with verified information.</li>
-    <li>It’s quick, easy, and free to join.</li>
-  </ul>
-
-  <a href="list.html" class="create-btn"><span>Create An Account</span></a>
-</div>
+    <a href="list.html" class="create-btn"><span>Create An Account</span></a>
+  </div>
 </aside>
 
 <!-- Account Not Found Popup -->
@@ -237,165 +236,72 @@
   </div>
 </div>
 
-<!-- ========================  JS ======================== -->
+<!-- ======================== JS ======================== -->
 <script>
-window.addEventListener("DOMContentLoaded", () => {
-  /* ---- Hero search redirect ---- */
-  const searchInput = document.getElementById("homepage-search");
-  if (searchInput) {
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const query = searchInput.value.trim();
-        if (query) {
-          console.log("Redirecting with query:", query);
-          window.location.href = `map.html?location=${encodeURIComponent(query)}`;
-        }
-      }
-    });
-  }
-
-  /* ---- Sign-in sidebar controls ---- */
-  const openBtn  = document.getElementById("openSignin");
-  const sidebar  = document.getElementById("signinSidebar");
-  const overlay  = document.getElementById("overlay");
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("overlay");
+  const sidebar = document.getElementById("signinSidebar");
+  const openBtn = document.getElementById("openSignin");
   const closeBtn = document.getElementById("closeSignin");
+  const noAccountPopup = document.getElementById("popupNoAccount");
+  const cancelNoAccount = document.getElementById("cancelNoAccount");
+  const signInForm = document.getElementById("sidebarSignIn");
 
+  /* ---------- Sidebar open/close ---------- */
   function toggleSidebar(open) {
     sidebar.classList.toggle("open", open);
     overlay.classList.toggle("active", open);
   }
-
-  if (openBtn)  openBtn.addEventListener("click", () => toggleSidebar(true));
-  if (overlay)  overlay.addEventListener("click", () => toggleSidebar(false));
+  if (openBtn) openBtn.addEventListener("click", () => toggleSidebar(true));
   if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
-});
-</script>
+  overlay.addEventListener("click", () => toggleSidebar(false));
 
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
+  /* ---------- Sign-In Validation ---------- */
+  signInForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
+    const emailField = document.getElementById("username");
+    const passwordField = document.getElementById("password");
 
-  // Clicking the blue "Sign In" button inside sidebar
-  signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
-  });
-
-  // Cancel or click outside to close the popup
-  cancelNoAccount.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
-
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
-
-  // Clicking the blue "Sign In" button inside sidebar
-  signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
-  });
-
-  // Cancel or click outside to close the popup
-  cancelNoAccount.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-// Universal form validation for all forms
-document.querySelectorAll("form").forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    const inputs = form.querySelectorAll("input[required], textarea[required]");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let valid = true;
 
-    inputs.forEach((input) => {
-      // reset any previous red borders
-      input.style.outline = "";
+    // reset any previous outlines
+    emailField.style.outline = "";
+    passwordField.style.outline = "";
 
-      if (!input.value.trim()) {
-        valid = false;
-        input.style.outline = "2px solid red";
-      } else if (input.type === "email") {
-        // simple regex for valid email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(input.value.trim())) {
-          valid = false;
-          input.style.outline = "2px solid red";
-        }
-      }
-    });
-
-    if (!valid) {
-      e.preventDefault();
-      alert("Please fill out all required fields with valid information before submitting.");
+    // Check if email field is empty or invalid
+    if (!emailField.value.trim() || !emailPattern.test(emailField.value.trim())) {
+      valid = false;
+      emailField.style.outline = "2px solid red";
     }
+
+    // Check if password field is empty
+    if (!passwordField.value.trim()) {
+      valid = false;
+      passwordField.style.outline = "2px solid red";
+    }
+
+    // If not valid, alert and stop
+    if (!valid) {
+      alert("Please enter a valid email and password before signing in.");
+      return;
+    }
+
+    // If valid, show the 'Account Not Found' popup
+    sidebar.classList.remove("open");
+    overlay.classList.add("active");
+    noAccountPopup.classList.add("active");
   });
-});
-</script>
-<script>
-// Validate Sign-In sidebar before showing "Account Not Found"
-document.getElementById("sidebarSignIn").addEventListener("submit", (e) => {
-  e.preventDefault();
 
-  const username = document.getElementById("username");
-  const password = document.getElementById("password");
-
-  // simple required check
-  if (!username.value.trim() || !password.value.trim()) {
-    alert("Please enter both your username and password before signing in.");
-    if (!username.value.trim()) username.style.outline = "2px solid red";
-    if (!password.value.trim()) password.style.outline = "2px solid red";
-    return;
-  }
-
-  // clear outlines if valid
-  username.style.outline = "";
-  password.style.outline = "";
-
-  // continue with your existing "No Account" popup behavior
-  document.getElementById("signinSidebar").classList.remove("open");
-  document.getElementById("overlay").classList.add("active");
-  document.getElementById("popupNoAccount").classList.add("active");
+  /* ---------- Account Not Found Popup ---------- */
+  cancelNoAccount.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+  overlay.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+  });
 });
 </script>
 
