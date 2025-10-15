@@ -1760,14 +1760,13 @@ footer {
   align-items: center;
   justify-content: center;
   margin: 60px auto;
-  position: relative;          /* needed for corner circles */
+  position: relative; /* needed for corner circles */
 }
 
 .assessment-inner {
   width: 398px;
   height: 398px;
   border: 1px solid rgba(151, 151, 151, 1);
-  border-radius: 16px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -1777,37 +1776,23 @@ footer {
   padding: 25px;
   box-sizing: border-box;
   position: relative;
+  border-radius: 0; /* remove convex rounding since we fake inside arcs */
 }
 
-/* --- four little “inside-arc” navy circles --- */
-/* --- four little “inside-arc” navy circles --- */
-.assessment-inner::before,
-.assessment-inner::after {
+/* === Four “inside-arc” navy circles === */
+.assessment-inner::before {
   content: "";
   position: absolute;
-  width: 32px; height: 32px;          /* twice the 16 px radius */
-  background: rgba(31,69,110,1);
+  width: 32px;               /* 2 × 16px radius */
+  height: 32px;
   border-radius: 50%;
-  z-index: 2;
-}
-
-.assessment-inner::before {
-  top: -16px; left: -16px;
+  background: transparent;   /* transparent base (no center dot) */
+  pointer-events: none;
   box-shadow:
-    398px 0 rgba(31,69,110,1),        /* top-right */
-    0 398px rgba(31,69,110,1),        /* bottom-left */
-    398px 398px rgba(31,69,110,1);    /* bottom-right */
-}
-
-.assessment-inner::after {
-  content:"";
-  position:absolute;
-  width:16px;
-  height:16px;
-  background:#fff;
-  top:0;
-  left:0;
-  z-index:3;
+    -16px -16px 0 0 rgba(31,69,110,1),   /* top-left */
+     382px -16px 0 0 rgba(31,69,110,1),  /* top-right */
+    -16px  382px 0 0 rgba(31,69,110,1),  /* bottom-left */
+     382px 382px 0 0 rgba(31,69,110,1);  /* bottom-right */
 }
 
 /* top-right, bottom-right, bottom-left simulated via box-shadow clones above */
