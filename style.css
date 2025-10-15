@@ -1774,9 +1774,23 @@ footer {
 /* =======================
    QUESTION TITLE (every step)
    ======================= */
+.question-step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 32px; /* ensures each question starts 32px from top */
+  box-sizing: border-box;
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.question-step.active {
+  display: block;
+}
+
 .question-step h2 {
-  width: 379px;
-  height: 70px;
   margin: 0 auto 24px auto;
   color: rgba(31, 69, 110, 1);
   font-family: "Poppins-Bold", sans-serif;
@@ -1785,6 +1799,7 @@ footer {
   line-height: 35px;
   text-align: center;
 }
+
 
 /* =======================
    RADIO / CHECKBOX LABELS
