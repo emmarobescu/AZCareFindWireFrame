@@ -1750,16 +1750,17 @@ footer {
    INITIAL VISIBILITY FIX
    ============================ */
 
-/* outer navy-blue rectangle */
+
 .assessment-frame {
   width: 430px;
   height: 430px;
-  border: 1px solid rgba(151, 151, 151, 1);
   background-color: rgba(31, 69, 110, 1);
+  border: 1px solid rgba(151, 151, 151, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 60px auto;
+  position: relative;          /* needed for corner circles */
 }
 
 .assessment-inner {
@@ -1767,7 +1768,7 @@ footer {
   height: 398px;
   border: 1px solid rgba(151, 151, 151, 1);
   border-radius: 16px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1775,19 +1776,27 @@ footer {
   text-align: center;
   padding: 25px;
   box-sizing: border-box;
-
-  /* --- Corrected mask for inside-arc corners --- */
-  -webkit-mask:
-    radial-gradient(circle 16px at 0 0,       transparent 99%, black 100%) top left,
-    radial-gradient(circle 16px at 100% 0,    transparent 99%, black 100%) top right,
-    radial-gradient(circle 16px at 100% 100%, transparent 99%, black 100%) bottom right,
-    radial-gradient(circle 16px at 0 100%,    transparent 99%, black 100%) bottom left,
-    linear-gradient(black, black);
-  -webkit-mask-size: 50% 50%, 50% 50%, 50% 50%, 50% 50%, 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-composite: destination-out; /* subtract corners, keep full box */
-          mask-composite: exclude;          /* Firefox equivalent */
+  position: relative;
 }
+
+/* --- four little “inside-arc” navy circles --- */
+.assessment-inner::before,
+.assessment-inner::after {
+  content: "";
+  position: absolute;
+  width: 32px; height: 32px;          /* twice the 16 px radius */
+  background: rgba(31,69,110,1);
+  border-radius: 50%;
+  z-index: 2;
+}
+.assessment-inner::before {
+  top: -16px; left: -16px;
+  box-shadow:
+    398px 0 rgba(31,69,110,1),        /* top-right */
+    0 398px rgba(31,69,110,1),        /* bottom-left */
+    398px 398px rgba(31,69,110,1);    /* bottom-right */
+}
+
 
 
 
