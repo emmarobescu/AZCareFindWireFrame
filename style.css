@@ -1792,7 +1792,7 @@ footer {
 }
 
 .question-step > * {
-  max-width: 320px; /* adjust between 300–340 for best look */
+  max-width: 365px; /* adjust between 300–340 for best look */
   margin-left: auto;
   margin-right: auto;
   display: block;
