@@ -1654,3 +1654,94 @@ footer {
 
 
 
+
+                                              /* ============================
+                                               ASSESSMENT INTRO SECTION
+                                               ============================ */
+.assessment-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 430px;
+  height: 430px;
+  margin: 80px auto;
+  border: 1px solid rgba(151, 151, 151, 1);
+  background-color: rgba(31, 69, 110, 1);
+  border-radius: 16px;
+  padding: 30px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.assessment-title {
+  width: 398px;
+  height: 35px;
+  color: rgba(31, 69, 110, 1);
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 35px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  padding-top: 6px;
+}
+
+.assessment-text {
+  width: 370px;
+  height: 92px;
+  color: rgba(51, 51, 51, 1);
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 23px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 25px;
+}
+
+.start-btn {
+  width: 152px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
+  border: none;
+  color: #fff;
+  font-family: "OpenSans-Bold", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-btn:hover {
+  background-color: rgba(6, 85, 122, 1);
+}
+
+/* ============================
+   PROGRESS BAR STYLES
+   ============================ */
+
+#progress {
+  width: 1322px;
+  height: 2px;
+  border: 12px solid rgba(204, 204, 204, 1);
+  border-radius: 12px;
+  margin: 40px auto;
+  position: relative;
+}
+
+#progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: rgba(8, 110, 157, 1);
+  border-radius: 12px;
+  transition: width 0.3s ease;
+}
