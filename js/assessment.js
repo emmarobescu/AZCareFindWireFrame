@@ -1,44 +1,58 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const steps = document.querySelectorAll(".step");
-  const nextBtns = document.querySelectorAll(".next-btn");
-  const backBtns = document.querySelectorAll(".back-btn");
+  const steps = document.querySelectorAll(".question-step");
+  const nextBtn = document.querySelector(".next-btn");
+  const backBtn = document.querySelector(".back-btn");
   const progressBar = document.getElementById("progress-bar");
-  const form = document.getElementById("assessment-form");
+  const startBtn = document.getElementById("startAssessmentBtn");
+  const navButtons = document.getElementById("navButtons");
   const resultsDiv = document.getElementById("results");
   let currentStep = 0;
 
+  // ---- Show a specific step ----
   function showStep(i) {
     steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
-    const percent = ((i + 1) / steps.length) * 100;
-    progressBar.style.width = `${percent}%`;
+    progressBar.style.width = `${((i) / (steps.length - 1)) * 100}%`;
+
+    // Hide nav buttons on intro (step 0)
+    if (i === 0) {
+      navButtons.style.display = "none";
+    } else {
+      navButtons.style.display = "flex";
+    }
   }
 
-  nextBtns.forEach(btn => btn.addEventListener("click", () => {
+  // ---- Start Assessment ----
+  startBtn.addEventListener("click", () => {
+    currentStep = 1;
+    showStep(currentStep);
+  });
+
+  // ---- Next Button ----
+  nextBtn.addEventListener("click", () => {
     if (currentStep < steps.length - 1) {
       currentStep++;
       showStep(currentStep);
+    } else {
+      calculateResults();
     }
-  }));
+  });
 
-  backBtns.forEach(btn => btn.addEventListener("click", () => {
+  // ---- Back Button ----
+  backBtn.addEventListener("click", () => {
     if (currentStep > 0) {
       currentStep--;
       showStep(currentStep);
     }
-  }));
+  });
 
-  // Helper to get total score from all numeric inputs
-  function getScore(name) {
-    const radios = document.querySelectorAll(`[name="${name}"]:checked`);
-    const checks = document.querySelectorAll(`[name="${name}"]:checked`);
-    let total = 0;
-    radios.forEach(r => total += parseFloat(r.value));
-    checks.forEach(c => total += parseFloat(c.value));
-    return total;
-  }
-
-  document.getElementById("submit-btn").addEventListener("click", e => {
-    e.preventDefault();
+  // ---- Calculate Score and Show Result ----
+  function calculateResults() {
+    const getScore = (name) => {
+      const inputs = document.querySelectorAll(`[name="${name}"]:checked`);
+      let total = 0;
+      inputs.forEach(i => total += parseFloat(i.value));
+      return total;
+    };
 
     const total =
       getScore("daily") +
@@ -68,6 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const location = document.getElementById("location").value || "N/A";
     const budget = document.querySelector("[name='budget']:checked")?.value || "N/A";
 
+    document.getElementById("assessmentBox").style.display = "none";
+    resultsDiv.style.display = "block";
     resultsDiv.innerHTML = `
       <div class="result-box">
         <h2>Recommended Care Level: ${careLevel}</h2>
@@ -78,9 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
       </div>
     `;
+  }
 
-    form.style.display = "none";
-  });
-
+  // ---- Initialize ----
   showStep(currentStep);
 });
