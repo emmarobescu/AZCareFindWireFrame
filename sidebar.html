@@ -1,128 +1,100 @@
 <!-- Overlay + Sign-In Sidebar -->
 <div id="overlay"></div>
+
 <aside class="signin-sidebar" id="signinSidebar">
-  <!-- your existing Sign-In sidebar markup -->
+  <button id="closeSignin" class="close-btn">&times;</button>
+
+  <div class="signin-content">
+    <h2>Sign In</h2>
+
+    <form id="sidebarSignIn" novalidate>
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Your Username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Your Password" required />
+
+      <div class="keep-signed">
+        <div class="checkbox-group">
+          <input type="checkbox" id="keepSigned" />
+          <label for="keepSigned">Keep Me Signed In</label>
+        </div>
+        <a href="#" class="forgot">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="signin-btn">Sign In</button>
+    </form>
+  </div>
+
+  <!-- Divider line -->
+  <hr class="signin-divider" />
+
+  <!-- Create an Account section -->
+  <div class="create-account">
+    <h2>Create An Account</h2>
+    <p class="create-text">
+      Showcase your licensed care home to families looking for quality care.
+    </p>
+
+    <ul class="create-benefits">
+      <li>Reach more families in your area.</li>
+      <li>Update your listing anytime.</li>
+      <li>Build trust with verified information.</li>
+      <li>It’s quick, easy, and free to join.</li>
+    </ul>
+
+    <a href="list.html" class="create-btn"><span>Create An Account</span></a>
+  </div>
 </aside>
 
+<!-- Account Not Found Popup -->
+<div class="popup-container" id="popupNoAccount">
+  <h2>Account Not Found</h2>
+  <p>
+    It looks like you don’t have an account yet.<br />
+    Sign up to list your facility with AZ Care Finder.
+  </p>
+  <div class="popup-actions">
+    <button class="popup-cancel" id="cancelNoAccount">Cancel</button>
+    <a href="list.html" class="popup-continue">Create Account</a>
+  </div>
+</div>
 
-
-<!-- Sidebar JS -->
+<!-- Sidebar logic -->
 <script>
-/* ---- Sign-in sidebar controls ---- */
-  const openBtn  = document.getElementById("openSignin");
-  const sidebar  = document.getElementById("signinSidebar");
-  const overlay  = document.getElementById("overlay");
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openSignin");
+  const sidebar = document.getElementById("signinSidebar");
+  const overlay = document.getElementById("overlay");
   const closeBtn = document.getElementById("closeSignin");
+  const signinButton = document.querySelector(".signin-btn");
+  const noAccountPopup = document.getElementById("popupNoAccount");
+  const cancelNoAccount = document.getElementById("cancelNoAccount");
 
   function toggleSidebar(open) {
     sidebar.classList.toggle("open", open);
     overlay.classList.toggle("active", open);
   }
 
-  if (openBtn)  openBtn.addEventListener("click", () => toggleSidebar(true));
-  if (overlay)  overlay.addEventListener("click", () => toggleSidebar(false));
+  if (openBtn) openBtn.addEventListener("click", () => toggleSidebar(true));
   if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
-});
-</script>
+  if (overlay) overlay.addEventListener("click", () => toggleSidebar(false));
 
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
-
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
-
-  // Clicking the blue "Sign In" button inside sidebar
+  // “Sign In” inside sidebar → show “Account Not Found” popup
   signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
+    e.preventDefault();
+    toggleSidebar(false);
+    overlay.classList.add("active");
+    noAccountPopup.classList.add("active");
   });
 
-  // Cancel or click outside to close the popup
+  // Cancel / outside click closes popup
   cancelNoAccount.addEventListener("click", () => {
     noAccountPopup.classList.remove("active");
     overlay.classList.remove("active");
   });
-
   overlay.addEventListener("click", () => {
     noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
-
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
-
-  // Clicking the blue "Sign In" button inside sidebar
-  signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
-  });
-
-  // Cancel or click outside to close the popup
-  cancelNoAccount.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-// Universal form validation for all forms
-document.querySelectorAll("form").forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    const inputs = form.querySelectorAll("input[required], textarea[required]");
-    let valid = true;
-
-    inputs.forEach((input) => {
-      // reset any previous red borders
-      input.style.outline = "";
-
-      if (!input.value.trim()) {
-        valid = false;
-        input.style.outline = "2px solid red";
-      } else if (input.type === "email") {
-        // simple regex for valid email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(input.value.trim())) {
-          valid = false;
-          input.style.outline = "2px solid red";
-        }
-      }
-    });
-
-    if (!valid) {
-      e.preventDefault();
-      alert("Please fill out all required fields with valid information before submitting.");
-    }
   });
 });
 </script>
