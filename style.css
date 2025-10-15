@@ -1592,6 +1592,30 @@ footer {
   background-color: #066b8d;
 }
 
+/* ===== Fix "Create Account" button inside No Account popup ===== */
+#popupNoAccount .popup-continue {
+  width: 157px;                        /* same width as sidebar button */
+  height: 31px;                        /* same height */
+  border-radius: 15.5px;               /* same rounded corners */
+  border: none;                        /* clean solid style */
+  background-color: rgba(8, 110, 157, 1); /* blue background */
+  color: #fff;                         /* white text */
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;               /* remove underline */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#popupNoAccount .popup-continue:hover {
+  background-color: #066b8d;           /* darker blue on hover */
+}
+
 
 
 
