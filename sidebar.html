@@ -59,3 +59,42 @@
     <a href="list.html" class="popup-continue">Create Account</a>
   </div>
 </div>
+
+<!-- Sidebar logic -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openSignin");
+  const sidebar = document.getElementById("signinSidebar");
+  const overlay = document.getElementById("overlay");
+  const closeBtn = document.getElementById("closeSignin");
+  const signinButton = document.querySelector(".signin-btn");
+  const noAccountPopup = document.getElementById("popupNoAccount");
+  const cancelNoAccount = document.getElementById("cancelNoAccount");
+
+  function toggleSidebar(open) {
+    sidebar.classList.toggle("open", open);
+    overlay.classList.toggle("active", open);
+  }
+
+  if (openBtn) openBtn.addEventListener("click", () => toggleSidebar(true));
+  if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
+  if (overlay) overlay.addEventListener("click", () => toggleSidebar(false));
+
+  // “Sign In” inside sidebar → show “Account Not Found” popup
+  signinButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    toggleSidebar(false);
+    overlay.classList.add("active");
+    noAccountPopup.classList.add("active");
+  });
+
+  // Cancel / outside click closes popup
+  cancelNoAccount.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+  overlay.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+  });
+});
+</script>
