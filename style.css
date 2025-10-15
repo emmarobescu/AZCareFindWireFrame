@@ -1733,11 +1733,13 @@ footer {
 
 #progress-bar {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -12px; /* aligns with gray border thickness */
+  left: -12px;
+  width: 368px; /* update dynamically via JS */
   height: 2px;
-  background-color: rgba(8, 110, 157, 1);
+  border: 12px solid rgba(31, 69, 110, 1);
   border-radius: 12px;
+  box-sizing: border-box;
   transition: width 0.3s ease;
 }
 
@@ -1824,6 +1826,17 @@ footer {
   cursor: pointer;
   margin-right: 8px;
   flex: 0 0 auto;
+}
+
+.question-step input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: rgba(19, 56, 190, 1);
 }
 
 .question-step label {
