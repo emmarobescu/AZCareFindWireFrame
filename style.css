@@ -1392,33 +1392,39 @@ footer {
   resize: none;
 }
 
-/* ===== Buttons ===== */
+/* ===== Buttons (Shared for all popups) ===== */
 .popup-actions {
   display: flex;
-  justify-content: flex-end;
-  gap: 12px;
+  justify-content: space-between;   /* cancel left, submit/continue right */
+  align-items: center;
   margin-top: 8px;
+  padding: 0 4px;                   /* small horizontal spacing inside popup */
+  gap: 0;                           /* remove gap so they're flush at ends */
 }
 
+/* Cancel (shared) */
 .popup-cancel {
-  width: 86px;
-  height: 31px;
+  width: 102px;                     /* match width with submit for balance */
+  height: 33px;                     /* consistent button height */
   border: 1px solid rgba(8, 110, 157, 1);
-  border-radius: 15.5px;
+  border-radius: 16.5px;            /* same rounding as submit */
   background: transparent;
   color: rgba(8, 110, 157, 1);
   font-family: "Open Sans", sans-serif;
   font-weight: 700;
   font-size: 12px;
   cursor: pointer;
+  text-align: center;
+  line-height: 1;
 }
 .popup-cancel:hover {
   background: rgba(8, 110, 157, 0.1);
 }
 
-/* Submit Button */
+/* Continue / Submit (shared) */
+.popup-continue,
 .popup-submit {
-  width: 102px;
+  width: 102px;                     /* exact same size as cancel */
   height: 33px;
   border-radius: 16.5px;
   background-color: rgba(8, 110, 157, 1);
@@ -1428,7 +1434,10 @@ footer {
   font-size: 12px;
   border: none;
   cursor: pointer;
+  text-align: center;
+  line-height: 1;
 }
+.popup-continue:hover,
 .popup-submit:hover {
   background-color: #066b8d;
 }
