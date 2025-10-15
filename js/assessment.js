@@ -21,14 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
- if (startBtn) {
+ // ---- Start Assessment ----
+if (startBtn) {
   startBtn.addEventListener("click", () => {
-    console.log("Start Assessment clicked"); // debug check in console
+    console.log("Start Assessment clicked"); // debug check
     currentStep = 1;
     showStep(currentStep);
   });
-   
-  // ---- Next Button ----
+} else {
+  console.warn("Start Assessment button not found!");
+}
+
+// ---- Next Button ----
+if (nextBtn) {
   nextBtn.addEventListener("click", () => {
     if (currentStep < steps.length - 1) {
       currentStep++;
@@ -37,14 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
       calculateResults();
     }
   });
+}
 
-  // ---- Back Button ----
+// ---- Back Button ----
+if (backBtn) {
   backBtn.addEventListener("click", () => {
     if (currentStep > 0) {
       currentStep--;
       showStep(currentStep);
     }
-  });
+
 
   // ---- Calculate Score and Show Result ----
   function calculateResults() {
