@@ -139,6 +139,16 @@
     </section>
   </main>
 
+<!-- SIDEBARRRR -->
+<div id="sidebar-placeholder"></div>
+<script>
+fetch("components/sidebar.html")
+  .then(res => res.text())
+  .then(html => { document.getElementById("sidebar-placeholder").innerHTML = html; });
+</script>
+
+  
+
   <!-- Footer -->
   <footer>
     <div class="footer-links">
