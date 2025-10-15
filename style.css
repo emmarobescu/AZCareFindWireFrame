@@ -1750,10 +1750,81 @@ footer {
    INITIAL VISIBILITY FIX
    ============================ */
 
-#assessment-form {
-  display: none;  /* hide until Start Assessment is clicked */
+.assessment-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 430px;
+  height: 430px;
+  background-color: rgba(31, 69, 110, 1);
+  border: 1px solid rgba(151, 151, 151, 1);
+  border-radius: 16px;
+  margin: 50px auto;
+  padding: 25px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-#results {
-  display: none;  /* hide until the user finishes */
+.question-step {
+  display: none;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+.question-step.active {
+  display: block;
+}
+
+.question-step h2 {
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.question-step label {
+  display: block;
+  margin: 8px 0;
+  font-family: "Poppins-SemiBold", sans-serif;
+  font-size: 14px;
+  color: #fff;
+}
+
+.question-step input[type="text"] {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  width: 80%;
+  text-align: center;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.next-btn, .back-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 16px;
+  font-weight: 600;
+  font-family: "OpenSans-Bold", sans-serif;
+  cursor: pointer;
+}
+
+.next-btn {
+  background-color: rgba(8, 110, 157, 1);
+  color: white;
+}
+.back-btn {
+  background-color: #ddd;
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
