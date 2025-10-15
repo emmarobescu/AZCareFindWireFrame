@@ -266,6 +266,77 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("overlay");
+  const sidebar = document.getElementById("signinSidebar");
+  const closeSidebar = document.getElementById("closeSignin");
+  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
+  const noAccountPopup = document.getElementById("popupNoAccount");
+  const cancelNoAccount = document.getElementById("cancelNoAccount");
+
+  // Sidebar close function (already have this likely)
+  function hideSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("active");
+  }
+
+  // Clicking the blue "Sign In" button inside sidebar
+  signinButton.addEventListener("click", (e) => {
+    e.preventDefault(); // prevents any default form submission
+    hideSidebar();      // closes the sidebar
+    overlay.classList.add("active"); // show dimmed background
+    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
+  });
+
+  // Cancel or click outside to close the popup
+  cancelNoAccount.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  overlay.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+  });
+});
+</script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("overlay");
+  const sidebar = document.getElementById("signinSidebar");
+  const closeSidebar = document.getElementById("closeSignin");
+  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
+  const noAccountPopup = document.getElementById("popupNoAccount");
+  const cancelNoAccount = document.getElementById("cancelNoAccount");
+
+  // Sidebar close function (already have this likely)
+  function hideSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("active");
+  }
+
+  // Clicking the blue "Sign In" button inside sidebar
+  signinButton.addEventListener("click", (e) => {
+    e.preventDefault(); // prevents any default form submission
+    hideSidebar();      // closes the sidebar
+    overlay.classList.add("active"); // show dimmed background
+    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
+  });
+
+  // Cancel or click outside to close the popup
+  cancelNoAccount.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  overlay.addEventListener("click", () => {
+    noAccountPopup.classList.remove("active");
+  });
+});
+</script>
+
+
 <!-- Footer -->
 <footer>
   <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
