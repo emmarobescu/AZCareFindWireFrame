@@ -1798,6 +1798,10 @@ footer {
   text-align: center;
 }
 
+#navButtons {
+  display: none;
+}
+
 .buttons {
   position: absolute;
   bottom: 25px;
