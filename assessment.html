@@ -56,88 +56,60 @@
 
  <body>
   <main class="assessment-container">
+    <!-- Progress Bar -->
     <div id="progress">
       <div id="progress-bar"></div>
     </div>
 
-    <section class="assessment-intro" id="intro-screen">
-      <h2 class="assessment-title">Placement Assessment</h2>
-      <p class="assessment-text">
-        Unsure of what care fits you or your loved one’s needs? 
-        Take a quick assessment to be matched with facilities that meet your 
-        location, budget, and care preferences.
-      </p>
-      <button class="start-btn" id="startAssessmentBtn">Start Assessment</button>
-    </section>
-
-
-    <form id="assessment-form">
-      <!-- Q1 -->
-      <div class="step active" data-step="1">
+    <!-- Blue Assessment Box -->
+    <section class="assessment-box" id="assessmentBox">
+      <!-- Question 1 -->
+      <div class="question-step active" data-step="1">
         <h2>Who are you looking for care for?</h2>
         <label><input type="radio" name="who" value="self" required /> Myself</label>
         <label><input type="radio" name="who" value="parent" /> My parent</label>
         <label><input type="radio" name="who" value="spouse" /> My spouse</label>
         <label><input type="radio" name="who" value="other" /> Someone else</label>
-        <div class="buttons">
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q2 -->
-      <div class="step" data-step="2">
+      <!-- Question 2 -->
+      <div class="question-step" data-step="2">
         <h2>How much daily help is needed?</h2>
         <label><input type="radio" name="daily" value="0" required /> Independent or reminders only</label>
         <label><input type="radio" name="daily" value="5" /> Help with a few activities (bathing, dressing)</label>
         <label><input type="radio" name="daily" value="10" /> Help with most daily tasks</label>
         <label><input type="radio" name="daily" value="15" /> Needs constant supervision or total care</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q3 -->
-      <div class="step" data-step="3">
+      <!-- Question 3 -->
+      <div class="question-step" data-step="3">
         <h2>Memory or cognitive changes?</h2>
         <label><input type="radio" name="memory" value="0" required /> No issues</label>
         <label><input type="radio" name="memory" value="5" /> Mild forgetfulness</label>
         <label><input type="radio" name="memory" value="10" /> Diagnosed dementia or Alzheimer’s</label>
         <label><input type="radio" name="memory" value="15" /> Severe memory loss / needs secure setting</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q4 -->
-      <div class="step" data-step="4">
+      <!-- Question 4 -->
+      <div class="question-step" data-step="4">
         <h2>Mobility or physical needs?</h2>
         <label><input type="checkbox" name="mobility" value="2.5" /> Uses walker or cane</label>
         <label><input type="checkbox" name="mobility" value="5" /> Uses wheelchair or scooter</label>
         <label><input type="checkbox" name="mobility" value="7.5" /> Needs staff assistance for transfers</label>
         <label><input type="checkbox" name="mobility" value="10" /> Bed-bound or total care</label>
         <label><input type="checkbox" name="mobility" value="0" /> None of the above</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q5 -->
-      <div class="step" data-step="5">
+      <!-- Question 5 -->
+      <div class="question-step" data-step="5">
         <h2>Medication management?</h2>
         <label><input type="radio" name="meds" value="0" required /> Manages medications independently</label>
         <label><input type="radio" name="meds" value="5" /> Needs reminders or supervision</label>
         <label><input type="radio" name="meds" value="10" /> Requires full assistance with medications</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q6 -->
-      <div class="step" data-step="6">
+      <!-- Question 6 -->
+      <div class="question-step" data-step="6">
         <h2>Behavior or mood changes?</h2>
         <p>Select all that apply.</p>
         <label><input type="checkbox" name="behavior" value="3" /> Anxiety or agitation</label>
@@ -145,69 +117,53 @@
         <label><input type="checkbox" name="behavior" value="5" /> Verbal or physical aggression</label>
         <label><input type="checkbox" name="behavior" value="5" /> History of mental health diagnosis</label>
         <label><input type="checkbox" name="behavior" value="0" /> None of the above</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q7 -->
-      <div class="step" data-step="7">
+      <!-- Question 7 -->
+      <div class="question-step" data-step="7">
         <h2>Continence or toileting needs?</h2>
         <label><input type="radio" name="toileting" value="0" required /> Independent</label>
         <label><input type="radio" name="toileting" value="5" /> Occasional assistance</label>
         <label><input type="radio" name="toileting" value="10" /> Full assistance required</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q8 -->
-      <div class="step" data-step="8">
+      <!-- Question 8 -->
+      <div class="question-step" data-step="8">
         <h2>Medical or skilled nursing needs?</h2>
         <label><input type="checkbox" name="medical" value="5" /> Diabetes / insulin management</label>
         <label><input type="checkbox" name="medical" value="5" /> Oxygen / respiratory support</label>
         <label><input type="checkbox" name="medical" value="10" /> Wound care / injections / complex needs</label>
         <label><input type="checkbox" name="medical" value="0" /> None of the above</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q9 -->
-      <div class="step" data-step="9">
+      <!-- Question 9 -->
+      <div class="question-step" data-step="9">
         <h2>Monthly budget?</h2>
         <label><input type="radio" name="budget" value="1000" required /> Under $2,000</label>
         <label><input type="radio" name="budget" value="2750" /> $2,000–$3,500</label>
         <label><input type="radio" name="budget" value="4250" /> $3,500–$5,000</label>
         <label><input type="radio" name="budget" value="6000" /> Over $5,000</label>
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" class="next-btn">Next</button>
-        </div>
       </div>
 
-      <!-- Q10 -->
-      <div class="step" data-step="10">
+      <!-- Question 10 -->
+      <div class="question-step" data-step="10">
         <h2>Preferred location (ZIP or City)</h2>
         <input type="text" id="location" name="location" required placeholder="e.g., 85001 or Phoenix, AZ" />
-        <div class="buttons">
-          <button type="button" class="back-btn">Back</button>
-          <button type="button" id="submit-btn">See Results</button>
-        </div>
       </div>
-    </form>
+
+      <!-- Navigation Buttons -->
+      <div class="buttons">
+        <button type="button" class="back-btn">Back</button>
+        <button type="button" class="next-btn">Next</button>
+      </div>
+    </section>
 
     <div id="results"></div>
   </main>
 
-  <script src="js/assessment.js"></script>
-    <!-- Footer -->
-<footer>
-  <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
-</footer>
+  <footer>
+    <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
 
