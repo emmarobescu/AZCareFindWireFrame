@@ -1745,3 +1745,15 @@ footer {
   border-radius: 12px;
   transition: width 0.3s ease;
 }
+
+/* ============================
+   INITIAL VISIBILITY FIX
+   ============================ */
+
+#assessment-form {
+  display: none;  /* hide until Start Assessment is clicked */
+}
+
+#results {
+  display: none;  /* hide until the user finishes */
+}
