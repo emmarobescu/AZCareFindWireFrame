@@ -659,39 +659,21 @@ h6 {
   text-align: right;
 }
 
-/* ===== Sidebar Alignment Fix ===== */
-.signin-sidebar {
-  box-sizing: border-box;
-  padding: 36px 29.5px 0 29.5px;   /* restores inner padding for entire sidebar */
-}
 
-.signin-content {
-  padding: 0 29.5px;               /* ensures content above divider aligns too */
-  box-sizing: border-box;
-}
-
-/* Keep all elements under the divider aligned consistently */
-.signin-divider,
-.create-account {
-  margin-left: 0;                  /* remove extra offset */
-  padding-left: 0;                 /* no internal padding conflict */
-  width: auto;                     /* allow natural width within sidebar padding */
-  box-sizing: border-box;
-}
-
-/* ===== Divider line under Sign In ===== */
+/* ===== Divider + Create Account Alignment Fix ===== */
 .signin-divider {
   width: 300px;
   height: 1px;
   border: 1px solid rgba(204, 204, 204, 1);
-  margin: 32px 0;
+  margin: 32px auto;           /* centers divider inside sidebar */
 }
 
-/* ===== Create An Account Section ===== */
 .create-account {
   width: 301px;
   color: rgba(51, 51, 51, 1);
   font-family: "Open Sans", sans-serif;
+  margin: 0 auto;              /* centers entire section under divider */
+  text-align: left;            /* keeps text aligned to the left edge */
 }
 
 /* Header */
@@ -717,7 +699,7 @@ h6 {
 /* Bullet list */
 .create-account .create-benefits {
   list-style-type: disc;
-  margin-left: 18px;
+  padding-left: 18px;          /* indent bullets neatly */
   margin-bottom: 24px;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
@@ -725,7 +707,7 @@ h6 {
   color: rgba(51, 51, 51, 1);
 }
 
-/* ===== Create Account Button ===== */
+/* Button */
 .create-btn {
   width: 157px;
   height: 31px;
@@ -733,13 +715,13 @@ h6 {
   border-radius: 15.5px;
   background: transparent;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s ease;
   white-space: nowrap;
-  text-decoration: none;      /* removes underline */
-  display: inline-flex;
+  text-decoration: none;
+  margin-left: 0;              /* aligns button with text */
 }
 
 .create-btn span {
@@ -754,7 +736,6 @@ h6 {
 .create-btn:hover {
   background: rgba(8, 110, 157, 0.1);
 }
-
 
 /* ===== Sign-In Button ===== */
 .signin-btn {
