@@ -659,6 +659,25 @@ h6 {
   text-align: right;
 }
 
+/* ===== Sidebar Alignment Fix ===== */
+.signin-sidebar {
+  box-sizing: border-box;
+  padding: 36px 29.5px 0 29.5px;   /* restores inner padding for entire sidebar */
+}
+
+.signin-content {
+  padding: 0 29.5px;               /* ensures content above divider aligns too */
+  box-sizing: border-box;
+}
+
+/* Keep all elements under the divider aligned consistently */
+.signin-divider,
+.create-account {
+  margin-left: 0;                  /* remove extra offset */
+  padding-left: 0;                 /* no internal padding conflict */
+  width: auto;                     /* allow natural width within sidebar padding */
+  box-sizing: border-box;
+}
 
 /* ===== Divider line under Sign In ===== */
 .signin-divider {
