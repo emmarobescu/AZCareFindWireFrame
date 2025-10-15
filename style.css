@@ -1777,6 +1777,30 @@ footer {
   box-sizing: border-box;
 }
 
+/* small circular cutouts in each corner */
+.assessment-inner::before,
+.assessment-inner::after {
+  content: "";
+  position: absolute;
+  width: 32px;  /* 2 × your 16px arc radius */
+  height: 32px;
+  background: rgba(31, 69, 110, 1); /* same navy as outer box */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* top-left */
+.assessment-inner::before {
+  top: -16px;
+  left: -16px;
+  box-shadow:
+    398px 0 rgba(31, 69, 110, 1),
+    398px 398px rgba(31, 69, 110, 1),
+    0 398px rgba(31, 69, 110, 1);
+}
+
+/* top-right, bottom-right, bottom-left simulated via box-shadow clones above */
+
 .question-step {
   display: none;
   text-align: center;
