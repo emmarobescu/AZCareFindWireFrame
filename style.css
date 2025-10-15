@@ -1752,18 +1752,19 @@ footer {
 
 
 /* Outer blue box */
+/* Outer blue box */
 .assessment-frame {
   width: 430px;
   height: 430px;
   background-color: rgba(31, 69, 110, 1);
   border: 1px solid rgba(151, 151, 151, 1);
 
-  /* rock-solid centering */
-  display: grid;
-  place-items: center;
+  /* Centers the white box inside */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  /* center the whole thing on the page */
-  margin: 60px auto;
+  margin: 60px auto; /* centers the whole component on the page */
   box-sizing: border-box;
 }
 
@@ -1771,22 +1772,21 @@ footer {
 .assessment-inner {
   width: 398px;
   height: 398px;
-  background: #fff;
   border: 1px solid rgba(151, 151, 151, 1);
-  border-radius: 0;            /* no corners */
-  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 1);
 
-  /* layout for your content */
+  /* Content layout */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 
-  /* breathing room for content */
   padding: 25px;
-  overflow: hidden;            /* prevents content from nudging layout */
+  box-sizing: border-box;
 }
+
 
 
 /* top-right, bottom-right, bottom-left simulated via box-shadow clones above */
