@@ -1750,7 +1750,7 @@ footer {
    INITIAL VISIBILITY FIX
    ============================ */
 
-* outer navy-blue rectangle */
+/* outer navy-blue rectangle */
 .assessment-frame {
   width: 430px;
   height: 430px;
