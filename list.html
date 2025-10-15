@@ -104,29 +104,39 @@
     <button class="popup-close" id="closeForm">&times;</button>
   </div>
 
-  <form id="businessForm">
-    <!-- Full Name -->
-    <label for="fullName">Full Name</label>
-    <input type="text" id="fullName" placeholder="John Smith" required />
+  <form id="businessForm" novalidate>
+  <!-- Full Name -->
+  <label for="fullName">Full Name</label>
+  <input type="text" id="fullName" placeholder="John Smith" required />
 
-    <!-- Facility Legal Name -->
-    <label for="facilityName">Facility Legal Name</label>
-    <input type="text" id="facilityName" placeholder="Sunrise Assisted Living, LLC" required />
+  <!-- Facility Legal Name -->
+  <label for="facilityName">Facility Legal Name</label>
+  <input type="text" id="facilityName" placeholder="Sunrise Assisted Living, LLC" required />
 
-    <!-- Best Contact Email -->
-    <label for="email">Best Contact Email</label>
-    <input type="email" id="email" placeholder="johnsmith@gmail.com" required />
+  <!-- Best Contact Email -->
+  <label for="email">Best Contact Email</label>
+  <input
+    type="email"
+    id="email"
+    placeholder="johnsmith@gmail.com"
+    required
+    pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+  />
 
-    <!-- Questions (optional) -->
-    <label for="questions">Questions (Optional)</label>
-    <textarea id="questions" placeholder="Enter any additional questions, comments, or concerns"></textarea>
+  <!-- Questions (optional) -->
+  <label for="questions">Questions (Optional)</label>
+  <textarea
+    id="questions"
+    placeholder="Enter any additional questions, comments, or concerns"
+  ></textarea>
 
-    <!-- Buttons -->
-    <div class="popup-actions">
-      <button type="button" class="popup-cancel" id="cancelForm">Cancel</button>
-      <button type="submit" class="popup-submit">Submit</button>
-    </div>
-  </form>
+  <!-- Buttons -->
+  <div class="popup-actions">
+    <button type="button" class="popup-cancel" id="cancelForm">Cancel</button>
+    <button type="submit" class="popup-submit">Submit</button>
+  </div>
+</form>
+
 </div>
 
 <!-- Third Popup: Thank You Message -->
