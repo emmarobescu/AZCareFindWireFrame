@@ -1780,6 +1780,7 @@ footer {
 }
 
 /* --- four little “inside-arc” navy circles --- */
+/* --- four little “inside-arc” navy circles --- */
 .assessment-inner::before,
 .assessment-inner::after {
   content: "";
@@ -1789,23 +1790,25 @@ footer {
   border-radius: 50%;
   z-index: 2;
 }
+
 .assessment-inner::before {
-  content: "";
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  background: rgba(31,69,110,1);
-  border-radius: 50%;
-  top: -100px;    /* move it away */
-  left: -100px;
+  top: -16px; left: -16px;
   box-shadow:
     398px 0 rgba(31,69,110,1),        /* top-right */
     0 398px rgba(31,69,110,1),        /* bottom-left */
     398px 398px rgba(31,69,110,1);    /* bottom-right */
 }
 
-
-
+.assessment-inner::after {
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:#fff;
+  top:0;
+  left:0;
+  z-index:3;
+}
 
 /* top-right, bottom-right, bottom-left simulated via box-shadow clones above */
 
