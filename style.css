@@ -1845,6 +1845,9 @@ footer {
 /* --------------------
    CHECKBOXES
    -------------------- */
+/* --------------------
+   CHECKBOXES
+   -------------------- */
 .question-step input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
@@ -1860,17 +1863,25 @@ footer {
   vertical-align: middle;
 }
 
-/* checked (small blue square inside) */
+/* selected state: blue box + white check */
+.question-step input[type="checkbox"]:checked {
+  border: 1px solid rgba(19, 56, 190, 1);
+  background-color: rgba(19, 56, 190, 1);
+}
+
+/* white checkmark (9×7 px) */
 .question-step input[type="checkbox"]:checked::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 7px;
+  width: 9px;
   height: 7px;
-  background-color: rgba(19, 56, 190, 1);
-  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%) rotate(0deg);
+  clip-path: polygon(14% 44%, 0 60%, 38% 100%, 100% 20%, 84% 0%, 38% 72%);
 }
+
 
 .question-step label {
   position: relative;
