@@ -336,6 +336,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+  <script>
+// Universal form validation for all forms
+document.querySelectorAll("form").forEach((form) => {
+  form.addEventListener("submit", (e) => {
+    const inputs = form.querySelectorAll("input[required], textarea[required]");
+    let valid = true;
+
+    inputs.forEach((input) => {
+      // reset any previous red borders
+      input.style.outline = "";
+
+      if (!input.value.trim()) {
+        valid = false;
+        input.style.outline = "2px solid red";
+      } else if (input.type === "email") {
+        // simple regex for valid email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(input.value.trim())) {
+          valid = false;
+          input.style.outline = "2px solid red";
+        }
+      }
+    });
+
+    if (!valid) {
+      e.preventDefault();
+      alert("Please fill out all required fields with valid information before submitting.");
+    }
+  });
+});
+</script>
+
 
 <!-- Footer -->
 <footer>
