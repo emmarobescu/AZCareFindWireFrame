@@ -1722,7 +1722,7 @@ footer {
 /* container (gray track) PROGRESSSSSSS */
 #progress {
   width: 1322px;
-  height: 26px; /* 2px inner + 12px top + 12px bottom = 26 total */
+  height: 20px; /* 2px inner + 12px top + 12px bottom = 26 total */
   background-color: rgba(204, 204, 204, 1);
   border-radius: 13px;
   margin: 40px auto;
@@ -1735,7 +1735,7 @@ footer {
   position: absolute;
   top: 0;
   left: 0;
-  height: 26px; /* identical visual thickness */
+  height: 20px; /* identical visual thickness */
   background-color: rgba(31, 69, 110, 1);
   border-radius: 13px;
   width: 0;                 /* JS will animate this */
