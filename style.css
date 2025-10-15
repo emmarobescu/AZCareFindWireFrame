@@ -1721,30 +1721,28 @@ footer {
    PROGRESS BAR STYLES
    ============================ */
 
-/* ============================
-   PROGRESS BAR (thin + clean)
-   ============================ */
 
 #progress {
   width: 1322px;
-  height: 2px; /* thin line */
-  background-color: rgba(204, 204, 204, 1); /* light gray track */
-  border: none; /* remove thick border */
+  height: 26px;                           /* 2px line + 12px border top/bottom */
+  border: 12px solid rgba(204, 204, 204, 1); /* gray outline as in Sketch */
   border-radius: 12px;
   margin: 40px auto;
   position: relative;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 #progress-bar {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 2px; /* match track thickness */
-  background-color: rgba(8, 110, 157, 1); /* blue fill */
+  top: 12px;                              /* start inside the gray border */
+  left: 12px;
+  height: 2px;                            /* inner line thickness */
+  background-color: rgba(31, 69, 110, 1); /* same blue as your Sketch example */
   border-radius: 12px;
+  width: 0;
   transition: width 0.3s ease;
 }
+
 
 
 /* =======================
