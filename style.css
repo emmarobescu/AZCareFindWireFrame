@@ -1516,5 +1516,49 @@ footer {
   line-height: 1;
 }
 
+/* ===== Form Buttons (Cancel Left, Submit Right) ===== */
+#popupForm .popup-actions {
+  display: flex;
+  justify-content: space-between;   /* pushes cancel left, submit right */
+  align-items: center;
+  margin-top: 8px;
+  padding: 0 4px;                   /* small horizontal breathing room */
+}
+
+#popupForm .popup-cancel {
+  width: 86px;
+  height: 31px;
+  border: 1px solid rgba(8, 110, 157, 1);
+  border-radius: 15.5px;
+  background: transparent;
+  color: rgba(8, 110, 157, 1);
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+#popupForm .popup-cancel:hover {
+  background: rgba(8, 110, 157, 0.1);
+}
+
+#popupForm .popup-submit {
+  width: 102px;
+  height: 33px;
+  border-radius: 16.5px;
+  background-color: rgba(8, 110, 157, 1);
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+#popupForm .popup-submit:hover {
+  background-color: #066b8d;
+}
+
+
 
 
