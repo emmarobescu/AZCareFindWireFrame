@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -146,12 +147,16 @@
 <script src="js/signin-sidebar.js"></script>
 
 <!-- Placeholder where the sidebar will be injected -->
-
 <div id="sidebar-placeholder"></div>
+
 <script>
-fetch("sidebar.html")
-  .then(res => res.text())
-  .then(html => { document.getElementById("sidebar-placeholder").innerHTML = html; });
+  // Fetch and inject the sidebar markup, then initialize it
+  fetch("sidebar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("sidebar-placeholder").innerHTML = html;
+      window.initSidebar(); // VERY IMPORTANT: run after injection
+    });
 </script>
 
 
