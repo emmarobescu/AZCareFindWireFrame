@@ -1505,8 +1505,8 @@ footer {
 /* universal close (×) button positioning fix */
 .popup-close {
   position: absolute;
-  top: 12px;         /* pushes it up into the top corner */
-  right: 12px;       /* equal spacing from right edge */
+  top: 14px;         /* pushes it up into the top corner */
+  right: 18px;       /* equal spacing from right edge */
   background: none;
   border: none;
   font-size: 20px;
