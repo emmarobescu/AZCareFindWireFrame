@@ -757,6 +757,39 @@ h6 {
   background-color: #066b8d;
 }
 
+
+
+
+
+
+
+/* === Tighten spacing below Sign-In section === */
+.signin-content form {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Reduce overall gap below the Sign-In button */
+.signin-btn {
+  margin-bottom: 16px !important; /* was 32px; tighter for balance */
+}
+
+/* Remove extra top margin stacking from the divider */
+.signin-divider {
+  margin-top: 16px !important;    /* was 32px; pairs evenly with button */
+  margin-bottom: 32px;            /* keep space before “Create An Account” */
+}
+
+
+
+
+
+
+
+
+
+
+
 #popupNoAccount {
   width: 430px;
   border: 1px solid rgba(204, 204, 204, 1);
