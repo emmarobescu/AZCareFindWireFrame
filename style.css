@@ -1718,32 +1718,29 @@ footer {
 }
 
 /* ============================
-   PROGRESS BAR STYLES
+   PROGRESS BAR (exact Sketch thickness)
    ============================ */
 
-
-/* Progress container: 1322w, visual thickness = 12(top)+2+12(bottom) = 26 */
 #progress {
   width: 1322px;
-  height: 2px;                     /* inner line height */
-  padding: 12px;                   /* makes the track look 26px tall */
-  background: rgba(204, 204, 204, 1);  /* gray track, no border = no white seam */
+  height: 2px;                               /* base inner height */
+  border: 12px solid rgba(204, 204, 204, 1); /* gray outline */
   border-radius: 12px;
   margin: 40px auto;
   position: relative;
-  box-sizing: content-box;         /* keep 2px inner line + 12px padding */
-  overflow: hidden;                /* hides any subpixel artifacts */
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Blue progress line: exactly 2px centered within the gray track */
 #progress-bar {
   position: absolute;
-  top: 12px;                       /* centers inside the padded track */
-  left: 12px;                      /* starts after left padding */
+  top: -12px;                                /* overlap to include border area */
+  left: -12px;
   height: 2px;
-  background: rgba(31, 69, 110, 1);
+  border: 12px solid rgba(31, 69, 110, 1);   /* blue fill same thickness */
   border-radius: 12px;
-  width: 0;                        /* JS will set this */
+  width: 0;                                  /* updated dynamically by JS */
+  box-sizing: border-box;
   transition: width 0.3s ease;
 }
 
