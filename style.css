@@ -1717,33 +1717,30 @@ footer {
   background-color: rgba(6, 85, 122, 1);
 }
 
-/* ============================
-   PROGRESS BAR (exact Sketch thickness)
-   ============================ */
 
+
+/* container (gray track) PROGRESSSSSSS */
 #progress {
   width: 1322px;
-  height: 2px;                               /* base inner height */
-  border: 12px solid rgba(204, 204, 204, 1); /* gray outline */
-  border-radius: 12px;
+  height: 26px; /* 2px inner + 12px top + 12px bottom = 26 total */
+  background-color: rgba(204, 204, 204, 1);
+  border-radius: 13px;
   margin: 40px auto;
   position: relative;
-  box-sizing: border-box;
   overflow: hidden;
 }
 
+/* blue progress fill — same thickness as gray */
 #progress-bar {
   position: absolute;
-  top: -12px;                                /* overlap to include border area */
-  left: -12px;
-  height: 2px;
-  border: 12px solid rgba(31, 69, 110, 1);   /* blue fill same thickness */
-  border-radius: 12px;
-  width: 0;                                  /* updated dynamically by JS */
-  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  height: 26px; /* identical visual thickness */
+  background-color: rgba(31, 69, 110, 1);
+  border-radius: 13px;
+  width: 0;                 /* JS will animate this */
   transition: width 0.3s ease;
 }
-
 
 
 /* =======================
