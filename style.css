@@ -1790,7 +1790,14 @@ footer {
   z-index: 2;
 }
 .assessment-inner::before {
-  top: -16px; left: -16px;
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: rgba(31,69,110,1);
+  border-radius: 50%;
+  top: -100px;    /* move it away */
+  left: -100px;
   box-shadow:
     398px 0 rgba(31,69,110,1),        /* top-right */
     0 398px rgba(31,69,110,1),        /* bottom-left */
