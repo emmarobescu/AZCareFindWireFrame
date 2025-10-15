@@ -1724,21 +1724,23 @@ footer {
 
 #progress {
   width: 1322px;
-  height: 2px;
-  border: 12px solid rgba(204, 204, 204, 1);
+  height: 2px; /* total thickness = 2px */
+  background-color: rgba(204, 204, 204, 1); /* light gray line */
+  border-radius: 12px;
   margin: 40px auto;
   position: relative;
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
+/* filled portion */
 #progress-bar {
   position: absolute;
-  top: -12px; /* aligns with gray border thickness */
-  left: -12px;
-  width: 368px; /* update dynamically via JS */
-  height: 2px;
-  border: 12px solid rgba(31, 69, 110, 1);
-  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  height: 2px; /* same height as track */
+  width: 0; /* dynamically updated by JS */
+  background-color: rgba(31, 69, 110, 1); /* navy blue */
+  border-radius: 12px;
   transition: width 0.3s ease;
 }
 
