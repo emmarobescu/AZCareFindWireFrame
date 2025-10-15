@@ -1775,29 +1775,18 @@ footer {
   text-align: center;
   padding: 25px;
   box-sizing: border-box;
+  -webkit-mask:
+    radial-gradient(circle 16px at 0 0, transparent 99%, #000 100%) top left,
+    radial-gradient(circle 16px at 100% 0, transparent 99%, #000 100%) top right,
+    radial-gradient(circle 16px at 100% 100%, transparent 99%, #000 100%) bottom right,
+    radial-gradient(circle 16px at 0 100%, transparent 99%, #000 100%) bottom left,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: source-out;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 50% 50%;
 }
 
-/* small circular cutouts in each corner */
-.assessment-inner::before,
-.assessment-inner::after {
-  content: "";
-  position: absolute;
-  width: 32px;  /* 2 × your 16px arc radius */
-  height: 32px;
-  background: rgba(31, 69, 110, 1); /* same navy as outer box */
-  border-radius: 50%;
-  z-index: 1;
-}
 
-/* top-left */
-.assessment-inner::before {
-  top: -16px;
-  left: -16px;
-  box-shadow:
-    398px 0 rgba(31, 69, 110, 1),
-    398px 398px rgba(31, 69, 110, 1),
-    0 398px rgba(31, 69, 110, 1);
-}
 
 /* top-right, bottom-right, bottom-left simulated via box-shadow clones above */
 
