@@ -1894,13 +1894,14 @@ footer {
 .assessment-inner .question-step h2 {
   width: 379px;
   height: 70px;
+  top: 51px;                 /* exact offset from top of outer frame */
+  margin: 0 auto 24px auto;  /* keeps same bottom spacing to first radio */
   color: rgba(31, 69, 110, 1);
   font-family: "Poppins-Bold", sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: 35px;
   text-align: center;
-  margin: 0 auto 24px auto; /* <-- 24px gap to first radio */
 }
 
 /* Radio row */
