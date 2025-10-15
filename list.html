@@ -78,6 +78,7 @@
     <button class="list-btn"><span>List Now</span></button>
   </section>
 </main>
+  
 <!-- Overlay -->
 <div id="popupOverlay"></div>
 
@@ -128,16 +129,37 @@
   </form>
 </div>
 
+<!-- Third Popup: Thank You Message -->
+<div class="popup-container" id="popupThankYou">
+  <div class="popup-header">
+    <h2>Thank you for your interest!</h2>
+    <button class="popup-close" id="closeThankYou">&times;</button>
+  </div>
+
+  <div class="thankyou-text">
+    <p>
+      Your details have been submitted successfully. Our team will contact you soon to guide you through
+      the next steps of adding your facility.
+    </p>
+    <p>
+      If you don’t receive an email from us within one week, please call
+      <strong>(623) 866-8784</strong>, and we’ll be happy to assist you directly.
+    </p>
+  </div>
+</div>
+
 <!-- ===== Popup Script ===== -->
 <script>
 const overlay = document.getElementById("popupOverlay");
 const noticePopup = document.getElementById("popupNotice");
 const formPopup = document.getElementById("popupForm");
+const thankYouPopup = document.getElementById("popupThankYou");
 const listBtn = document.querySelector(".list-btn");
 const cancelBtn = document.getElementById("cancelPopup");
 const continueBtn = document.getElementById("continuePopup");
 const cancelForm = document.getElementById("cancelForm");
 const closeForm = document.getElementById("closeForm");
+const closeThankYou = document.getElementById("closeThankYou");
 
 /* ---------- 1. Open first popup ---------- */
 listBtn.addEventListener("click", () => {
@@ -145,7 +167,7 @@ listBtn.addEventListener("click", () => {
   noticePopup.classList.add("active");
 });
 
-/* ---------- 2. Close first popup ---------- */
+/* ---------- 2. Cancel first popup ---------- */
 cancelBtn.addEventListener("click", closeAllPopups);
 overlay.addEventListener("click", closeAllPopups);
 
@@ -160,24 +182,17 @@ function closeAllPopups() {
   overlay.classList.remove("active");
   noticePopup.classList.remove("active");
   formPopup.classList.remove("active");
+  thankYouPopup.classList.remove("active");
 }
 cancelForm.addEventListener("click", closeAllPopups);
 closeForm.addEventListener("click", closeAllPopups);
+closeThankYou.addEventListener("click", closeAllPopups);
 
-/* ---------- 5. Submit form → thank-you banner ---------- */
+/* ---------- 5. Submit form → show thank-you popup ---------- */
 document.getElementById("businessForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  formPopup.innerHTML = `
-    <div class="thankyou-content">
-      <h2>Thank you for your interest in joining AZ Care Finder!</h2>
-      <p>Your details have been submitted successfully. Our team will contact you soon to guide you through the next steps of adding your facility.</p>
-      <p>If you don’t receive an email within one week, please call <strong>(623) 866-8784</strong>, and we’ll be happy to assist you.</p>
-      <div class="popup-actions" style="justify-content:center;">
-        <button class="popup-submit" id="closeThankYou">Close</button>
-      </div>
-    </div>
-  `;
-  document.getElementById("closeThankYou").addEventListener("click", closeAllPopups);
+  formPopup.classList.remove("active");
+  thankYouPopup.classList.add("active");
 });
 </script>
 
