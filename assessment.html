@@ -43,15 +43,136 @@
       </ul>
 
      <div class="nav-right">
-  <button class="signin" id="openSignin">
-    <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
-    <span>Sign In</span>
-  </button>
-</div>
-
-      
+      <button class="signin" id="openSignin">
+        <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
+        <span>Sign In</span>
+      </button>
+    </div>
     </nav>
 
     <!-- Accent bar -->
     <div class="accent-bar"></div>
   </header>
+
+  <body>
+  <main class="assessment-container">
+    <h1>Find the Right Level of Care</h1>
+    <p class="intro">
+      This short assessment helps determine the level of care that best fits your loved one’s needs.
+      It takes about 2 minutes and does not collect personal information.
+    </p>
+
+    <form id="assessment-form">
+      <!-- Step 0 -->
+      <div class="step active" data-step="0">
+        <h2>Who are you looking for care for?</h2>
+        <label><input type="radio" name="who" value="self" required /> Myself</label>
+        <label><input type="radio" name="who" value="parent" /> My parent</label>
+        <label><input type="radio" name="who" value="spouse" /> My spouse</label>
+        <label><input type="radio" name="who" value="other" /> Someone else</label>
+        <div class="buttons">
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 1: Daily Support -->
+      <div class="step" data-step="1">
+        <h2>How much help is needed each day?</h2>
+        <label><input type="radio" name="q1" value="0" required /> Independent or only reminders</label>
+        <label><input type="radio" name="q1" value="5" /> Help with 1–2 activities (e.g., dressing or bathing)</label>
+        <label><input type="radio" name="q1" value="10" /> Needs help with most daily activities</label>
+        <label><input type="radio" name="q1" value="15" /> Needs constant assistance or supervision</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Cognitive -->
+      <div class="step" data-step="2">
+        <h2>Memory or cognitive changes?</h2>
+        <label><input type="radio" name="q2" value="0" required /> No memory concerns</label>
+        <label><input type="radio" name="q2" value="5" /> Occasional forgetfulness or confusion</label>
+        <label><input type="radio" name="q2" value="10" /> Diagnosed dementia or Alzheimer’s</label>
+        <label><input type="radio" name="q2" value="15" /> Severe memory loss / needs secure setting</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Mobility -->
+      <div class="step" data-step="3">
+        <h2>Mobility or physical needs?</h2>
+        <label><input type="checkbox" name="q3" value="2.5" /> Uses walker or cane</label>
+        <label><input type="checkbox" name="q3" value="5" /> Wheelchair or scooter</label>
+        <label><input type="checkbox" name="q3" value="7.5" /> Requires staff assistance for transfers</label>
+        <label><input type="checkbox" name="q3" value="10" /> Bed-bound or total care</label>
+        <label><input type="checkbox" name="q3" value="0" /> None of the above</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Health -->
+      <div class="step" data-step="4">
+        <h2>Health or behavioral conditions?</h2>
+        <label><input type="checkbox" name="q4" value="5" /> Diabetes / Insulin management</label>
+        <label><input type="checkbox" name="q4" value="5" /> Oxygen use or breathing support</label>
+        <label><input type="checkbox" name="q4" value="10" /> Mental or behavioral health diagnosis</label>
+        <label><input type="checkbox" name="q4" value="15" /> Severe medical complexity / skilled nursing</label>
+        <label><input type="checkbox" name="q4" value="0" /> None of the above</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Behavior and Mood -->
+      <div class="step" data-step="5">
+        <h2>Behavior and mood changes?</h2>
+        <p style="font-size:0.9em; color:#555;">Select all that apply.</p>
+        <label><input type="checkbox" name="behavior" value="3" /> Shows signs of anxiety or agitation</label>
+        <label><input type="checkbox" name="behavior" value="3" /> Has mood swings, sadness, or withdrawal</label>
+        <label><input type="checkbox" name="behavior" value="5" /> Displays verbal or physical aggression</label>
+        <label><input type="checkbox" name="behavior" value="5" /> History of mental health diagnosis (depression, bipolar, etc.)</label>
+        <label><input type="checkbox" name="behavior" value="0" /> None of the above</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+
+      <!-- Step 6: Budget -->
+      <div class="step" data-step="5">
+        <h2>Monthly budget?</h2>
+        <label><input type="radio" name="q5" value="1000" required /> Under $2,000</label>
+        <label><input type="radio" name="q5" value="2750" /> $2,000–$3,500</label>
+        <label><input type="radio" name="q5" value="4250" /> $3,500–$5,000</label>
+        <label><input type="radio" name="q5" value="6000" /> Over $5,000</label>
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" class="next-btn">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Location -->
+      <div class="step" data-step="6">
+        <h2>Preferred location (ZIP or City)</h2>
+        <input type="text" id="location" name="location" required placeholder="e.g., 85001 or Phoenix, AZ" />
+        <div class="buttons">
+          <button type="button" class="back-btn">Back</button>
+          <button type="button" id="submit-btn">See Recommendations</button>
+        </div>
+      </div>
+    </form>
+
+    <div id="results"></div>
+  </main>
+
+  <script src="js/assessment.js"></script>
+</body>
+</html>
+
