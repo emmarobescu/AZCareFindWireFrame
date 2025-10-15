@@ -1754,32 +1754,27 @@ footer {
 .assessment-frame {
   width: 430px;
   height: 430px;
-  background-color: rgba(31, 69, 110, 1);
   border: 1px solid rgba(151, 151, 151, 1);
+  background-color: rgba(31, 69, 110, 1);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 60px auto;
 }
 
-/* inner white rectangle with inside arcs */
 .assessment-inner {
   width: 398px;
   height: 398px;
-  background: #fff;
-  position: relative;
-  padding: 35px 30px;
+  border: 1px solid rgba(151, 151, 151, 1);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  border-radius: 0; /* square edges for sides */
-  clip-path: path("M0,0 
-                   L382,0 
-                   Q398,0 398,16 
-                   L398,382 
-                   Q398,398 382,398 
-                   L0,398 
-                   Q0,398 0,382 
-                   L0,16 
-                   Q0,0 16,0 Z"); /* creates the inside-arc look */
+  padding: 25px;
+  box-sizing: border-box;
 }
 
 .question-step {
