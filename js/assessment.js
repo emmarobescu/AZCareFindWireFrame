@@ -12,29 +12,47 @@ document.addEventListener("DOMContentLoaded", () => {
   function showStep(i) {
     steps.forEach((s, idx) => s.classList.toggle("active", idx === i));
     progressBar.style.width = `${(i / (steps.length - 1)) * 100}%`;
+    navButtons.style.display = i === 0 ? "none" : "flex";
+    validateStep(); // check button state whenever a step changes
+  }
 
-    // Hide nav buttons on intro (step 0)
-    if (i === 0) {
-      navButtons.style.display = "none";
-    } else {
-      navButtons.style.display = "flex";
+  // ---- Enable/Disable Next ----
+  function validateStep() {
+    // find current step
+    const activeStep = steps[currentStep];
+    if (!activeStep) return;
+
+    // gather all radios/checkboxes in current step
+    const inputs = activeStep.querySelectorAll('input[type="radio"], input[type="checkbox"], input[type="text"]');
+    const hasInputs = inputs.length > 0;
+
+    // check if at least one is selected/filled
+    let valid = true;
+    if (hasInputs) {
+      valid = Array.from(inputs).some(input => {
+        if (input.type === "text") return input.value.trim() !== "";
+        return input.checked;
+      });
     }
+
+    // toggle disabled state
+    nextBtn.disabled = !valid;
+    nextBtn.style.opacity = valid ? "1" : "0.5";
+    nextBtn.style.cursor = valid ? "pointer" : "not-allowed";
   }
 
   // ---- Start Assessment ----
   if (startBtn) {
     startBtn.addEventListener("click", () => {
-      console.log("Start Assessment clicked");
       currentStep = 1;
       showStep(currentStep);
     });
-  } else {
-    console.warn("Start Assessment button not found!");
   }
 
   // ---- Next Button ----
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
+      if (nextBtn.disabled) return; // block click if disabled
       if (currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);
@@ -54,12 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ---- Watch for selection changes ----
+  document.addEventListener("input", validateStep);
+
   // ---- Calculate Score and Show Result ----
   function calculateResults() {
     const getScore = (name) => {
       const inputs = document.querySelectorAll(`[name="${name}"]:checked`);
       let total = 0;
-      inputs.forEach((i) => (total += parseFloat(i.value)));
+      inputs.forEach(i => total += parseFloat(i.value));
       return total;
     };
 
@@ -89,8 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const location = document.getElementById("location").value || "N/A";
-    const budget =
-      document.querySelector("[name='budget']:checked")?.value || "N/A";
+    const budget = document.querySelector("[name='budget']:checked")?.value || "N/A";
 
     document.getElementById("assessmentBox").style.display = "none";
     resultsDiv.style.display = "block";
@@ -99,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <h2>Recommended Care Level: ${careLevel}</h2>
         <p><strong>Estimated Budget:</strong> $${budget}/month</p>
         <p><strong>Preferred Location:</strong> ${location}</p>
-        <button onclick="window.location.href='map.html?level=${encodeURIComponent(
-          careLevel
-        )}&location=${encodeURIComponent(location)}'">
+        <button onclick="window.location.href='map.html?level=${encodeURIComponent(careLevel)}&location=${encodeURIComponent(location)}'">
           View Matching Homes
         </button>
       </div>
