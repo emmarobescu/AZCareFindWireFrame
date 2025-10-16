@@ -1143,6 +1143,7 @@ footer {
   line-height: 1.4;
   border-top: 1px solid rgba(220, 220, 220, 1);
   padding-top: 6px;
+  position: relative;
 }
 
 
