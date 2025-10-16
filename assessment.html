@@ -162,17 +162,20 @@
     <div id="results"></div>
   </main>
 
-  <!-- Sidebar placeholder -->
+ <!-- SIDEBARRRR -->
+<!-- Load shared sidebar logic once -->
+<script src="js/signin-sidebar.js"></script>
+
+<!-- Placeholder where the sidebar will be injected -->
 <div id="sidebar-placeholder"></div>
-  
-  <script src="scripts/signin-sidebar.js"></script>
+
 <script>
-  // fetch and insert sidebar HTML, then initialize
+  // Fetch and inject the sidebar markup, then initialize it
   fetch("sidebar.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("sidebar-placeholder").innerHTML = html;
-      window.initSidebar(); // connect header Sign In button
+      window.initSidebar(); // VERY IMPORTANT: run after injection
     });
 </script>
 
