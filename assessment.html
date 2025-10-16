@@ -162,6 +162,16 @@
     <div id="results"></div>
   </main>
 
+  <script>
+  // Fetch and inject the sidebar markup, then initialize it
+  fetch("sidebar.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("sidebar-placeholder").innerHTML = html;
+      window.initSidebar(); // VERY IMPORTANT: run after injection
+    });
+</script>
+
   <footer>
     <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
   </footer>
