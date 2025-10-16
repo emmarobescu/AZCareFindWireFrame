@@ -223,6 +223,5 @@ window.addEventListener("load", async () => {
       finalResults = filtered;
     }
   }
-
   updateMarkers(finalResults);
 });
