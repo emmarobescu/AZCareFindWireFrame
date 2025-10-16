@@ -1691,7 +1691,7 @@ footer {
   font-weight: 600;
   line-height: 23px;
   text-align: center;
-  margin-top: 48;
+  margin-top: 52;
   margin-bottom: 48px;
   max-width: 370px; /* keeps text width comfortable, optional */
   /* removed background, width, height, radius, padding */
@@ -1765,7 +1765,6 @@ footer {
   width: 398px;
   height: 398px;
   border: 1px solid rgba(151, 151, 151, 1);
-  border-radius: 16px;
   background-color: #fff;
   position: relative;
   display: block;
