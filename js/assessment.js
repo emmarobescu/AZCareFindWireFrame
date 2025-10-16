@@ -120,7 +120,7 @@ resultsDiv.innerHTML = `
     <div class="assessment-inner result-inner">
       <h2 class="assessment-title">Recommended Care Level</h2>
       <p class="result-text"><strong>${careLevel}</strong></p>
-      <p class="result-sub"><strong>Estimated Budget:</strong> $${budget}/month</p>
+      <p class="result-sub"><strong>Estimated Cost:</strong> $${budget}/month</p>
       <p class="result-sub"><strong>Preferred Location:</strong> ${location}</p>
       <button class="start-btn" onclick="window.location.href='map.html?level=${encodeURIComponent(
         careLevel
