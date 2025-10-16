@@ -147,6 +147,40 @@ window.attachMarkerClick = attachMarkerClick;
 window.toTitleCase = toTitleCase;
 window.extractLevelOfCare = extractLevelOfCare;
 
+
+function updateMarkers(list) {
+  // Clear current markers
+  markers.clearLayers();
+
+  if (!list.length) {
+    alert("No facilities match your criteria.");
+    return;
+  }
+
+  // Re-add markers for each facility in the list
+  list.forEach(f => {
+    const lat = parseFloat(f.N_LAT);
+    const lon = parseFloat(f.N_LON);
+    if (!lat || !lon) return;
+
+    const marker = L.marker([lat, lon]);
+    marker.bindPopup(`
+      <strong>${f.FACILITY_NAME || "Unknown Facility"}</strong><br>
+      ${f.ADDRESS || ""}<br>
+      ${f.CITY || ""}
+    `);
+
+    attachMarkerClick(marker, f);
+    markers.addLayer(marker);
+  });
+
+  map.addLayer(markers);
+
+  // Zoom map to the new marker bounds
+  if (markers.getLayers().length) {
+    map.fitBounds(markers.getBounds().pad(0.2));
+  }
+}
 // =====================
 // Assessment → Map fallback loader (final fixed version)
 // =====================
