@@ -1949,6 +1949,43 @@ footer {
   display: none;
 }
 
+
+/* =======================
+   ASSESSMENT RESULTS PAGE
+   ======================= */
+.result-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 32px;
+  padding-bottom: 40px;
+}
+
+.result-text {
+  color: rgba(8, 110, 157, 1);
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 10px 0 20px 0;
+  text-align: center;
+}
+
+.result-sub {
+  color: rgba(51, 51, 51, 1);
+  font-family: "OpenSans-SemiBold", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  margin: 6px 0;
+}
+
+.result-inner .start-btn {
+  margin-top: 30px;
+}
+
 /* =======================
    ANIMATION
    ======================= */
