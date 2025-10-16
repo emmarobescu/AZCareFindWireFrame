@@ -157,39 +157,29 @@ function updateMarkers(list) {
   if (markers.getLayers().length) map.fitBounds(markers.getBounds().pad(0.2));
 }
 
-// =============================================
-//  ASSESSMENT → MAP AUTO-LOADER
-// =============================================
+// =================================================
+//  ASSESSMENT → MAP AUTO-LOADER (with nearest logic)
+// =================================================
 window.addEventListener("load", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const careLevel = (urlParams.get("level") || "").toUpperCase();
   const preferredZip = (urlParams.get("location") || "").trim();
-
   if (!careLevel || !preferredZip) return;
 
-  const data = await fetch("data/facilities.json").then((r) => r.json());
+  const data = await fetch("data/facilities.json").then(r => r.json());
 
-  // ---- Care-level filtering ----
-  const filtered = data.filter((f) => {
+  // ---- 1️  Care-level filtering ----
+  const filtered = data.filter(f => {
     const name = (f.FACILITY_NAME || "").toUpperCase();
     const type = (f.TYPE || "").toUpperCase();
-    const subtype = (f.SUBTYPE || f.LICENSE_SUBTYPE || "").toUpperCase();
+    const sub  = (f.SUBTYPE || f.LICENSE_SUBTYPE || "").toUpperCase();
 
-    // MEMORY CARE
     if (careLevel.includes("MEMORY")) {
-      return name.includes("MEMORY") || type.includes("MEMORY") || subtype.includes("MEMORY");
+      return name.includes("MEMORY") || type.includes("MEMORY") || sub.includes("MEMORY");
     }
-
-    // BEHAVIORAL HEALTH
     if (careLevel.includes("BEHAVIORAL")) {
-      return (
-        type.includes("BH RESIDENTIAL") ||
-        type.includes("BEHAVIORAL") ||
-        subtype.includes("BEHAVIORAL")
-      );
+      return type.includes("BH RESIDENTIAL") || type.includes("BEHAVIORAL") || sub.includes("BEHAVIORAL");
     }
-
-    // ASSISTED LIVING (Personal, Directed, Supervisory)
     if (
       careLevel.includes("PERSONAL") ||
       careLevel.includes("DIRECTED") ||
@@ -197,31 +187,56 @@ window.addEventListener("load", async () => {
     ) {
       return type.includes("ASSISTED LIVING");
     }
-
     return false;
   });
 
-  // ---- ZIP filtering (preferred → nearby → all) ----
-  let resultsInZip = filtered.filter((f) => {
-    const zip = (f.ZIP || f.N_ZIP || "").toString().trim();
-    return zip.startsWith(preferredZip);
-  });
-
-  let finalResults = resultsInZip;
-
-  if (resultsInZip.length === 0 && preferredZip) {
-    const prefix = preferredZip.slice(0, 3);
-    finalResults = filtered.filter((f) => {
-      const zip = (f.ZIP || f.N_ZIP || "").toString().trim();
-      return zip.startsWith(prefix);
-    });
-
-    if (finalResults.length > 0) {
-      alert(`No ${careLevel} facilities were found in ZIP ${preferredZip}. Showing nearby results instead.`);
-    } else {
-      alert(`No ${careLevel} facilities found near ${preferredZip}. Showing all ${careLevel} results.`);
-      finalResults = filtered;
-    }
+  // ---- 2️ Find lat/lon of the preferred ZIP ----
+  let zipCenter;
+  try {
+    const res = await fetch(`https://api.zippopotam.us/us/${preferredZip}`);
+    const json = await res.json();
+    zipCenter = {
+      lat: parseFloat(json.places[0].latitude),
+      lon: parseFloat(json.places[0].longitude)
+    };
+  } catch {
+    zipCenter = null;
   }
+
+  // ---- 3️ If ZIP located, compute distance to each facility ----
+  function haversine(lat1, lon1, lat2, lon2) {
+    const R = 6371; // km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(lat1 * Math.PI / 180) *
+      Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) ** 2;
+    return R * 2 * Math.asin(Math.sqrt(a));
+  }
+
+  let finalResults = filtered;
+
+  if (zipCenter) {
+    finalResults = filtered
+      .map(f => {
+        const lat = parseFloat(f.N_LAT);
+        const lon = parseFloat(f.N_LON);
+        const dist = !lat || !lon ? Infinity : haversine(zipCenter.lat, zipCenter.lon, lat, lon);
+        return { ...f, _dist: dist };
+      })
+      .sort((a, b) => a._dist - b._dist)
+      .slice(0, 25); // nearest 25 results
+  }
+
+  if (!finalResults.length) {
+    alert(`No ${careLevel} facilities were found near ${preferredZip}. Showing all available ${careLevel} results.`);
+    finalResults = filtered;
+  } else {
+    alert(`Showing ${careLevel} facilities closest to ${preferredZip}.`);
+  }
+
+  // ---- 4️  Plot results on the map ----
   updateMarkers(finalResults);
 });
