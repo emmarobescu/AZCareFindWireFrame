@@ -135,7 +135,7 @@ window.extractLevelOfCare = extractLevelOfCare;
 function updateMarkers(list) {
   markers.clearLayers();
   if (!list.length) {
-    alert("No facilities match your criteria.");
+    alert("No facilities match your criteria. Try increasing the mile radius or broadening your search area.");
     return;
   }
 
