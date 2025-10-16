@@ -147,3 +147,54 @@ window.attachMarkerClick = attachMarkerClick;
 window.toTitleCase = toTitleCase;
 window.extractLevelOfCare = extractLevelOfCare;
 
+// =====================
+// Assessment → Map fallback loader
+// =====================
+window.addEventListener("load", async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const careLevel = urlParams.get("level");
+  const preferredZip = urlParams.get("location");
+
+  // Only run this if user came from the assessment
+  if (careLevel && preferredZip) {
+    const data = await fetch("data/facilities.json").then(r => r.json());
+    let filtered = data.filter(f => {
+      const name = (f.FACILITY_NAME || "").toUpperCase();
+      const type = (f.TYPE || "").toUpperCase();
+
+      if (careLevel.includes("MEMORY")) {
+        return name.includes("MEMORY") || type.includes("MEMORY");
+      } else if (careLevel.includes("BEHAVIORAL")) {
+        return type.includes("BH RESIDENTIAL") || type.includes("BEHAVIORAL");
+      } else {
+        return type.includes("ASSISTED LIVING");
+      }
+    });
+
+    // ZIP filtering (preferred → nearby → all)
+    let resultsInZip = filtered.filter(f => {
+      const facilityZip = (f.ZIP || f.N_ZIP || "").toString().trim();
+      return facilityZip.startsWith(preferredZip);
+    });
+
+    let finalResults = resultsInZip;
+    if (resultsInZip.length === 0) {
+      const prefix = preferredZip.slice(0, 3);
+      finalResults = filtered.filter(f => {
+        const facilityZip = (f.ZIP || f.N_ZIP || "").toString().trim();
+        return facilityZip.startsWith(prefix);
+      });
+
+      if (finalResults.length > 0) {
+        alert(`No ${careLevel} facilities were found in ZIP ${preferredZip}. Showing nearby results instead.`);
+      } else {
+        alert(`No ${careLevel} facilities found near ${preferredZip}. Showing all available results.`);
+        finalResults = filtered;
+      }
+    }
+
+    // Plot results
+    updateMarkers(finalResults);
+  }
+});
+
