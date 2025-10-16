@@ -148,53 +148,69 @@ window.toTitleCase = toTitleCase;
 window.extractLevelOfCare = extractLevelOfCare;
 
 // =====================
-// Assessment → Map fallback loader
+// Assessment → Map fallback loader (final fixed version)
 // =====================
 window.addEventListener("load", async () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const careLevel = urlParams.get("level");
-  const preferredZip = urlParams.get("location");
+  const careLevel = (urlParams.get("level") || "").toUpperCase();
+  const preferredZip = (urlParams.get("location") || "").trim();
 
-  // Only run this if user came from the assessment
-  if (careLevel && preferredZip) {
-    const data = await fetch("data/facilities.json").then(r => r.json());
-    let filtered = data.filter(f => {
-      const name = (f.FACILITY_NAME || "").toUpperCase();
-      const type = (f.TYPE || "").toUpperCase();
+  // Only run when coming from the assessment
+  if (!careLevel || !preferredZip) return;
 
-      if (careLevel.includes("MEMORY")) {
-        return name.includes("MEMORY") || type.includes("MEMORY");
-      } else if (careLevel.includes("BEHAVIORAL")) {
-        return type.includes("BH RESIDENTIAL") || type.includes("BEHAVIORAL");
-      } else {
-        return type.includes("ASSISTED LIVING");
-      }
-    });
+  const data = await fetch("data/facilities.json").then(r => r.json());
 
-    // ZIP filtering (preferred → nearby → all)
-    let resultsInZip = filtered.filter(f => {
-      const facilityZip = (f.ZIP || f.N_ZIP || "").toString().trim();
-      return facilityZip.startsWith(preferredZip);
-    });
+  // --- Care-level filtering ---
+  let filtered = data.filter(f => {
+    const name = (f.FACILITY_NAME || "").toUpperCase();
+    const type = (f.TYPE || "").toUpperCase();
+    const subtype = (f.SUBTYPE || f.LICENSE_SUBTYPE || "").toUpperCase();
+    const cap = parseInt(f.CAPACITY_INT || f.Capacity || 0, 10);
 
-    let finalResults = resultsInZip;
-    if (resultsInZip.length === 0) {
-      const prefix = preferredZip.slice(0, 3);
-      finalResults = filtered.filter(f => {
-        const facilityZip = (f.ZIP || f.N_ZIP || "").toString().trim();
-        return facilityZip.startsWith(prefix);
-      });
-
-      if (finalResults.length > 0) {
-        alert(`No ${careLevel} facilities were found in ZIP ${preferredZip}. Showing nearby results instead.`);
-      } else {
-        alert(`No ${careLevel} facilities found near ${preferredZip}. Showing all available results.`);
-        finalResults = filtered;
-      }
+    if (careLevel.includes("MEMORY")) {
+      // memory care logic
+      if (name.includes("MEMORY")) return true;
+      if (type.includes("ASSISTED LIVING") && cap >= 20) return true;
+      return false;
     }
 
-    // Plot results
-    updateMarkers(finalResults);
+    if (careLevel.includes("BEHAVIORAL")) {
+      return type.includes("BH RESIDENTIAL") || type.includes("BEHAVIORAL");
+    }
+
+    if (careLevel.includes("PERSONAL") || careLevel.includes("DIRECTED") || careLevel.includes("SUPERVISORY")) {
+      return type.includes("ASSISTED LIVING");
+    }
+
+    // default fallback
+    return true;
+  });
+
+  // --- ZIP filtering (preferred → nearby → all) ---
+  let resultsInZip = filtered.filter(f => {
+    const zip = (f.ZIP || f.N_ZIP || "").toString().trim();
+    return zip.startsWith(preferredZip);
+  });
+
+  let finalResults = resultsInZip;
+
+  if (resultsInZip.length === 0 && preferredZip) {
+    const prefix = preferredZip.slice(0, 3); // e.g. 853 for 85381
+    finalResults = filtered.filter(f => {
+      const zip = (f.ZIP || f.N_ZIP || "").toString().trim();
+      return zip.startsWith(prefix);
+    });
+
+    if (finalResults.length > 0) {
+      alert(`No ${careLevel} facilities were found in ZIP ${preferredZip}. Showing nearby results instead.`);
+    } else {
+      alert(`No ${careLevel} facilities found near ${preferredZip}. Showing all available results.`);
+      finalResults = filtered;
+    }
   }
+
+  // --- Plot results ---
+  updateMarkers(finalResults);
 });
+
 
