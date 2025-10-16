@@ -162,13 +162,17 @@
     <div id="results"></div>
   </main>
 
-  <script>
-  // Fetch and inject the sidebar markup, then initialize it
+  <!-- Sidebar placeholder -->
+<div id="sidebar-placeholder"></div>
+  
+  <script src="scripts/signin-sidebar.js"></script>
+<script>
+  // fetch and insert sidebar HTML, then initialize
   fetch("sidebar.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("sidebar-placeholder").innerHTML = html;
-      window.initSidebar(); // VERY IMPORTANT: run after injection
+      window.initSidebar(); // connect header Sign In button
     });
 </script>
 
