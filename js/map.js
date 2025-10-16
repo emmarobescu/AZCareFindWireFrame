@@ -230,12 +230,12 @@ window.addEventListener("load", async () => {
       .slice(0, 25); // nearest 25 results
   }
 
-  if (!finalResults.length) {
-    alert(`No ${careLevel} facilities were found near ${preferredZip}. Showing all available ${careLevel} results.`);
-    finalResults = filtered;
-  } else {
-    alert(`Showing ${careLevel} facilities closest to ${preferredZip}.`);
-  }
+ if (!finalResults.length) {
+  alert(`No ${careLevel} facilities were found near ${preferredZip}. Displaying all available ${careLevel} facilities statewide.`);
+  finalResults = filtered;
+} else if (resultsInZip.length === 0) {
+  alert(`No ${careLevel} facilities were found in ${preferredZip}. Displaying nearby facilities located around this area.`);
+}
 
   // ---- 4️  Plot results on the map ----
   updateMarkers(finalResults);
