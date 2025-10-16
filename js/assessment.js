@@ -110,22 +110,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const location = document.getElementById("location").value || "N/A";
-    const budget = document.querySelector("[name='budget']:checked")?.value || "N/A";
+const budget = document.querySelector("[name='budget']:checked")?.value || "N/A";
 
-    document.getElementById("assessmentBox").style.display = "none";
-    resultsDiv.style.display = "block";
-    resultsDiv.innerHTML = `
-      <div class="result-box">
-        <h2>Recommended Care Level: ${careLevel}</h2>
-        <p><strong>Estimated Budget:</strong> $${budget}/month</p>
-        <p><strong>Preferred Location:</strong> ${location}</p>
-        <button onclick="window.location.href='map.html?level=${encodeURIComponent(careLevel)}&location=${encodeURIComponent(location)}'">
-          View Matching Homes
-        </button>
-      </div>
-    `;
-  }
+document.getElementById("assessmentBox").style.display = "none";
+resultsDiv.style.display = "block";
 
-  // ---- Initialize ----
-  showStep(currentStep);
-});
+resultsDiv.innerHTML = `
+  <div class="assessment-frame">
+    <div class="assessment-inner result-inner">
+      <h2 class="assessment-title">Recommended Care Level</h2>
+      <p class="result-text"><strong>${careLevel}</strong></p>
+      <p class="result-sub"><strong>Estimated Budget:</strong> $${budget}/month</p>
+      <p class="result-sub"><strong>Preferred Location:</strong> ${location}</p>
+      <button class="start-btn" onclick="window.location.href='map.html?level=${encodeURIComponent(
+        careLevel
+      )}&location=${encodeURIComponent(location)}'">
+        View Matching Homes
+      </button>
+    </div>
+  </div>
+`;
+} // end calculateResults()
+showStep(currentStep);
+}); // end DOMContentLoaded
