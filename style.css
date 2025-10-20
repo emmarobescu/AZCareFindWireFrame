@@ -150,6 +150,9 @@ h6 {
   justify-content: center;
   height: 100%;
   width: 100%;
+
+  white-space: nowrap;       /* keeps text on one line */
+  overflow: hidden;          /* hides anything that might overflow */
 }
 
 .nav-item a:hover {
