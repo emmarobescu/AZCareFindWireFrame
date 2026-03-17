@@ -1,385 +1,385 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the character encoding so text displays correctly across browsers -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the layout responsive on phones, tablets, and desktops -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title shown in the browser tab -->
   <title>AZ Care Finder</title>
+
+  <!-- External stylesheet for the site's layout, colors, spacing, and responsive styling -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Font Awesome for the search icon -->
+
+  <!-- Font Awesome library used for interface icons such as the search icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Imported fonts used to create a more polished and readable interface -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet">
-  <meta name="google-site-verification" content="vMGVXNsR-9YN6fetAONv8Igpb1INtrKuArcgoAGp5rI" />
+
+  <!-- Google site verification allows ownership verification for search engine tools -->
   <meta name="google-site-verification" content="vMGVXNsR-9YN6fetAONv8Igpb1INtrKuArcgoAGp5rI" />
 </head>
+
 <body>
-  <!-- Header -->
+  <!-- =================================================== HEADER ================================================================= -->
+  <!-- The header contains the support bar, site branding, and primary navigation -->
   <header>
-  <!-- Top bar -->
-  <div class="top-bar">
-    <span class= "questions"> Questions?</span>
-    <span class="phone">(623) 444-7702</span>
-  </div>
 
-                                          <!-- Main navigation -->
-  <nav class="main-nav">
-  <!-- Logo -->
-  <div class="logo">
-    <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
-  </div>
-
-  <!-- Nav Links with dividers -->
-  <ul class="nav-links">
-  <li class="nav-item assessment"><a href="assessment.html">ASSESSMENT</a></li>
-  <li class="divider"></li>
-  <li class="nav-item map"><a href="map.html">MAP & CHOICES</a></li>
-  <li class="divider"></li>
-  <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
-</ul>
-
-  <!-- Sign In Button -->
-  <div class="nav-right">
-  <button class="signin" id="openSignin">
-    <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
-    <span>Sign In</span>
-  </button>
-</div>
-</nav>
-
-                                                 <!-- Accent bar -->
-  <div class="accent-bar"></div>
-</header>
-
-  <!-- Hero -->
-  <main>
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Welcome to Arizona Senior Care Finder</h1>
-      <p>Discover assisted living, memory care, and behavioral health facilities across Arizona.</p>
-      <div class="search-bar">
-      <input
-        type="text"
-        id="homepage-search"
-        placeholder="Enter an Address, City, or Zipcode"
-      >
-      <i class="fa-solid fa-magnifying-glass"></i>
+    <!-- Top contact bar gives users immediate access to support information -->
+    <div class="top-bar">
+      <span class="questions">Questions?</span>
+      <span class="phone">(623) 444-7702</span>
     </div>
-  </div>
-  </section>
+
+    <!-- Main navigation allows users to move between the site's key tools -->
+    <nav class="main-nav">
+
+      <!-- Logo reinforces branding and helps users identify the platform -->
+      <div class="logo">
+        <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo">
+      </div>
+
+      <!-- Navigation links connect users to the assessment, map, and provider listing pages -->
+      <ul class="nav-links">
+        <li class="nav-item assessment"><a href="assessment.html">ASSESSMENT</a></li>
+        <li class="divider"></li>
+        <li class="nav-item map"><a href="map.html">MAP & CHOICES</a></li>
+        <li class="divider"></li>
+        <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
+      </ul>
+
+      <!-- Sign-in button opens the sidebar login panel -->
+      <div class="nav-right">
+        <button class="signin" id="openSignin">
+          <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon">
+          <span>Sign In</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Decorative accent bar visually separates the navigation from the rest of the page -->
+    <div class="accent-bar"></div>
+  </header>
+
+  <!-- ======================================================= HERO SECTION ============================================================================= -->
+  <main>
+    <!-- Hero section introduces the website's purpose and provides quick search access -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Arizona Senior Care Finder</h1>
+        <p>Discover assisted living, memory care, and behavioral health facilities across Arizona.</p>
+
+        <!-- Search bar allows the user to enter a city, ZIP code, or address -->
+        <div class="search-bar">
+          <input
+            type="text"
+            id="homepage-search"
+            placeholder="Enter an Address, City, or Zipcode"
+          >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Redirects the user to the map page when they press Enter in the homepage search field -->
   <script>
-  // When the user presses Enter, redirect to map.html with their query
-  const searchInput = document.getElementById('homepage-search');
+    const searchInput = document.getElementById('homepage-search');
 
-  if (searchInput) {
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const query = searchInput.value.trim();
-        if (query) {
-          console.log("Redirecting with query:", query); // for debugging
-          window.location.href = `map.html?location=${encodeURIComponent(query)}`;
+    if (searchInput) {
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchInput.value.trim();
+
+          // Only redirect if the user entered a non-empty search value
+          if (query) {
+            console.log("Redirecting with query:", query); // helps debug search behavior
+            window.location.href = `map.html?location=${encodeURIComponent(query)}`;
+          }
         }
-      }
-    });
-  }
-</script>
-                                                  <!-- Mission -->
-  <section class="mission">
-  <h2>Our Mission</h2>
-  <p>
-    At Senior Care Finder, we believe every individual deserves to live with dignity, independence, 
-    and the right level of support. Our mission is to guide families through one of life’s most 
-    important decisions with clarity, compassion, and transparency. Whether you’re researching 
-    care for yourself, a parent, or a loved one, our platform provides both a quick assessment 
-    and a powerful map-based search to help you identify facilities that truly fit your location, 
-    budget, and care needs.
-  </p>
-
-  <p>
-    We also recognize that Arizona is home to a wide variety of care options — from small, family-run 
-    group homes to larger senior living communities — and each one deserves the chance to be seen. 
-    That’s why our directory doesn’t favor select providers or limit your choices. Instead, we give 
-    every licensed home the opportunity to be represented equally, ensuring families can make decisions 
-    based on what matters most: quality of care, availability, and fit for their loved one.
-  </p>
-</section>
-  
-<section class="difference" id="difference">
-  <div class="difference-title">
-    <div class="line"></div>
-    <h2>What Makes Us Different</h2>
-    <div class="line"></div>
-  </div>
-
-  <div class="difference-icons">
-    <div class="icon-card">
-      <div class="icon-img">
-        <img src="assets/paperpencil.svg" alt="No contracts" class="paper-pen">
-      </div>
-      <p class="caption short">No contracts with providers</p>
-    </div>
-
-    <!-- Vertical line -->
-    <div class="divider-vertical"></div>
-
-    <div class="icon-card">
-      <div class="icon-img">
-        <img src="assets/laptop.svg" alt="Statewide" class="laptop">
-      </div>
-      <p class="caption wide">The only statewide website representing every licensed care option in Arizona</p>
-    </div>
-
-    <!-- Vertical line -->
-    <div class="divider-vertical"></div>
-
-    <div class="icon-card">
-      <div class="icon-img">
-        <img src="assets/money.svg" alt="No hidden fees" class="money">
-      </div>
-      <p class="caption short">No hidden fees</p>
-    </div>
-  </div>
-
-  <!-- Bottom horizontal line -->
-  <div class="divider-horizontal"></div>
-</section>
-
-
-
- <section class="care" id="care">
-  <h2>Find the Right Care, Your Way</h2>
-
-  <div class="care-grid">
-    <!-- Card 1 -->
-    <div class="care-card">
-      <img src="assets/assessment.jpg" alt="Personalized Assessment" class="care-img">
-      <h3>Personalized Assessment</h3>
-      <p>
-        Our quick Senior Care Assessment guides you step-by-step through questions about your loved one’s needs, preferences, and budget. Based on your answers, we recommend facilities that best match, saving you hours of phone calls and guesswork.
-      </p>
-      <a href="assessment.html" class="care-btn"><span>Take Assessment</span></a>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="care-card">
-      <img src="assets/map.jpg" alt="Map & Filters" class="care-img">
-      <h3>Map & Filters</h3>
-      <p>
-        Our Arizona Care Map is the most complete, up-to-date directory of licensed facilities. It accurately represents all homes, from the smallest group homes to larger senior living communities.
-      </p>
-      <a href="map.html" class="care-btn"><span>View Map</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- Overlay -->
-<div id="overlay"></div>
-
-<!-- Sign-In Sidebar -->
-<aside class="signin-sidebar" id="signinSidebar">
-  <button id="closeSignin" class="close-btn">&times;</button>
-
-  <div class="signin-content">
-    <h2>Sign In</h2>
-
-    <form id="sidebarSignIn" novalidate>
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Your Username" required />
-
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Your Password" required />
-
-      <div class="keep-signed">
-        <div class="checkbox-group">
-          <input type="checkbox" id="keepSigned" />
-          <label for="keepSigned">Keep Me Signed In</label>
-        </div>
-        <a href="#" class="forgot">Forgot Password?</a>
-      </div>
-
-      <button type="submit" class="signin-btn">Sign In</button>
-    </form>
-  </div>
-
-
-<!-- Divider line -->
-<hr class="signin-divider">
-
-<!-- Create an Account section -->
-<div class="create-account">
-  <h2>Create An Account</h2>
-  <p class="create-text">
-    Showcase your licensed care home to families looking for quality care.
-  </p>
-
-  <ul class="create-benefits">
-    <li>Reach more families in your area.</li>
-    <li>Update your listing anytime.</li>
-    <li>Build trust with verified information.</li>
-    <li>It’s quick, easy, and free to join.</li>
-  </ul>
-
-  <a href="list.html" class="create-btn"><span>Create An Account</span></a>
-</div>
-</aside>
-
-<!-- Account Not Found Popup -->
-<div class="popup-container" id="popupNoAccount">
-  <h2>Account Not Found</h2>
-  <p>
-    It looks like you don’t have an account yet.  
-    Sign up to list your facility with AZ Care Finder.
-  </p>
-  <div class="popup-actions">
-    <button class="popup-cancel" id="cancelNoAccount">Cancel</button>
-    <a href="list.html" class="popup-continue">Create Account</a>
-  </div>
-</div>
-
-<!-- ========================  JS ======================== -->
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  /* ---- Hero search redirect ---- */
-  const searchInput = document.getElementById("homepage-search");
-  if (searchInput) {
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const query = searchInput.value.trim();
-        if (query) {
-          console.log("Redirecting with query:", query);
-          window.location.href = `map.html?location=${encodeURIComponent(query)}`;
-        }
-      }
-    });
-  }
-
-  /* ---- Sign-in sidebar controls ---- */
-  const openBtn  = document.getElementById("openSignin");
-  const sidebar  = document.getElementById("signinSidebar");
-  const overlay  = document.getElementById("overlay");
-  const closeBtn = document.getElementById("closeSignin");
-
-  function toggleSidebar(open) {
-    sidebar.classList.toggle("open", open);
-    overlay.classList.toggle("active", open);
-  }
-
-  if (openBtn)  openBtn.addEventListener("click", () => toggleSidebar(true));
-  if (overlay)  overlay.addEventListener("click", () => toggleSidebar(false));
-  if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
-});
-</script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
-
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
-
-  // Clicking the blue "Sign In" button inside sidebar
-  signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
-  });
-
-  // Cancel or click outside to close the popup
-  cancelNoAccount.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("overlay");
-  const sidebar = document.getElementById("signinSidebar");
-  const closeSidebar = document.getElementById("closeSignin");
-  const signinButton = document.querySelector(".signin-btn"); // inside sidebar
-  const noAccountPopup = document.getElementById("popupNoAccount");
-  const cancelNoAccount = document.getElementById("cancelNoAccount");
-
-  // Sidebar close function (already have this likely)
-  function hideSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("active");
-  }
-
-  // Clicking the blue "Sign In" button inside sidebar
-  signinButton.addEventListener("click", (e) => {
-    e.preventDefault(); // prevents any default form submission
-    hideSidebar();      // closes the sidebar
-    overlay.classList.add("active"); // show dimmed background
-    noAccountPopup.classList.add("active"); // open the "Account Not Found" popup
-  });
-
-  // Cancel or click outside to close the popup
-  cancelNoAccount.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-    overlay.classList.remove("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    noAccountPopup.classList.remove("active");
-  });
-});
-</script>
-
-  <script>
-// Universal form validation for all forms
-document.querySelectorAll("form").forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    const inputs = form.querySelectorAll("input[required], textarea[required]");
-    let valid = true;
-
-    inputs.forEach((input) => {
-      // reset any previous red borders
-      input.style.outline = "";
-
-      if (!input.value.trim()) {
-        valid = false;
-        input.style.outline = "2px solid red";
-      } else if (input.type === "email") {
-        // simple regex for valid email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(input.value.trim())) {
-          valid = false;
-          input.style.outline = "2px solid red";
-        }
-      }
-    });
-
-    if (!valid) {
-      e.preventDefault();
-      alert("Please fill out all required fields with valid information before submitting.");
+      });
     }
-  });
-});
-</script>
+  </script>
 
+  <!-- ===================================================== MISSION SECTION =========================================================== -->
+  <!-- Explains the purpose of the platform and the problem it is designed to solve -->
+  <section class="mission">
+    <h2>Our Mission</h2>
+    <p>
+      At Senior Care Finder, we believe every individual deserves to live with dignity, independence, 
+      and the right level of support. Our mission is to guide families through one of life’s most 
+      important decisions with clarity, compassion, and transparency. Whether you’re researching 
+      care for yourself, a parent, or a loved one, our platform provides both a quick assessment 
+      and a powerful map-based search to help you identify facilities that truly fit your location, 
+      budget, and care needs.
+    </p>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
-</footer>
+    <p>
+      We also recognize that Arizona is home to a wide variety of care options — from small, family-run 
+      group homes to larger senior living communities — and each one deserves the chance to be seen. 
+      That’s why our directory doesn’t favor select providers or limit your choices. Instead, we give 
+      every licensed home the opportunity to be represented equally, ensuring families can make decisions 
+      based on what matters most: quality of care, availability, and fit for their loved one.
+    </p>
+  </section>
+
+  <!-- ========================================================= DIFFERENCE SECTION ============================================================== -->
+  <!-- Highlights key value propositions that differentiate the platform -->
+  <section class="difference" id="difference">
+    <div class="difference-title">
+      <div class="line"></div>
+      <h2>What Makes Us Different</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="difference-icons">
+      <div class="icon-card">
+        <div class="icon-img">
+          <img src="assets/paperpencil.svg" alt="No contracts" class="paper-pen">
+        </div>
+        <p class="caption short">No contracts with providers</p>
+      </div>
+
+      <!-- Visual divider used to separate feature cards -->
+      <div class="divider-vertical"></div>
+
+      <div class="icon-card">
+        <div class="icon-img">
+          <img src="assets/laptop.svg" alt="Statewide" class="laptop">
+        </div>
+        <p class="caption wide">The only statewide website representing every licensed care option in Arizona</p>
+      </div>
+
+      <!-- Visual divider used to separate feature cards -->
+      <div class="divider-vertical"></div>
+
+      <div class="icon-card">
+        <div class="icon-img">
+          <img src="assets/money.svg" alt="No hidden fees" class="money">
+        </div>
+        <p class="caption short">No hidden fees</p>
+      </div>
+    </div>
+
+    <!-- Bottom divider helps close the section visually -->
+    <div class="divider-horizontal"></div>
+  </section>
+
+  <!-- =============================================================== CARE OPTIONS SECTION ============================================ -->
+  <!-- Gives users two primary paths: take the assessment or browse the map directly -->
+  <section class="care" id="care">
+    <h2>Find the Right Care, Your Way</h2>
+
+    <div class="care-grid">
+      <!-- Assessment card routes users to a guided recommendation tool -->
+      <div class="care-card">
+        <img src="assets/assessment.jpg" alt="Personalized Assessment" class="care-img">
+        <h3>Personalized Assessment</h3>
+        <p>
+          Our quick Senior Care Assessment guides you step-by-step through questions about your loved one’s needs, preferences, and budget. Based on your answers, we recommend facilities that best match, saving you hours of phone calls and guesswork.
+        </p>
+        <a href="assessment.html" class="care-btn"><span>Take Assessment</span></a>
+      </div>
+
+      <!-- Map card routes users to the searchable map and filter interface -->
+      <div class="care-card">
+        <img src="assets/map.jpg" alt="Map & Filters" class="care-img">
+        <h3>Map & Filters</h3>
+        <p>
+          Our Arizona Care Map is the most complete, up-to-date directory of licensed facilities. It accurately represents all homes, from the smallest group homes to larger senior living communities.
+        </p>
+        <a href="map.html" class="care-btn"><span>View Map</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= OVERLAY + SIGN-IN SIDEBAR ========================================================= -->
+
+  <!-- Overlay darkens the background when a modal or sidebar is active -->
+  <div id="overlay"></div>
+
+  <!-- Sidebar provides a sign-in interface without forcing users to leave the homepage -->
+  <aside class="signin-sidebar" id="signinSidebar">
+    <button id="closeSignin" class="close-btn">&times;</button>
+
+    <div class="signin-content">
+      <h2>Sign In</h2>
+
+      <!-- Login form uses required fields for basic client-side validation -->
+      <form id="sidebarSignIn" novalidate>
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Your Username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Your Password" required />
+
+        <div class="keep-signed">
+          <div class="checkbox-group">
+            <input type="checkbox" id="keepSigned" />
+            <label for="keepSigned">Keep Me Signed In</label>
+          </div>
+          <a href="#" class="forgot">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="signin-btn">Sign In</button>
+      </form>
+    </div>
+
+    <!-- Divider separates sign-in from account creation content -->
+    <hr class="signin-divider">
+
+    <!-- Secondary section encourages providers to create a business account -->
+    <div class="create-account">
+      <h2>Create An Account</h2>
+      <p class="create-text">
+        Showcase your licensed care home to families looking for quality care.
+      </p>
+
+      <ul class="create-benefits">
+        <li>Reach more families in your area.</li>
+        <li>Update your listing anytime.</li>
+        <li>Build trust with verified information.</li>
+        <li>It’s quick, easy, and free to join.</li>
+      </ul>
+
+      <a href="list.html" class="create-btn"><span>Create An Account</span></a>
+    </div>
+  </aside>
+
+  <!-- ==================================================== ACCOUNT NOT FOUND POPUP ================================================== -->
+  <!-- Popup gives feedback when a user attempts to sign in without an account -->
+  <div class="popup-container" id="popupNoAccount">
+    <h2>Account Not Found</h2>
+    <p>
+      It looks like you don’t have an account yet.  
+      Sign up to list your facility with AZ Care Finder.
+    </p>
+    <div class="popup-actions">
+      <button class="popup-cancel" id="cancelNoAccount">Cancel</button>
+      <a href="list.html" class="popup-continue">Create Account</a>
+    </div>
+  </div>
+
+  <!-- ===================================================== INTERACTIVITY SCRIPTS ===================================================== -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      /* Hero search redirect:
+         sends the user to the map page and passes the entered location
+         as a URL parameter so the next page can use that input */
+      const searchInput = document.getElementById("homepage-search");
+
+      if (searchInput) {
+        searchInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            const query = searchInput.value.trim();
+
+            if (query) {
+              console.log("Redirecting with query:", query);
+              window.location.href = `map.html?location=${encodeURIComponent(query)}`;
+            }
+          }
+        });
+      }
+
+      /* Sign-in sidebar controls:
+         opens and closes the sidebar while also activating the overlay */
+      const openBtn = document.getElementById("openSignin");
+      const sidebar = document.getElementById("signinSidebar");
+      const overlay = document.getElementById("overlay");
+      const closeBtn = document.getElementById("closeSignin");
+
+      function toggleSidebar(open) {
+        sidebar.classList.toggle("open", open);
+        overlay.classList.toggle("active", open);
+      }
+
+      if (openBtn) openBtn.addEventListener("click", () => toggleSidebar(true));
+      if (overlay) overlay.addEventListener("click", () => toggleSidebar(false));
+      if (closeBtn) closeBtn.addEventListener("click", () => toggleSidebar(false));
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const overlay = document.getElementById("overlay");
+      const sidebar = document.getElementById("signinSidebar");
+      const signinButton = document.querySelector(".signin-btn");
+      const noAccountPopup = document.getElementById("popupNoAccount");
+      const cancelNoAccount = document.getElementById("cancelNoAccount");
+
+      /* Hides the sign-in sidebar before displaying the popup,
+         preventing both UI elements from competing for attention */
+      function hideSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      }
+
+      /* Intercepts the sign-in button click so the interface can show
+         a custom account-not-found popup instead of submitting the form */
+      signinButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        hideSidebar();
+        overlay.classList.add("active");
+        noAccountPopup.classList.add("active");
+      });
+
+      /* Allows the user to dismiss the popup and return to the page */
+      cancelNoAccount.addEventListener("click", () => {
+        noAccountPopup.classList.remove("active");
+        overlay.classList.remove("active");
+      });
+
+      /* Clicking the overlay also closes the popup for easier usability */
+      overlay.addEventListener("click", () => {
+        noAccountPopup.classList.remove("active");
+      });
+    });
+  </script>
+
+  <script>
+    /* Universal form validation:
+       checks all required fields before form submission and visually
+       highlights invalid inputs to improve usability and reduce empty submissions */
+    document.querySelectorAll("form").forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        const inputs = form.querySelectorAll("input[required], textarea[required]");
+        let valid = true;
+
+        inputs.forEach((input) => {
+          /* Reset any previous validation styling before checking again */
+          input.style.outline = "";
+
+          if (!input.value.trim()) {
+            valid = false;
+            input.style.outline = "2px solid red";
+          } else if (input.type === "email") {
+            /* Basic email pattern check for forms that contain email fields */
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(input.value.trim())) {
+              valid = false;
+              input.style.outline = "2px solid red";
+            }
+          }
+        });
+
+        /* Stops submission if one or more required fields are invalid */
+        if (!valid) {
+          e.preventDefault();
+          alert("Please fill out all required fields with valid information before submitting.");
+        }
+      });
+    });
+  </script>
+
+  <!-- =================================================================== FOOTER ========================================================== -->
+  <footer>
+    <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
