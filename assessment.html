@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the character encoding so the page displays text correctly -->
   <meta charset="UTF-8" />
+
+  <!-- Ensures the layout scales properly across mobile and desktop devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Verifies site ownership for Google Search Console -->
   <meta name="google-site-verification" content="vMGVXNsR-9YN6fetAONv8Igpb1INtrKuArcgoAGp5rI" />
+
+  <!-- Title displayed in the browser tab -->
   <title>Assessment | AZ Care Finder</title>
 
-  <!-- Main stylesheet -->
+  <!-- Main stylesheet for shared site layout and page-specific styling -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Font Awesome for any icons -->
+  <!-- Font Awesome library for icons used across the interface -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Google Fonts (match index.html exactly) -->
+  <!-- Imported fonts create a consistent visual identity across all pages -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;800&display=swap" rel="stylesheet" />
 </head>
+
 <body>
-  <!-- Header -->
+  <!-- ========================= HEADER ========================= -->
+  <!-- Reuses the site's main navigation structure for consistency across pages -->
   <header>
-    <!-- Top bar -->
+    <!-- Top contact bar provides quick access to support information -->
     <div class="top-bar">
-      <span class= "questions"> Questions?</span>
+      <span class="questions">Questions?</span>
       <span class="phone">(623) 444-7702</span>
     </div>
 
-    <!-- Main navigation -->
+    <!-- Main navigation connects users to the site's three primary tools -->
     <nav class="main-nav">
       <div class="logo">
+        <!-- Logo links back to the homepage for easy navigation -->
         <a href="index.html">
           <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo" />
         </a>
@@ -42,6 +52,7 @@
         <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
       </ul>
 
+      <!-- Sign-in button opens the shared sidebar login interface -->
       <div class="nav-right">
         <button class="signin" id="openSignin">
           <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
@@ -50,19 +61,23 @@
       </div>
     </nav>
 
+    <!-- Accent bar visually separates the navigation from page content -->
     <div class="accent-bar"></div>
   </header>
 
+  <!-- ========================= ASSESSMENT CONTENT ========================= -->
   <main class="assessment-container">
-    <!-- Progress Bar -->
+    <!-- Progress bar gives users visual feedback as they move through the multi-step form -->
     <div id="progress">
       <div id="progress-bar"></div>
     </div>
 
+    <!-- Outer frame organizes the assessment content into a centered container -->
     <div class="assessment-frame">
       <div class="assessment-inner" id="assessmentBox">
 
-        <!-- INTRO -->
+        <!-- INTRO STEP -->
+        <!-- Opening screen explains the purpose of the assessment before user input begins -->
         <div class="question-step active" data-step="0">
           <h2 class="assessment-title">Placement Assessment</h2>
           <p class="assessment-text">
@@ -74,6 +89,7 @@
         </div>
 
         <!-- QUESTION 1 -->
+        <!-- Identifies the relationship of the person completing the form to the care recipient -->
         <div class="question-step" data-step="1">
           <h2>Who are you looking for care for?</h2>
           <label><input type="radio" name="who" value="self" required /> Myself</label>
@@ -83,6 +99,7 @@
         </div>
 
         <!-- QUESTION 2 -->
+        <!-- Measures how much support is needed for activities of daily living -->
         <div class="question-step" data-step="2">
           <h2>How much daily help is needed?</h2>
           <label><input type="radio" name="daily" value="0" required /> Independent or reminders only</label>
@@ -92,6 +109,7 @@
         </div>
 
         <!-- QUESTION 3 -->
+        <!-- Collects cognitive support needs to help distinguish between general assisted living and memory care -->
         <div class="question-step" data-step="3">
           <h2>Memory or cognitive changes?</h2>
           <label><input type="radio" name="memory" value="0" required /> No issues</label>
@@ -101,6 +119,7 @@
         </div>
 
         <!-- QUESTION 4 -->
+        <!-- Uses checkboxes because users may have multiple mobility-related needs -->
         <div class="question-step" data-step="4">
           <h2>Mobility or physical needs?</h2>
           <label><input type="checkbox" name="mobility" value="2.5" /> Uses walker or cane</label>
@@ -111,6 +130,7 @@
         </div>
 
         <!-- QUESTION 5 -->
+        <!-- Evaluates medication support needs, which affect care level recommendations -->
         <div class="question-step" data-step="5">
           <h2>Medication management?</h2>
           <label><input type="radio" name="meds" value="0" required /> Manages medications independently</label>
@@ -119,6 +139,7 @@
         </div>
 
         <!-- QUESTION 6 -->
+        <!-- Captures behavioral and mental health factors that may influence placement needs -->
         <div class="question-step" data-step="6">
           <h2>Behavior or mood changes?</h2>
           <label><input type="checkbox" name="behavior" value="3" /> Anxiety or agitation</label>
@@ -129,6 +150,7 @@
         </div>
 
         <!-- QUESTION 7 -->
+        <!-- Gathers toileting support needs, another factor that affects level-of-care scoring -->
         <div class="question-step" data-step="7">
           <h2>Continence or toileting needs?</h2>
           <label><input type="radio" name="toileting" value="0" required /> Independent</label>
@@ -137,6 +159,7 @@
         </div>
 
         <!-- QUESTION 8 -->
+        <!-- Identifies more complex medical needs that may narrow the set of appropriate facilities -->
         <div class="question-step" data-step="8">
           <h2>Medical or skilled nursing needs?</h2>
           <label><input type="checkbox" name="medical" value="5" /> Diabetes / insulin management</label>
@@ -146,6 +169,7 @@
         </div>
 
         <!-- QUESTION 9 -->
+        <!-- Budget input helps narrow results to facilities that are more financially realistic for the user -->
         <div class="question-step" data-step="9">
           <h2>Monthly budget?</h2>
           <label><input type="radio" name="budget" value="1000" required /> Under $2,000</label>
@@ -155,21 +179,21 @@
         </div>
 
         <!-- QUESTION 10 -->
+        <!-- Final input collects the preferred geographic area for matching facilities -->
         <div class="question-step" data-step="10">
           <h2>Preferred location (ZIP or City)</h2>
 
-            <label for="location" class="form-label">ZIP Code or City:</label>
-              <input
-                type="text"
-                id="location"
-                name="location"
-                required
-                placeholder="e.g., 85001 or Phoenix, AZ"
-              />
+          <label for="location" class="form-label">ZIP Code or City:</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            required
+            placeholder="e.g., 85001 or Phoenix, AZ"
+          />
         </div>
 
-
-        <!-- BUTTONS stay INSIDE inner box -->
+        <!-- Navigation buttons remain fixed inside the assessment box so users can move between steps -->
         <div class="buttons" id="navButtons">
           <button type="button" class="back-btn">Back</button>
           <button type="button" class="next-btn">Next</button>
@@ -177,31 +201,36 @@
       </div>
     </div>
 
+    <!-- Results container will be filled dynamically by JavaScript after the assessment is completed -->
     <div id="results"></div>
   </main>
 
- <!-- SIDEBARRRR -->
-<!-- Load shared sidebar logic once -->
-<script src="js/signin-sidebar.js"></script>
+  <!-- ========================= SHARED SIDEBAR ========================= -->
 
-<!-- Placeholder where the sidebar will be injected -->
-<div id="sidebar-placeholder"></div>
+  <!-- Loads the reusable JavaScript file that controls sign-in sidebar behavior -->
+  <script src="js/signin-sidebar.js"></script>
 
-<script>
-  // Fetch and inject the sidebar markup, then initialize it
-  fetch("sidebar.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("sidebar-placeholder").innerHTML = html;
-      window.initSidebar(); // VERY IMPORTANT: run after injection
-    });
-</script>
+  <!-- Placeholder container where shared sidebar HTML is injected dynamically -->
+  <div id="sidebar-placeholder"></div>
 
+  <script>
+    // Fetches the shared sidebar markup so the same component can be reused across multiple pages
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+
+        // Initializes sidebar event listeners only after the sidebar HTML has been added to the page
+        window.initSidebar();
+      });
+  </script>
+
+  <!-- ========================= FOOTER ========================= -->
   <footer>
     <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
   </footer>
-  
+
+  <!-- Main JavaScript file that controls assessment logic, scoring, navigation, and results -->
   <script src="js/assessment.js"></script>
-  
 </body>
 </html>
