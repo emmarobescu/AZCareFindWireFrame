@@ -1,28 +1,35 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the character encoding so text renders correctly -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the page responsive across phones, tablets, and desktops -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Verifies ownership for Google Search Console -->
   <meta name="google-site-verification" content="vMGVXNsR-9YN6fetAONv8Igpb1INtrKuArcgoAGp5rI" />
+
+  <!-- Title displayed in the browser tab -->
   <title>Map & Choices | AZ Care Finder</title>
 
-  <!-- Leaflet and MarkerCluster (keep for map functionality) -->
+  <!-- Leaflet styles provide the base map interface -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- MarkerCluster styles group nearby markers to improve readability and performance -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
 
-  <!-- Main stylesheet -->
+  <!-- Main stylesheet for shared layout and page-specific styling -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Font Awesome (for icons) -->
+  <!-- Font Awesome library for interface icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
 
-  <!-- Google Fonts (match index.html exactly) -->
+  <!-- Imported fonts maintain consistent branding across the site -->
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
     rel="stylesheet"
@@ -36,20 +43,21 @@
     rel="stylesheet"
   />
 </head>
-<body>
 
-  <!-- Header -->
+<body>
+  <!-- ========================= HEADER ========================= -->
+  <!-- Reuses the main site navigation so users can move easily between core tools -->
   <header>
-    <!-- Top bar -->
+    <!-- Top contact bar provides direct access to support information -->
     <div class="top-bar">
-      <span class= "questions"> Questions?</span>
+      <span class="questions">Questions?</span>
       <span class="phone">(623) 444-7702</span>
     </div>
 
-    <!-- Main navigation -->
+    <!-- Main navigation connects users to the assessment, map, and provider pages -->
     <nav class="main-nav">
       <div class="logo">
-        <!-- Logo as link back to homepage -->
+        <!-- Logo links back to the homepage -->
         <a href="index.html">
           <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo" />
         </a>
@@ -63,31 +71,30 @@
         <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
       </ul>
 
-     <div class="nav-right">
-  <button class="signin" id="openSignin">
-    <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
-    <span>Sign In</span>
-  </button>
-</div>
-
-      
+      <!-- Sign-in button opens the shared sidebar login component -->
+      <div class="nav-right">
+        <button class="signin" id="openSignin">
+          <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
+          <span>Sign In</span>
+        </button>
+      </div>
     </nav>
 
-    <!-- Accent bar -->
+    <!-- Accent bar separates the navigation visually from the map interface -->
     <div class="accent-bar"></div>
   </header>
 
-  <!-- Page Content -->
+  <!-- ========================= MAP PAGE CONTENT ========================= -->
   <main>
     <section class="map-choices">
       <h2>Search for Facilities on the Map</h2>
 
       <div class="map-container">
-        <!-- Slide-in sidebar (off-canvas by default) -->
+        <!-- Filter sidebar stores user-selected search criteria for narrowing map results -->
         <aside class="filter-sidebar" id="filterSidebar">
           <h4>Filter Selection</h4>
 
-          <!-- City or Zip -->
+          <!-- Location input allows users to search by either city or ZIP code -->
           <label class="filter-label" for="location-input">City or Zip</label>
           <input 
             type="text" 
@@ -96,36 +103,36 @@
             placeholder="Peoria / 85381"
           />
 
-          <!-- Radius -->
+          <!-- Radius control lets users expand or narrow the search area around a location -->
           <label class="radius-label" for="radius">Radius (miles)</label>
-            <div class="radius-control">
-              <button type="button" class="radius-btn left"><span class="arrow">‹</span></button>
-              <input type="text" id="radius" class="radius-input" value="1" />
-              <button type="button" class="radius-btn right"><span class="arrow">›</span></button>
-            </div>
+          <div class="radius-control">
+            <button type="button" class="radius-btn left"><span class="arrow">‹</span></button>
+            <input type="text" id="radius" class="radius-input" value="1" />
+            <button type="button" class="radius-btn right"><span class="arrow">›</span></button>
+          </div>
 
-
-         <!-- Care Type -->
+          <!-- Care type filter helps match the user with the appropriate category of service -->
           <label class="care-label" for="care-type">Care Type</label>
-            <select id="care-type" class="care-select">
-                <option value="" disabled selected>Select Option</option>
-                <option value="assisted">Assisted Living</option>
-                <option value="memory">Memory Care</option>
-                <option value="behavioral-health">Behavioral Health</option>
-            </select>
+          <select id="care-type" class="care-select">
+            <option value="" disabled selected>Select Option</option>
+            <option value="assisted">Assisted Living</option>
+            <option value="memory">Memory Care</option>
+            <option value="behavioral-health">Behavioral Health</option>
+          </select>
 
-         <!-- Facility Type -->
+          <!-- Facility type filter separates smaller residential homes from larger facilities -->
           <label class="facility-label" for="facility-type">Facility Type</label>
-            <select id="facility-type" class="facility-select">
-              <option value="" disabled selected>Select Option</option>
-              <option value="residential">Residential</option>
-              <option value="facility">Facility</option>
-            </select>
+          <select id="facility-type" class="facility-select">
+            <option value="" disabled selected>Select Option</option>
+            <option value="residential">Residential</option>
+            <option value="facility">Facility</option>
+          </select>
 
+          <!-- Search button applies the chosen filters to the dataset and map display -->
           <button class="search-btn" type="button">Search</button>
         </aside>
 
-        <!-- Filter/Info icon box -->
+        <!-- Small floating control box gives users quick access to filters and info -->
         <div class="filter-info-box">
           <button class="icon-btn" id="open-filter">
             <img src="assets/filter.svg" alt="Filter" />
@@ -135,69 +142,82 @@
           </button>
         </div>
 
-        <!-- Info Sidebar -->
-<aside class="info-sidebar" id="infoSidebar">
-  <div class="info-content">
-    <h4>Information</h4>
+        <!-- Info sidebar displays details about the currently selected facility -->
+        <aside class="info-sidebar" id="infoSidebar">
+          <div class="info-content">
+            <h4>Information</h4>
 
-    <!-- Default message -->
-    <p id="info-default">Click on a facility to learn more.</p>
+            <!-- Default message shown before a facility is selected -->
+            <p id="info-default">Click on a facility to learn more.</p>
 
-    <!-- Facility details (hidden by default) -->
-    <div id="facility-details" style="display: none;">
-      <p><strong>Name:</strong> <span id="info-name">N/A</span></p>
-      <p><strong>Address:</strong> <span id="info-address">N/A</span></p>
-      <p><strong>Phone:</strong> <span id="info-phone">N/A</span></p>
-      <p><strong>Capacity:</strong> <span id="info-capacity">N/A</span></p>
-      <p><strong>Type of Home:</strong> <span id="info-type">N/A</span></p>
-      <p><strong>Level of Care Provided:</strong> <span id="info-subtype">N/A</span></p>
-      <p><strong>Price Estimate:</strong> <span id="info-price">N/A</span></p>
-    </div>
-  </div>
-</aside>
+            <!-- Facility data is inserted dynamically after marker selection -->
+            <div id="facility-details" style="display: none;">
+              <p><strong>Name:</strong> <span id="info-name">N/A</span></p>
+              <p><strong>Address:</strong> <span id="info-address">N/A</span></p>
+              <p><strong>Phone:</strong> <span id="info-phone">N/A</span></p>
+              <p><strong>Capacity:</strong> <span id="info-capacity">N/A</span></p>
+              <p><strong>Type of Home:</strong> <span id="info-type">N/A</span></p>
+              <p><strong>Level of Care Provided:</strong> <span id="info-subtype">N/A</span></p>
+              <p><strong>Price Estimate:</strong> <span id="info-price">N/A</span></p>
+            </div>
+          </div>
+        </aside>
 
-        <!-- Leaflet map -->
+        <!-- Leaflet map container where facility markers are rendered dynamically -->
         <div id="map">
-        <p class="data-disclaimer"> Data © Arizona Department of Health Services (ADHS), provided under A.R.S. §37-178. Used “as is” without warranty. </p>
+          <!-- Data disclaimer acknowledges the external government source used for facility records -->
+          <p class="data-disclaimer">
+            Data © Arizona Department of Health Services (ADHS), provided under A.R.S. §37-178. Used “as is” without warranty.
+          </p>
+        </div>
       </div>
     </section>
   </main>
 
-<!-- SIDEBARRRR -->
-<!-- Load shared sidebar logic once -->
-<script src="js/signin-sidebar.js"></script>
+  <!-- ========================= SHARED SIGN-IN SIDEBAR ========================= -->
 
-<!-- Placeholder where the sidebar will be injected -->
-<div id="sidebar-placeholder"></div>
+  <!-- Loads the reusable JavaScript that controls shared sign-in sidebar behavior -->
+  <script src="js/signin-sidebar.js"></script>
 
-<script>
-  // Fetch and inject the sidebar markup, then initialize it
-  fetch("sidebar.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("sidebar-placeholder").innerHTML = html;
-      window.initSidebar(); // VERY IMPORTANT: run after injection
-    });
-</script>
+  <!-- Placeholder where the shared sidebar component will be inserted -->
+  <div id="sidebar-placeholder"></div>
 
+  <script>
+    // Fetches shared sidebar markup so the same sign-in component can be reused across multiple pages
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
 
-  
+        // Runs sidebar setup only after the sidebar HTML has been injected into the page
+        window.initSidebar();
+      });
+  </script>
 
-  <!-- Footer -->
+  <!-- ========================= FOOTER ========================= -->
   <footer>
     <div class="footer-links">
       <p>©2025 AZ Care Finder. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- Leaflet JS -->
+  <!-- ========================= EXTERNAL MAP LIBRARIES ========================= -->
+
+  <!-- Leaflet JavaScript powers the interactive map -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- MarkerCluster JS -->
+
+  <!-- MarkerCluster improves usability by grouping nearby facilities on dense map views -->
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
-  <!-- Your JS files -->
-  <script src="js/map.js"></script>       <!-- Leaflet map logic -->
+  <!-- ========================= PAGE-SPECIFIC JAVASCRIPT ========================= -->
+
+  <!-- Handles map creation, marker placement, and facility display logic -->
+  <script src="js/map.js"></script>
+
+  <!-- Applies user-selected filter criteria such as location, radius, and care type -->
   <script src="js/filters.js"></script>
-  <script src="js/sidebar.js"></script>   <!-- Sidebar toggle logic -->
+
+  <!-- Controls opening and closing behavior for the filter and information sidebars -->
+  <script src="js/sidebar.js"></script>
 </body>
 </html>
