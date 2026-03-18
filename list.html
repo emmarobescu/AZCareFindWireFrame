@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Defines the character encoding so text is rendered correctly -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the page responsive across mobile and desktop devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title displayed in the browser tab -->
   <title>List Your Business | AZ Care Finder</title>
+
+  <!-- Main stylesheet for shared layout and page styling -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Imported fonts maintain consistent branding across the site -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-   <!-- Header -->
+  <!-- ========================= HEADER ========================= -->
   <header>
-    <!-- Top bar -->
+    <!-- Top contact bar provides users with support information -->
     <div class="top-bar">
-      <span class= "questions"> Questions?</span>
+      <span class="questions">Questions?</span>
       <span class="phone">(623) 444-7702</span>
     </div>
 
-    <!-- Main navigation -->
+    <!-- Main navigation links users to the platform's core pages -->
     <nav class="main-nav">
       <div class="logo">
-        <!-- Logo as link back to homepage -->
+        <!-- Logo links back to the homepage -->
         <a href="index.html">
           <img src="assets/azcarefinderlogo.svg" alt="AZ Care Finder Logo" />
         </a>
@@ -34,6 +44,7 @@
         <li class="nav-item list"><a href="list.html">LIST YOUR BUSINESS</a></li>
       </ul>
 
+      <!-- Sign-in button opens the reusable sidebar authentication component -->
       <div class="nav-right">
         <button class="signin" id="openSignin">
           <img src="assets/usercircle.svg" alt="User Icon" class="signin-icon" />
@@ -42,221 +53,241 @@
       </div>
     </nav>
 
-    <!-- Accent bar -->
+    <!-- Accent bar visually separates the header from the main content -->
     <div class="accent-bar"></div>
   </header>
 
-  <!-- ===== Main Content ===== -->
+  <!-- ========================= MAIN CONTENT ========================= -->
   <main class="list-page">
-  <section class="list-content">
-    <h1>List Your Business</h1>
-    <p class="list-description">
-      List your licensed care home or facility with AZ Care Finder. It’s free, fast, and helps families
-      discover your services across Arizona. Join our statewide directory to connect with families who
-      need compassionate, trustworthy care for their loved ones.
-    </p>
+    <section class="list-content">
+      <h1>List Your Business</h1>
 
-    <ul class="list-benefits">
-      <li>
-        <strong>Increase your visibility:</strong> Reach thousands of families searching for senior care across Arizona
-        every day through our interactive map and search tools.
-      </li>
-      <li>
-        <strong>Manage your profile anytime:</strong> Update your facility’s availability, photos, and contact
-        information in real-time to ensure families always have accurate details.
-      </li>
-      <li>
-        <strong>Showcase what makes you unique:</strong> Highlight your amenities, specialties, and personalized
-        services that set your home apart from others.
-      </li>
-      <li>
-        <strong>Gain trust and credibility:</strong> Every listed home is verified by AZ Care Finder, so families know
-        your care is licensed and reliable.
-      </li>
-    </ul>
+      <!-- Introductory copy explains the purpose of this page and encourages provider participation -->
+      <p class="list-description">
+        List your licensed care home or facility with AZ Care Finder. It’s free, fast, and helps families
+        discover your services across Arizona. Join our statewide directory to connect with families who
+        need compassionate, trustworthy care for their loved ones.
+      </p>
 
-    <button class="list-btn"><span>List Now</span></button>
-  </section>
-</main>
-  
-<!-- Overlay -->
-<div id="popupOverlay"></div>
+      <!-- Benefit list communicates the value of joining the platform -->
+      <ul class="list-benefits">
+        <li>
+          <strong>Increase your visibility:</strong> Reach thousands of families searching for senior care across Arizona
+          every day through our interactive map and search tools.
+        </li>
+        <li>
+          <strong>Manage your profile anytime:</strong> Update your facility’s availability, photos, and contact
+          information in real-time to ensure families always have accurate details.
+        </li>
+        <li>
+          <strong>Showcase what makes you unique:</strong> Highlight your amenities, specialties, and personalized
+          services that set your home apart from others.
+        </li>
+        <li>
+          <strong>Gain trust and credibility:</strong> Every listed home is verified by AZ Care Finder, so families know
+          your care is licensed and reliable.
+        </li>
+      </ul>
 
-<!-- First Popup: Partner with AZ Care Finder -->
-<div class="popup-container" id="popupNotice">
-  <h2>Partner with AZ Care Finder</h2>
-  <p>
-    We’re currently onboarding providers manually to ensure each facility receives personalized setup
-    support. You can still join our directory today through a short contact form — just share your
-    details, and our team will help you get listed on AZ Care Finder.
-  </p>
+      <!-- Primary call-to-action button starts the onboarding flow -->
+      <button class="list-btn"><span>List Now</span></button>
+    </section>
+  </main>
 
-  <div class="popup-actions">
-    <button class="popup-cancel" id="cancelPopup">Cancel</button>
-    <button class="popup-continue" id="continuePopup">Continue</button>
-  </div>
-</div>
+  <!-- ========================= PROVIDER ONBOARDING POPUPS ========================= -->
 
-<!-- Second Popup: List Your Business Form -->
-<div class="popup-container" id="popupForm">
-  <div class="popup-header">
-    <h2>List Your Business</h2>
-    <button class="popup-close" id="closeForm">&times;</button>
-  </div>
+  <!-- Overlay darkens the background and focuses the user's attention on the active popup -->
+  <div id="popupOverlay"></div>
 
-  <form id="businessForm" novalidate>
-  <!-- Full Name -->
-  <label for="fullName">Full Name</label>
-  <input type="text" id="fullName" placeholder="John Smith" required />
-
-  <!-- Facility Legal Name -->
-  <label for="facilityName">Facility Legal Name</label>
-  <input type="text" id="facilityName" placeholder="Sunrise Assisted Living, LLC" required />
-
-  <!-- Best Contact Email -->
-  <label for="email">Best Contact Email</label>
-  <input
-    type="email"
-    id="email"
-    placeholder="johnsmith@gmail.com"
-    required
-    pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
-  />
-
-  <!-- Questions (optional) -->
-  <label for="questions">Questions (Optional)</label>
-  <textarea
-    id="questions"
-    placeholder="Enter any additional questions, comments, or concerns"
-  ></textarea>
-
-  <!-- Buttons -->
-  <div class="popup-actions">
-    <button type="button" class="popup-cancel" id="cancelForm">Cancel</button>
-    <button type="submit" class="popup-submit">Submit</button>
-  </div>
-</form>
-
-</div>
-
-<!-- Third Popup: Thank You Message -->
-<div class="popup-container" id="popupThankYou">
-  <div class="popup-header">
-    <h2>Thank you for your interest!</h2>
-    <button class="popup-close" id="closeThankYou">&times;</button>
-  </div>
-
-  <div class="thankyou-text">
+  <!-- First popup introduces the manual onboarding process before the user opens the form -->
+  <div class="popup-container" id="popupNotice">
+    <h2>Partner with AZ Care Finder</h2>
     <p>
-      Your details have been submitted successfully. Our team will contact you soon to guide you through
-      the next steps of adding your facility.
+      We’re currently onboarding providers manually to ensure each facility receives personalized setup
+      support. You can still join our directory today through a short contact form — just share your
+      details, and our team will help you get listed on AZ Care Finder.
     </p>
-    <p>
-      If you don’t receive an email from us within one week, please call
-      <strong>(623) 444-7702</strong>, and we’ll be happy to assist you directly.
-    </p>
+
+    <!-- Users can either cancel the process or continue to the contact form -->
+    <div class="popup-actions">
+      <button class="popup-cancel" id="cancelPopup">Cancel</button>
+      <button class="popup-continue" id="continuePopup">Continue</button>
+    </div>
   </div>
-</div>
 
-<!-- ===== Popup Script ===== -->
-<script>
-const overlay = document.getElementById("popupOverlay");
-const noticePopup = document.getElementById("popupNotice");
-const formPopup = document.getElementById("popupForm");
-const thankYouPopup = document.getElementById("popupThankYou");
-const listBtn = document.querySelector(".list-btn");
-const cancelBtn = document.getElementById("cancelPopup");
-const continueBtn = document.getElementById("continuePopup");
-const cancelForm = document.getElementById("cancelForm");
-const closeForm = document.getElementById("closeForm");
-const closeThankYou = document.getElementById("closeThankYou");
+  <!-- Second popup contains the provider submission form -->
+  <div class="popup-container" id="popupForm">
+    <div class="popup-header">
+      <h2>List Your Business</h2>
 
-/* ---------- 1. Open first popup ---------- */
-listBtn.addEventListener("click", () => {
-  overlay.classList.add("active");
-  noticePopup.classList.add("active");
-});
+      <!-- Close button allows users to exit the form popup -->
+      <button class="popup-close" id="closeForm">&times;</button>
+    </div>
 
-/* ---------- 2. Cancel first popup ---------- */
-cancelBtn.addEventListener("click", closeAllPopups);
-overlay.addEventListener("click", closeAllPopups);
+    <!-- Business form collects provider contact and facility information -->
+    <form id="businessForm" novalidate>
+      <!-- Full name of the person submitting the form -->
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="John Smith" required />
 
-/* ---------- 3. Continue → open form popup ---------- */
-continueBtn.addEventListener("click", () => {
-  noticePopup.classList.remove("active");
-  formPopup.classList.add("active");
-});
+      <!-- Legal business name used for listing and verification -->
+      <label for="facilityName">Facility Legal Name</label>
+      <input type="text" id="facilityName" placeholder="Sunrise Assisted Living, LLC" required />
 
-/* ---------- 4. Close all popups ---------- */
-function closeAllPopups() {
-  overlay.classList.remove("active");
-  noticePopup.classList.remove("active");
-  formPopup.classList.remove("active");
-  thankYouPopup.classList.remove("active");
-}
-cancelForm.addEventListener("click", closeAllPopups);
-closeForm.addEventListener("click", closeAllPopups);
-closeThankYou.addEventListener("click", closeAllPopups);
+      <!-- Email field includes HTML and JavaScript validation -->
+      <label for="email">Best Contact Email</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="johnsmith@gmail.com"
+        required
+        pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+      />
 
-/* ---------- 5. Submit form → show thank-you popup ---------- */
-document.getElementById("businessForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  formPopup.classList.remove("active");
-  thankYouPopup.classList.add("active");
-});
-</script>
+      <!-- Optional field for provider questions or additional context -->
+      <label for="questions">Questions (Optional)</label>
+      <textarea
+        id="questions"
+        placeholder="Enter any additional questions, comments, or concerns"
+      ></textarea>
 
-<script>
-// Universal form validation for all forms
-document.querySelectorAll("form").forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    const inputs = form.querySelectorAll("input[required], textarea[required]");
-    let valid = true;
+      <!-- Form action buttons -->
+      <div class="popup-actions">
+        <button type="button" class="popup-cancel" id="cancelForm">Cancel</button>
+        <button type="submit" class="popup-submit">Submit</button>
+      </div>
+    </form>
+  </div>
 
-    inputs.forEach((input) => {
-      // reset any previous red borders
-      input.style.outline = "";
+  <!-- Third popup confirms successful submission -->
+  <div class="popup-container" id="popupThankYou">
+    <div class="popup-header">
+      <h2>Thank you for your interest!</h2>
 
-      if (!input.value.trim()) {
-        valid = false;
-        input.style.outline = "2px solid red";
-      } else if (input.type === "email") {
-        // simple regex for valid email
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(input.value.trim())) {
-          valid = false;
-          input.style.outline = "2px solid red";
-        }
-      }
+      <!-- Close button dismisses the final confirmation popup -->
+      <button class="popup-close" id="closeThankYou">&times;</button>
+    </div>
+
+    <!-- Confirmation message explains what happens next in the provider onboarding process -->
+    <div class="thankyou-text">
+      <p>
+        Your details have been submitted successfully. Our team will contact you soon to guide you through
+        the next steps of adding your facility.
+      </p>
+      <p>
+        If you don’t receive an email from us within one week, please call
+        <strong>(623) 444-7702</strong>, and we’ll be happy to assist you directly.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================= POPUP FLOW LOGIC ========================= -->
+  <script>
+    const overlay = document.getElementById("popupOverlay");
+    const noticePopup = document.getElementById("popupNotice");
+    const formPopup = document.getElementById("popupForm");
+    const thankYouPopup = document.getElementById("popupThankYou");
+    const listBtn = document.querySelector(".list-btn");
+    const cancelBtn = document.getElementById("cancelPopup");
+    const continueBtn = document.getElementById("continuePopup");
+    const cancelForm = document.getElementById("cancelForm");
+    const closeForm = document.getElementById("closeForm");
+    const closeThankYou = document.getElementById("closeThankYou");
+
+    /* Opens the first popup when the user starts the provider listing process */
+    listBtn.addEventListener("click", () => {
+      overlay.classList.add("active");
+      noticePopup.classList.add("active");
     });
 
-    if (!valid) {
-      e.preventDefault();
-      alert("Please fill out all required fields with valid information before submitting.");
+    /* Allows the first popup to be dismissed */
+    cancelBtn.addEventListener("click", closeAllPopups);
+    overlay.addEventListener("click", closeAllPopups);
+
+    /* Moves the user from the introductory notice into the actual contact form */
+    continueBtn.addEventListener("click", () => {
+      noticePopup.classList.remove("active");
+      formPopup.classList.add("active");
+    });
+
+    /* Centralized function resets all popup states at once */
+    function closeAllPopups() {
+      overlay.classList.remove("active");
+      noticePopup.classList.remove("active");
+      formPopup.classList.remove("active");
+      thankYouPopup.classList.remove("active");
     }
-  });
-});
-</script>
 
-  <!-- SIDEBARRRR -->
-<!-- Load shared sidebar logic once -->
-<script src="js/signin-sidebar.js"></script>
+    cancelForm.addEventListener("click", closeAllPopups);
+    closeForm.addEventListener("click", closeAllPopups);
+    closeThankYou.addEventListener("click", closeAllPopups);
 
-<!-- Placeholder where the sidebar will be injected -->
-<div id="sidebar-placeholder"></div>
-
-<script>
-  // Fetch and inject the sidebar markup, then initialize it
-  fetch("sidebar.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("sidebar-placeholder").innerHTML = html;
-      window.initSidebar(); // VERY IMPORTANT: run after injection
+    /* Intercepts form submission so the UI can show a confirmation popup
+       instead of immediately sending or refreshing the page */
+    document.getElementById("businessForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      formPopup.classList.remove("active");
+      thankYouPopup.classList.add("active");
     });
-</script>
+  </script>
 
-<footer>
-  <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
-</footer>
+  <!-- ========================= FORM VALIDATION ========================= -->
+  <script>
+    // Applies basic validation to all forms on the page before submission
+    document.querySelectorAll("form").forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        const inputs = form.querySelectorAll("input[required], textarea[required]");
+        let valid = true;
+
+        inputs.forEach((input) => {
+          // Clears previous validation styling before rechecking the field
+          input.style.outline = "";
+
+          if (!input.value.trim()) {
+            valid = false;
+            input.style.outline = "2px solid red";
+          } else if (input.type === "email") {
+            // Checks that email input follows a basic valid email pattern
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(input.value.trim())) {
+              valid = false;
+              input.style.outline = "2px solid red";
+            }
+          }
+        });
+
+        // Prevents submission if one or more required fields are incomplete or invalid
+        if (!valid) {
+          e.preventDefault();
+          alert("Please fill out all required fields with valid information before submitting.");
+        }
+      });
+    });
+  </script>
+
+  <!-- ========================= SHARED SIGN-IN SIDEBAR ========================= -->
+
+  <!-- Loads reusable sign-in sidebar logic -->
+  <script src="js/signin-sidebar.js"></script>
+
+  <!-- Placeholder where the shared sidebar markup will be injected -->
+  <div id="sidebar-placeholder"></div>
+
+  <script>
+    // Loads the shared sidebar HTML so the same authentication component can be reused across pages
+    fetch("sidebar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sidebar-placeholder").innerHTML = html;
+
+        // Initializes sidebar event listeners only after the HTML has been inserted
+        window.initSidebar();
+      });
+  </script>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer>
+    <p>© 2025 AZ Care Finder. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
