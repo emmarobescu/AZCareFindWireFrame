@@ -3,6 +3,13 @@ html, body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  /* The off-canvas sign-in sidebar (.signin-sidebar) and a few popups
+     sit at position:fixed just past the right edge of the viewport
+     when closed, by design — but without this, Chromium/most browsers
+     still let the page scroll horizontally into that empty space on
+     any screen narrower than ~1777px (i.e. almost every screen).
+     Clipping it here removes that phantom horizontal scroll everywhere. */
+  overflow-x: hidden;
 }
 
 main {
@@ -403,7 +410,8 @@ h6 {
 
 /* Horizontal divider */
 .divider-horizontal {
-  width: 1368px;
+  width: 100%;
+  max-width: 1368px;
   height: 1px;
   margin: 62px auto 0;
   background: linear-gradient(
@@ -840,12 +848,14 @@ footer {
 /* ---- Map Container ---- */
 .map-container {
   position: relative;
-  width: 1334px;
+  width: 100%;
+  max-width: 1334px;
   height: 697px;
   border: 1px solid rgba(151,151,151,1);
   background: rgba(216,216,216,1);
   margin-bottom: 48px;
   --sidebar-w: 317px;
+  box-sizing: border-box;
 }
 
 /* Map fills container */
@@ -1735,13 +1745,15 @@ footer {
 
 /* container (gray track) PROGRESSSSSSS */
 #progress {
-  width: 1322px;
+  width: calc(100% - 40px);
+  max-width: 1322px;
   height: 12px; /* 2px inner + 12px top + 12px bottom = 26 total */
   background-color: rgba(204, 204, 204, 1);
   border-radius: 13px;
   margin: 40px auto;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* blue progress fill — same thickness as gray */
@@ -2064,4 +2076,413 @@ no-results-banner {
   font-size: 14px;
   z-index: 9999;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   RESPONSIVE / MOBILE STYLES
+   Everything above this point was authored at fixed desktop
+   pixel widths pulled straight from Sketch. The rules below
+   layer on top for tablet and phone widths without touching the
+   desktop layout. Two breakpoints: 900px (tablet / nav collapse)
+   and 600px (phone).
+   ============================================================ */
+
+/* ===== Global type scale-down ===== */
+@media (max-width: 600px) {
+  h1 { font-size: 28px; line-height: 38px; }
+  h2 { font-size: 24px; line-height: 32px; }
+  h2.alt { font-size: 24px; line-height: 32px; }
+}
+
+/* ===== Top bar ===== */
+@media (max-width: 600px) {
+  .top-bar {
+    padding: 0 1rem;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== Main nav / hamburger menu ===== */
+@media (max-width: 900px) {
+  .main-nav {
+    padding: 0 1rem;
+    position: relative;
+  }
+
+  /* Hamburger button (added in markup) */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    order: 3;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: rgba(31, 69, 110, 1);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Collapsed nav links become a full-width dropdown panel */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: #fff;
+    border-bottom: 1px solid rgba(204, 204, 204, 1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+    z-index: 1300;
+  }
+
+  .nav-links.open {
+    max-height: 400px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .nav-item,
+  .nav-item.assessment,
+  .nav-item.map,
+  .nav-item.list {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-item a {
+    justify-content: flex-start;
+    padding: 16px 1.25rem;
+    width: 100%;
+  }
+
+  /* Dividers between items don't make sense as vertical rules
+     once the menu stacks — turn them into horizontal separators */
+  .nav-links .divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+
+  .nav-right {
+    order: 2;
+  }
+
+  .signin span {
+    display: none; /* icon-only sign-in button to save space */
+  }
+
+  .signin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-toggle { display: none; }
+}
+
+/* ===== Hero ===== */
+@media (max-width: 900px) {
+  .hero {
+    height: auto;
+    min-height: 300px;
+    margin: 1.25rem 1rem;
+  }
+
+  .hero-content {
+    padding: 1.25rem;
+  }
+
+  .search-bar {
+    display: block;
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+}
+
+/* ===== Mission / Difference / Care sections ===== */
+@media (max-width: 900px) {
+  .mission,
+  .difference,
+  .care {
+    padding: 0 1.25rem;
+    margin: 2.5rem auto;
+  }
+
+  /* "What Makes Us Different" stacks vertically on narrow screens.
+     The desktop rule forces white-space:nowrap on the heading, which
+     otherwise gets clipped at the viewport edge once the flanking
+     lines shrink below the text's natural width. */
+  .difference-title {
+    gap: 0.75rem;
+  }
+
+  .difference-title h2 {
+    white-space: normal;
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .difference-title .line {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 16px;
+  }
+
+  .difference-icons {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .divider-vertical {
+    width: 80%;
+    height: 1px;
+    align-self: center;
+  }
+
+  /* Assessment / Map cards stack instead of sitting side by side */
+  .care-grid {
+    flex-direction: column;
+  }
+
+  .care-card,
+  .care-img {
+    width: 100%;
+  }
+}
+
+/* ===== Sign-in sidebar ===== */
+@media (max-width: 480px) {
+  .signin-sidebar {
+    width: 100%;
+  }
+
+  .signin-content input[type="text"],
+  .signin-content input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .create-account,
+  .create-account h2,
+  .create-account .create-text,
+  .create-account .create-benefits {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===== Map & Choices page ===== */
+@media (max-width: 900px) {
+  .map-choices {
+    padding: 0 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .map-container {
+    height: 75vh;
+    min-height: 420px;
+  }
+
+  /* Filter and info panels become full-width overlays instead of a
+     317px sliver, since 317px eats the entire phone screen anyway */
+  .filter-sidebar,
+  .info-sidebar {
+    width: 100%;
+    height: 100%;
+    padding: 24px 20px;
+  }
+
+  .filter-input,
+  .care-select,
+  .facility-select {
+    width: 100%;
+  }
+
+  .filter-label,
+  .radius-label,
+  .care-label,
+  .facility-label {
+    width: 100%;
+  }
+
+  /* Keep the filter/info toggle icons pinned to the top-right at all
+     times on mobile instead of sliding with the (now full-width)
+     sidebar */
+  .filter-info-box {
+    left: auto;
+    right: 0;
+    top: 0;
+  }
+
+  .map-container:not(.sidebar-open):not(.info-open) .filter-info-box {
+    transform: none;
+  }
+}
+
+/* ===== List Your Business page ===== */
+@media (max-width: 900px) {
+  /* The fixed viewport-height + overflow:hidden combo clips content
+     once the fixed-width heading/description/bullets wrap onto more
+     lines than the desktop design assumed — let it scroll instead. */
+  .list-page {
+    height: auto;
+    min-height: calc(100vh - 80px);
+    overflow: visible;
+    padding: 32px 20px 40px;
+  }
+
+  .list-content h1,
+  .list-description,
+  .list-benefits {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .list-btn {
+    margin-left: 0;
+  }
+}
+
+/* ===== Popups (List Your Business + Sign-in "no account") ===== */
+@media (max-width: 480px) {
+  .popup-container,
+  #popupNoAccount,
+  #popupForm,
+  #popupThankYou {
+    width: 90vw;
+    max-width: 430px;
+    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .popup-container h2,
+  .popup-container p,
+  #popupThankYou h2,
+  #popupThankYou .thankyou-text,
+  .popup-header h2 {
+    width: 100%;
+  }
+
+  #businessForm input[type="text"],
+  #businessForm input[type="email"],
+  #businessForm textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===== Assessment page ===== */
+@media (max-width: 600px) {
+  /* The desktop design is a fixed 430x430 square with each question
+     absolutely positioned to fill it. That guarantees horizontal
+     overflow on any phone under 430px wide (iPhone SE, most Android
+     phones). Switch to a fluid box that grows with its content
+     instead of a fixed square. */
+  #progress {
+    width: calc(100% - 24px);
+    margin: 24px auto;
+  }
+
+  .assessment-frame {
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+    margin: 24px auto;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  .assessment-inner {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 28px 20px 90px;
+    box-sizing: border-box;
+  }
+
+  .question-step {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+  }
+
+  .question-step > * {
+    max-width: 100%;
+  }
+
+  .question-step label,
+  .question-step label::after {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .form-label,
+  #location {
+    width: 100%;
+    max-width: 258px;
+  }
+
+  .buttons {
+    position: absolute;
+    bottom: 16px;
+    padding: 0 20px;
+  }
+}
+
+/* ===== Footer ===== */
+@media (max-width: 600px) {
+  footer {
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+  }
 }
